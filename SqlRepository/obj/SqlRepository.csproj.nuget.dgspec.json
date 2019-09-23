@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj": {}
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj": {
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj",
+        "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj",
         "projectName": "SqlRepository",
-        "projectPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj",
+        "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj",
         "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\obj\\",
+        "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

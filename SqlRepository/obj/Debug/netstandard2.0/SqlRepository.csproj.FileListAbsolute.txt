@@ -6,3 +6,11 @@ C:\Users\ChastNR\source\repos\UniversalWebApi\SqlRepository\obj\Debug\netstandar
 C:\Users\ChastNR\source\repos\UniversalWebApi\SqlRepository\bin\Debug\netstandard2.0\SqlRepository.pdb
 C:\Users\ChastNR\source\repos\UniversalWebApi\SqlRepository\obj\Debug\netstandard2.0\SqlRepository.dll
 C:\Users\ChastNR\source\repos\UniversalWebApi\SqlRepository\obj\Debug\netstandard2.0\SqlRepository.pdb
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\bin\Debug\netstandard2.0\SqlRepository.deps.json
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\bin\Debug\netstandard2.0\SqlRepository.dll
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\bin\Debug\netstandard2.0\SqlRepository.pdb
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.0\SqlRepository.csprojAssemblyReference.cache
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.0\SqlRepository.AssemblyInfoInputs.cache
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.0\SqlRepository.AssemblyInfo.cs
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.0\SqlRepository.dll
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.0\SqlRepository.pdb

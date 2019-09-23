@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\ApplicationTests\\ApplicationTests.csproj": {}
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\ApplicationTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\ApplicationTests\\ApplicationTests.csproj": {
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\ApplicationTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\ApplicationTests\\ApplicationTests.csproj",
+        "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\ApplicationTests.csproj",
         "projectName": "ApplicationTests",
-        "projectPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\ApplicationTests\\ApplicationTests.csproj",
+        "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\ApplicationTests.csproj",
         "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\ApplicationTests\\obj\\",
+        "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,11 +30,11 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj": {
-                "projectPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj"
+              "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {
+                "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj"
               },
-              "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\UniversalWebApi\\UniversalWebApi.csproj": {
-                "projectPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\UniversalWebApi\\UniversalWebApi.csproj"
+              "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj": {
+                "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj"
               }
             }
           }
@@ -87,14 +87,14 @@
         }
       }
     },
-    "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj": {
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj",
+        "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj",
         "projectName": "SqlRepository",
-        "projectPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj",
+        "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj",
         "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\obj\\",
+        "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -153,14 +153,14 @@
         }
       }
     },
-    "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\UniversalWebApi\\UniversalWebApi.csproj": {
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\UniversalWebApi\\UniversalWebApi.csproj",
+        "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj",
         "projectName": "UniversalWebApi",
-        "projectPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\UniversalWebApi\\UniversalWebApi.csproj",
+        "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj",
         "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\UniversalWebApi\\obj\\",
+        "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -179,8 +179,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj": {
-                "projectPath": "C:\\Users\\ChastNR\\source\\repos\\WebApiNetCore\\UniversalWebApi\\SqlRepository\\SqlRepository.csproj"
+              "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {
+                "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj"
               }
             }
           }
@@ -193,6 +193,30 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
