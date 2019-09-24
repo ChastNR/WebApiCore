@@ -1,20 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using SqlRepository.Interfaces;
 using SqlRepository.Repositories;
 using UniversalWebApi.Extensions.EmailSender;
 using UniversalWebApi.Helpers.EncrytionHelper;
+using UniversalWebApi.Helpers.ExceptionManager;
 using UniversalWebApi.Helpers.Filters;
 using UniversalWebApi.Helpers.Serializer;
 using UniversalWebApi.Schedulers;
@@ -36,6 +29,8 @@ namespace UniversalWebApi
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IEncryptionHelper, EncryptionHelper>();
 
+            services.AddTransient<IExceptionManager, ExceptionManager>();
+            
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
 
             services.AddControllers();

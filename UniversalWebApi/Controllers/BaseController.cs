@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SqlRepository.Interfaces;
+using UniversalWebApi.Helpers.ExceptionManager;
 
 namespace UniversalWebApi.Controllers
 {
     public class BaseController<T> : Controller where T : class
     {
         protected readonly IDataRepository Db;
-        public BaseController(IDataRepository db) => Db = db;
+        protected readonly IExceptionManager _exceptionManager;
+
+        public BaseController(IDataRepository db, IExceptionManager exceptionManager)
+        {
+            Db = db;
+            _exceptionManager = exceptionManager;
+        }
 
         [HttpGet("getAsync")]
         public virtual async Task<IEnumerable<T>> GetAsync() => await Db.GetAllAsync<T>();
@@ -19,9 +26,20 @@ namespace UniversalWebApi.Controllers
         
         [HttpGet("getAsync/{id}")]
         public virtual async Task<T> GetAsync(int id) => await Db.GetAsync<T>(id);
-        
+
         [HttpGet("get/{id}")]
-        public virtual T Get(int id) => Db.Get<T>(id);
+        public virtual ActionResult<T> Get(int id)
+        {
+            try
+            {
+                return Ok(Db.Get<T>(id));
+            }
+            catch (Exception e)
+            {
+                _exceptionManager.Log(e);
+                return BadRequest($"There is no user with id = {id}");
+            }
+        }
 
         [HttpPost("add")]
         public virtual async Task<IActionResult> Add([FromBody] T entity)

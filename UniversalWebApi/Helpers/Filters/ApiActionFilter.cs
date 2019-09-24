@@ -8,7 +8,7 @@ using UniversalWebApi.FilterModels;
 
 namespace UniversalWebApi.Helpers.Filters
 {
-    public class ApiAsyncActionFilter : /*IAsyncResultFilter,*/ IAsyncActionFilter
+    public class ApiAsyncActionFilter : IAsyncResultFilter //, IAsyncActionFilter
     {
         private readonly IDataRepository _repository;
 
@@ -17,33 +17,32 @@ namespace UniversalWebApi.Helpers.Filters
             _repository = repository;
         }
         
-        
-        
-        
-//        public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
-//        {
-//            var result = new ActionResultModel
-//            {
-//                Action = context.RouteData.Values["action"].ToString(),
-//                Controller = context.RouteData.Values["controller"].ToString(),
-//                StatusCode = context.HttpContext.Response.StatusCode,
-//                Result = context.HttpContext.Response.ToString()
-//            };
-//
-//            await _repository.InsertAsync(result);
-//        }
-
-        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
         {
             var result = new ActionResultModel
             {
                 Action = context.RouteData.Values["action"].ToString(),
                 Controller = context.RouteData.Values["controller"].ToString(),
-                StatusCode = context.HttpContext.Response.StatusCode,
-                Result = context.HttpContext.Response.ToString()
+                StatusCode = context.HttpContext.Response.StatusCode
             };
 
             await _repository.InsertAsync(result);
+            
+            await next();
         }
+
+//        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+//        {
+//            var result = new ActionResultModel
+//            {
+//                Action = context.RouteData.Values["action"].ToString(),
+//                Controller = context.RouteData.Values["controller"].ToString(),
+//                StatusCode = context.HttpContext.Response.StatusCode
+//            };
+//
+//            await _repository.InsertAsync(result);
+//
+//            await next();
+//        }
     }
 }

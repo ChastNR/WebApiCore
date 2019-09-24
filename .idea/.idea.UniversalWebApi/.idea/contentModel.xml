@@ -74,6 +74,11 @@
             <e p="EncryptionHelper.cs" t="Include" />
             <e p="IEncryptionHelper.cs" t="Include" />
           </e>
+          <e p="ExceptionManager" t="Include">
+            <e p="ExceptionContract.cs" t="Include" />
+            <e p="ExceptionManager.cs" t="Include" />
+            <e p="IExceptionManager.cs" t="Include" />
+          </e>
           <e p="Filters" t="Include">
             <e p="ApiActionFilter.cs" t="Include" />
           </e>

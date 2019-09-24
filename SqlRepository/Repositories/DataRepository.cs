@@ -72,16 +72,12 @@ namespace SqlRepository.Repositories
         {
             using (var connection = CreateConnection())
             {
-                if (!string.IsNullOrEmpty(condition))
-                {
-                    var result = connection.QuerySingleOrDefault<T>($"SELECT * FROM [{typeof(T).Name}] WHERE {condition}");
-                    if (result == null)
-                        throw new KeyNotFoundException($"{typeof(T).Name} could not be found.");
+                if (string.IsNullOrEmpty(condition)) return null;
+                var result = connection.QuerySingleOrDefault<T>($"SELECT * FROM [{typeof(T).Name}] WHERE {condition}");
+                if (result == null)
+                    throw new KeyNotFoundException($"{typeof(T).Name} could not be found.");
 
-                    return result;
-                }
-
-                return null;
+                return result;
             }
         }
 
