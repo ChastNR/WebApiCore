@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{99568F6A-B1C1-472C-9224-BA7BA9A019BC}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UniversalWebApi/Helpers/Filters/ApiActionFilter.cs">
+    <Files>
+      <File FileName="UniversalWebApi/Startup.cs" Line="57" Column="16" />
+      <File FileName="UniversalWebApi/Helpers/Filters/ApiActionFilter.cs" Line="19" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="UniversalWebApi" expanded="True">
+            <Node name="SqlRepository" expanded="True">
+              <Node name="Repositories" expanded="True" />
+            </Node>
+            <Node name="UniversalWebApi" expanded="True">
+              <Node name="Helpers" expanded="True">
+                <Node name="Filters" expanded="True">
+                  <Node name="ApiActionFilter.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.UniversalWebApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

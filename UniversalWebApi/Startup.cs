@@ -15,6 +15,7 @@ using SqlRepository.Interfaces;
 using SqlRepository.Repositories;
 using UniversalWebApi.Extensions.EmailSender;
 using UniversalWebApi.Helpers.EncrytionHelper;
+using UniversalWebApi.Helpers.Filters;
 using UniversalWebApi.Helpers.Serializer;
 using UniversalWebApi.Schedulers;
 
@@ -27,6 +28,8 @@ namespace UniversalWebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ApiAsyncActionFilter>();
+            
             services.AddTransient<IDataRepository>(s => new DataRepository(Configuration.GetConnectionString("DbConnection")));
             services.AddTransient<ISerializeHelper, SerializeHelper>();
             services.AddTransient<IEmailScheduler, EmailScheduler>();
@@ -36,6 +39,11 @@ namespace UniversalWebApi
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
 
             services.AddControllers();
+            
+//            services.AddControllers(options =>
+//            {
+//                options.Filters.Add(typeof(ApiAsyncActionFilter));
+//            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

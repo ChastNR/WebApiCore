@@ -1,0 +1,72 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/Users/chast/Projects/WebApiCore/ApplicationTests/ApplicationTests.csproj",
+    "projectName": "ApplicationTests",
+    "projectPath": "/Users/chast/Projects/WebApiCore/ApplicationTests/ApplicationTests.csproj",
+    "outputPath": "/Users/chast/Projects/WebApiCore/ApplicationTests/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp3.0"
+    ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp3.0": {
+        "projectReferences": {
+          "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj": {
+            "projectPath": "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj"
+          },
+          "/Users/chast/Projects/WebApiCore/UniversalWebApi/UniversalWebApi.csproj": {
+            "projectPath": "/Users/chast/Projects/WebApiCore/UniversalWebApi/UniversalWebApi.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp3.0": {
+      "dependencies": {
+        "Microsoft.NET.Test.Sdk": {
+          "target": "Package",
+          "version": "[16.3.0, )"
+        },
+        "coverlet.collector": {
+          "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[1.1.0, )"
+        },
+        "xunit": {
+          "target": "Package",
+          "version": "[2.4.1, )"
+        },
+        "xunit.runner.visualstudio": {
+          "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.4.1, )"
+        }
+      },
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}
