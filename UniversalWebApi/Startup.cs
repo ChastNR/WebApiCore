@@ -10,7 +10,6 @@ using UniversalWebApi.Helpers.EncrytionHelper;
 using UniversalWebApi.Helpers.ExceptionManager;
 using UniversalWebApi.Helpers.Filters;
 using UniversalWebApi.Helpers.Serializer;
-using UniversalWebApi.Schedulers;
 
 namespace UniversalWebApi
 {
@@ -21,11 +20,10 @@ namespace UniversalWebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ApiAsyncActionFilter>();
+            //services.AddScoped<ApiAsyncActionFilter>();
             
             services.AddTransient<IDataRepository>(s => new DataRepository(Configuration.GetConnectionString("DbConnection")));
             services.AddTransient<ISerializeHelper, SerializeHelper>();
-            services.AddTransient<IEmailScheduler, EmailScheduler>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IEncryptionHelper, EncryptionHelper>();
 

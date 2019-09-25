@@ -14,10 +14,10 @@ namespace SqlRepository.Interfaces
         T Get<T>(int id)
             where T : class;
 
-        T Get<T>(string condition)
+        Task<T> GetAsync<T>(int id)
             where T : class;
 
-        Task<T> GetAsync<T>(int id)
+        T Get<T>(string condition)
             where T : class;
 
         Task InsertAsync<T>(T t)

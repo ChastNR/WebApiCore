@@ -52,7 +52,6 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="BaseController.cs" t="Include" />
-          <e p="EmailController.cs" t="Include" />
           <e p="EncryptController.cs" t="Include" />
           <e p="SerializeController.cs" t="Include" />
           <e p="TestController.cs" t="Include" />
@@ -64,7 +63,6 @@
             <e p="EmailSettings.cs" t="Include" />
             <e p="IEmailSender.cs" t="Include" />
           </e>
-          <e p="Security.cs" t="Include" />
         </e>
         <e p="FilterModels" t="Include">
           <e p="ActionResultModel.cs" t="Include" />
@@ -101,10 +99,6 @@
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
-        </e>
-        <e p="Schedulers" t="Include">
-          <e p="EmailSheduler.cs" t="Include" />
-          <e p="IEmailSheduler.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="UniversalWebApi.csproj" t="IncludeRecursive" />

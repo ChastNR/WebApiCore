@@ -10,35 +10,44 @@ namespace UniversalWebApi.Controllers
     public class BaseController<T> : Controller where T : class
     {
         protected readonly IDataRepository Db;
-        protected readonly IExceptionManager _exceptionManager;
+        protected readonly IExceptionManager ExceptionManager;
 
         public BaseController(IDataRepository db, IExceptionManager exceptionManager)
         {
             Db = db;
-            _exceptionManager = exceptionManager;
+            ExceptionManager = exceptionManager;
+        }
+
+        [HttpGet("get")]
+        public virtual IActionResult Get()
+        {
+            var result = Db.GetAll<T>();
+            return result != null ? (IActionResult) Ok(result) : BadRequest();
         }
 
         [HttpGet("getAsync")]
-        public virtual async Task<IEnumerable<T>> GetAsync() => await Db.GetAllAsync<T>();
-
-        [HttpGet("get")]
-        public virtual IEnumerable<T> Get() => Db.GetAll<T>();
-        
-        [HttpGet("getAsync/{id}")]
-        public virtual async Task<T> GetAsync(int id) => await Db.GetAsync<T>(id);
+        public virtual async Task<IActionResult> GetAsync()
+        {
+            var result = await Db.GetAllAsync<T>();
+            return result != null ? (IActionResult) Ok(result) : BadRequest();
+        }
 
         [HttpGet("get/{id}")]
-        public virtual ActionResult<T> Get(int id)
+        public virtual IActionResult Get(int id)
         {
-            try
-            {
-                return Ok(Db.Get<T>(id));
-            }
-            catch (Exception e)
-            {
-                _exceptionManager.Log(e);
-                return BadRequest($"There is no user with id = {id}");
-            }
+            var result = Db.Get<T>(id);
+            return result != null
+                ? (IActionResult) Ok(result)
+                : BadRequest($"There is no {typeof(T).Name} with id = {id}");
+        }
+
+        [HttpGet("getAsync/{id}")]
+        public virtual async Task<IActionResult> GetAsync(int id)
+        {
+            var result = await Db.GetAsync<T>(id);
+            return result != null
+                ? (IActionResult) Ok(result)
+                : BadRequest($"There is no {typeof(T).Name} with id = {id}");
         }
 
         [HttpPost("add")]
@@ -47,11 +56,12 @@ namespace UniversalWebApi.Controllers
             try
             {
                 await Db.InsertAsync(entity);
-                return Ok("Added successfully!");
+                return Ok($"{typeof(T).Name} added successfully!");
             }
             catch (Exception e)
             {
-                return Json(e);
+                await ExceptionManager.Log(e);
+                return BadRequest(e.Message);
             }
         }
 
@@ -61,11 +71,12 @@ namespace UniversalWebApi.Controllers
             try
             {
                 await Db.UpdateAsync(entity);
-                return Ok("Updated successfully!");
+                return Ok($"{typeof(T).Name} updated successfully!");
             }
             catch (Exception e)
             {
-                return Json(e);
+                await ExceptionManager.Log(e);
+                return BadRequest(e.Message);
             }
         }
 
@@ -75,11 +86,12 @@ namespace UniversalWebApi.Controllers
             try
             {
                 await Db.DeleteRowAsync<T>(id);
-                return Ok("Deleted successfully!");
+                return Ok($"{typeof(T).Name} with id: {id} deleted successfully!");
             }
             catch (Exception e)
             {
-                return Json(e);
+                await ExceptionManager.Log(e);
+                return BadRequest(e.Message);
             }
         }
     }

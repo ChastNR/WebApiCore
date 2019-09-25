@@ -1,48 +1,50 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
 using SqlRepository.Interfaces;
 using UniversalWebApi.FilterModels;
 
 namespace UniversalWebApi.Helpers.Filters
 {
-    public class ApiAsyncActionFilter : IAsyncResultFilter //, IAsyncActionFilter
+    public class ApiAsyncActionFilter : IAsyncResultFilter
     {
         private readonly IDataRepository _repository;
+        private readonly ILogger<ApiAsyncActionFilter> _logger;
 
-        public ApiAsyncActionFilter(IDataRepository repository)
+        public ApiAsyncActionFilter(IDataRepository repository, ILogger<ApiAsyncActionFilter> logger)
         {
             _repository = repository;
+            _logger = logger;
         }
-        
+
         public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
         {
-            var result = new ActionResultModel
-            {
-                Action = context.RouteData.Values["action"].ToString(),
-                Controller = context.RouteData.Values["controller"].ToString(),
-                StatusCode = context.HttpContext.Response.StatusCode
-            };
+            var originalBody = context.HttpContext.Response.Body;
 
-            await _repository.InsertAsync(result);
-            
+            await using (var memStream = new MemoryStream())
+            {
+                context.HttpContext.Response.Body = memStream;
+
+                memStream.Position = 0;
+
+                await _repository.InsertAsync(new ActionResultModel
+                {
+                    Action = context.RouteData.Values["action"].ToString(),
+                    Controller = context.RouteData.Values["controller"].ToString(),
+                    StatusCode = context.HttpContext.Response.StatusCode,
+                    Result = new StreamReader(memStream).ReadToEnd()
+                });
+
+                memStream.Position = 0;
+                await memStream.CopyToAsync(originalBody);
+            }
+
             await next();
         }
-
-//        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
-//        {
-//            var result = new ActionResultModel
-//            {
-//                Action = context.RouteData.Values["action"].ToString(),
-//                Controller = context.RouteData.Values["controller"].ToString(),
-//                StatusCode = context.HttpContext.Response.StatusCode
-//            };
-//
-//            await _repository.InsertAsync(result);
-//
-//            await next();
-//        }
     }
 }
