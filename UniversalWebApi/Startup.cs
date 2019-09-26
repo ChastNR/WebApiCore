@@ -26,7 +26,7 @@ namespace UniversalWebApi
             services.AddTransient<IDataRepository>(s =>
                 new DataRepository(Configuration.GetConnectionString("DbConnection")));
             services.AddTransient<IMongoRepository>(s =>
-                new MongoRepository.MongoRepository(Configuration.GetConnectionString("MongoDbConnection")));
+                new MongoRepository.MongoRepository("MongoDbConnection", "dbName"));
 
 
             services.AddTransient<ISerializeHelper, SerializeHelper>();
