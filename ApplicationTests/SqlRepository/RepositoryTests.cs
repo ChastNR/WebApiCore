@@ -1,12 +1,11 @@
-﻿using ApplicationTests;
-using UniversalWebApi.Models;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using SqlRepository.Interfaces;
-using System;
-using System.Threading.Tasks;
+using UniversalWebApi.Models;
 using Xunit;
 
-namespace SqlRepository.ApplicationTests
+namespace ApplicationTests.SqlRepository
 {
     public class RepositoryTests : IClassFixture<DependencySetupFixture>
     {
@@ -23,7 +22,7 @@ namespace SqlRepository.ApplicationTests
             using( var scope = _serviceProvider.CreateScope())
             {
                 var expectedResult = scope.ServiceProvider.GetService<IDataRepository>().GetAll<User>();
-
+                
                 Assert.NotNull(expectedResult);
             }
         }

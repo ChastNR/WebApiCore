@@ -18,6 +18,9 @@
     "frameworks": {
       "netcoreapp3.0": {
         "projectReferences": {
+          "/Users/chast/Projects/WebApiCore/MongoRepository/MongoRepository.csproj": {
+            "projectPath": "/Users/chast/Projects/WebApiCore/MongoRepository/MongoRepository.csproj"
+          },
           "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj": {
             "projectPath": "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj"
           }

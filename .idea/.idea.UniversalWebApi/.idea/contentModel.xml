@@ -28,6 +28,22 @@
           <e p="RepositoryTests.cs" t="Include" />
         </e>
       </e>
+      <e p="MongoRepository" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Interfaces" t="Include">
+          <e p="IMongoDoc.cs" t="Include" />
+          <e p="IMongoRepository.cs" t="Include" />
+        </e>
+        <e p="MongoRepository.cs" t="Include" />
+        <e p="MongoRepository.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="MongoRepository.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="SqlRepository" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />

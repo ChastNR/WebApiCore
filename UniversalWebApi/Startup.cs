@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MongoRepository.Interfaces;
 using SqlRepository.Interfaces;
 using SqlRepository.Repositories;
 using UniversalWebApi.Extensions.EmailSender;
@@ -16,23 +17,28 @@ namespace UniversalWebApi
     public class Startup
     {
         public Startup(IConfiguration configuration) => Configuration = configuration;
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddScoped<ApiAsyncActionFilter>();
-            
-            services.AddTransient<IDataRepository>(s => new DataRepository(Configuration.GetConnectionString("DbConnection")));
+            services.AddScoped<ApiAsyncActionFilter>();
+
+            services.AddTransient<IDataRepository>(s =>
+                new DataRepository(Configuration.GetConnectionString("DbConnection")));
+            services.AddTransient<IMongoRepository>(s =>
+                new MongoRepository.MongoRepository(Configuration.GetConnectionString("MongoDbConnection")));
+
+
             services.AddTransient<ISerializeHelper, SerializeHelper>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IEncryptionHelper, EncryptionHelper>();
 
             services.AddTransient<IExceptionManager, ExceptionManager>();
-            
+
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
 
             services.AddControllers();
-            
+
 //            services.AddControllers(options =>
 //            {
 //                options.Filters.Add(typeof(ApiAsyncActionFilter));
@@ -52,10 +58,7 @@ namespace UniversalWebApi
 
             //app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

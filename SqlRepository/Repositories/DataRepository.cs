@@ -15,13 +15,7 @@ namespace SqlRepository.Repositories
     {
         private readonly string _connectionString;
         public DataRepository(string connectionString) => _connectionString = connectionString;
-
-        private IDbConnection CreateConnection()
-        {
-            var connection = new SqlConnection(_connectionString);
-            connection.Open();
-            return connection;
-        }
+        private IDbConnection CreateConnection() => new SqlConnection(_connectionString);
 
         private static IEnumerable<PropertyInfo> GetProperties<T>()
             where T : class => typeof(T).GetProperties();
@@ -49,7 +43,7 @@ namespace SqlRepository.Repositories
         {
             using (var connection = CreateConnection())
             {
-                return connection.QuerySingleOrDefault<T>($"SELECT * FROM [{typeof(T).Name}] WHERE Id=@Id",
+                return connection.QueryFirstOrDefault<T>($"SELECT * FROM [{typeof(T).Name}] WHERE Id=@Id",
                     new {Id = id});
             }
         }
@@ -59,7 +53,7 @@ namespace SqlRepository.Repositories
         {
             using (var connection = CreateConnection())
             {
-                return await connection.QuerySingleOrDefaultAsync<T>($"SELECT * FROM [{typeof(T).Name}] WHERE Id=@Id",
+                return await connection.QueryFirstOrDefaultAsync<T>($"SELECT * FROM [{typeof(T).Name}] WHERE Id=@Id",
                     new {Id = id});
             }
         }

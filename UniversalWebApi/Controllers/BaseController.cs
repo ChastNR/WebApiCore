@@ -60,7 +60,8 @@ namespace UniversalWebApi.Controllers
             }
             catch (Exception e)
             {
-                await ExceptionManager.Log(e);
+                var controllerContext = ControllerContext.ActionDescriptor;
+                await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
                 return BadRequest(e.Message);
             }
         }
@@ -75,7 +76,8 @@ namespace UniversalWebApi.Controllers
             }
             catch (Exception e)
             {
-                await ExceptionManager.Log(e);
+                var controllerContext = ControllerContext.ActionDescriptor;
+                await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
                 return BadRequest(e.Message);
             }
         }
@@ -90,7 +92,8 @@ namespace UniversalWebApi.Controllers
             }
             catch (Exception e)
             {
-                await ExceptionManager.Log(e);
+                var controllerContext = ControllerContext.ActionDescriptor;
+                await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
                 return BadRequest(e.Message);
             }
         }
