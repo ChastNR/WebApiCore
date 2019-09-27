@@ -1,0 +1,8 @@
+/Users/chast/Projects/WebApiCore/MongoRepository/bin/Debug/netstandard2.0/MongoRepository.deps.json
+/Users/chast/Projects/WebApiCore/MongoRepository/bin/Debug/netstandard2.0/MongoRepository.dll
+/Users/chast/Projects/WebApiCore/MongoRepository/bin/Debug/netstandard2.0/MongoRepository.pdb
+/Users/chast/Projects/WebApiCore/MongoRepository/obj/Debug/netstandard2.0/MongoRepository.csprojAssemblyReference.cache
+/Users/chast/Projects/WebApiCore/MongoRepository/obj/Debug/netstandard2.0/MongoRepository.AssemblyInfoInputs.cache
+/Users/chast/Projects/WebApiCore/MongoRepository/obj/Debug/netstandard2.0/MongoRepository.AssemblyInfo.cs
+/Users/chast/Projects/WebApiCore/MongoRepository/obj/Debug/netstandard2.0/MongoRepository.dll
+/Users/chast/Projects/WebApiCore/MongoRepository/obj/Debug/netstandard2.0/MongoRepository.pdb

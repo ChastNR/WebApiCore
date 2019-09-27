@@ -257,3 +257,11 @@ C:/Users/ChastNR/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreap
 /Users/chast/Projects/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/SqlRepository.pdb
 /Users/chast/Projects/WebApiCore/UniversalWebApi/obj/Debug/netcoreapp3.0/UniversalWebApi.RazorTargetAssemblyInfo.cache
 /Users/chast/Projects/WebApiCore/UniversalWebApi/obj/Debug/netcoreapp3.0/UniversalWebApi.csproj.CopyComplete
+/Users/chast/Projects/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/DnsClient.dll
+/Users/chast/Projects/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/MongoDB.Bson.dll
+/Users/chast/Projects/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/MongoDB.Driver.dll
+/Users/chast/Projects/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/MongoDB.Driver.Core.dll
+/Users/chast/Projects/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/MongoDB.Driver.GridFS.dll
+/Users/chast/Projects/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/SharpCompress.dll
+/Users/chast/Projects/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/MongoRepository.dll
+/Users/chast/Projects/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/MongoRepository.pdb

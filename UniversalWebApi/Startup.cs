@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MongoRepository;
 using MongoRepository.Interfaces;
 using SqlRepository.Interfaces;
 using SqlRepository.Repositories;
@@ -26,8 +27,9 @@ namespace UniversalWebApi
             services.AddTransient<IDataRepository>(s =>
                 new DataRepository(Configuration.GetConnectionString("DbConnection")));
             services.AddTransient<IMongoRepository>(s =>
-                new MongoRepository.MongoRepository("MongoDbConnection", "dbName"));
-
+                new MongoRepository.MongoRepository(
+                    Configuration.GetSection("MongoDbSettings").GetSection("DbConnection").Value,
+                    Configuration.GetSection("MongoDbSettings").GetSection("DbName").Value));
 
             services.AddTransient<ISerializeHelper, SerializeHelper>();
             services.AddTransient<IEmailSender, EmailSender>();
