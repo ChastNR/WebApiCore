@@ -38,7 +38,7 @@ namespace SqlRepository.Repositories
             }
         }
 
-        public T Get<T>(int id)
+        public T Get<T>(object id)
             where T : class
         {
             using (var connection = CreateConnection())
@@ -48,7 +48,7 @@ namespace SqlRepository.Repositories
             }
         }
 
-        public async Task<T> GetAsync<T>(int id)
+        public async Task<T> GetAsync<T>(object id)
             where T : class
         {
             using (var connection = CreateConnection())
@@ -82,7 +82,6 @@ namespace SqlRepository.Repositories
             where T : class
         {
             var inserted = 0;
-
             using (var connection = CreateConnection())
             {
                 inserted += await connection.ExecuteAsync(GenerateInsertQuery<T>(), list);
@@ -91,7 +90,7 @@ namespace SqlRepository.Repositories
             return inserted;
         }
 
-        public async Task DeleteRowAsync<T>(int id)
+        public async Task DeleteRowAsync<T>(object id)
             where T : class
         {
             using (var connection = CreateConnection())
@@ -109,7 +108,7 @@ namespace SqlRepository.Repositories
             }
         }
 
-        private static List<string> GenerateListOfProperties(IEnumerable<PropertyInfo> listOfProperties)
+        private List<string> GenerateListOfProperties(IEnumerable<PropertyInfo> listOfProperties)
         {
             var list = (from prop in listOfProperties
                 let attributes = prop.GetCustomAttributes(typeof(DescriptionAttribute), false)
@@ -119,7 +118,7 @@ namespace SqlRepository.Repositories
             return list;
         }
 
-        private static string GenerateInsertQuery<T>()
+        private string GenerateInsertQuery<T>()
             where T : class
         {
             var insertQuery = new StringBuilder($"INSERT INTO [{typeof(T).Name}] (");
@@ -140,7 +139,7 @@ namespace SqlRepository.Repositories
             return insertQuery.ToString();
         }
 
-        private static string GenerateUpdateQuery<T>()
+        private string GenerateUpdateQuery<T>()
             where T : class
         {
             var updateQuery = new StringBuilder($"UPDATE [{typeof(T).Name}] SET ");

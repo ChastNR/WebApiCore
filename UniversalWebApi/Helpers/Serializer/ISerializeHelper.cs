@@ -7,9 +7,5 @@ namespace UniversalWebApi.Helpers.Serializer
         T DeserializeObject<T>(byte[] byteArray) where T : class;
 
         object DeserializeId(byte[] byteArray);
-
-        byte[] ObjectToByteArray(object obj);
-
-        object ByteArrayToObject(byte[] arrBytes);
     }
 }

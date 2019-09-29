@@ -1,4 +1,4 @@
-namespace UniversalWebApi.Helpers.EncrytionHelper
+namespace UniversalWebApi.Helpers.EncryptionHelper
 {
     public interface IEncryptionHelper
     {

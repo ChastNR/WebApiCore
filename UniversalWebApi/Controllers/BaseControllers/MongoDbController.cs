@@ -1,12 +1,11 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoRepository.Interfaces;
 using UniversalWebApi.Helpers.ExceptionManager;
 
-namespace UniversalWebApi.Controllers
+namespace UniversalWebApi.Controllers.BaseControllers
 {
     public class MongoDbController<T> : Controller where T : class, IMongoDoc
     {

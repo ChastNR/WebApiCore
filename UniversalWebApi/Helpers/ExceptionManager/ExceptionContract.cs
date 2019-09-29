@@ -1,17 +1,24 @@
 using System;
+using MongoDB.Bson;
+using MongoRepository.Interfaces;
 
 namespace UniversalWebApi.Helpers.ExceptionManager
 {
-    public class ExceptionContract
+    public class ExceptionContract : BasicExceptionContract
     {
         public int Id { get; set; }
+    }
+
+    public class MExceptionContract : BasicExceptionContract, IMongoDoc
+    {
+        public ObjectId Id { get; set; }
+    }
+
+    public class BasicExceptionContract
+    {
         public string Message { get; set; }
         public string Method { get; set; }
-        
         public string Class { get; set; }
-        
-        public string Arguments { get; set; }
-
         public DateTime Date { get; set; } = DateTime.Now;
     }
 }

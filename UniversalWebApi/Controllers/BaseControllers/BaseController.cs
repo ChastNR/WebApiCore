@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SqlRepository.Interfaces;
 using UniversalWebApi.Helpers.ExceptionManager;
 
-namespace UniversalWebApi.Controllers
+namespace UniversalWebApi.Controllers.BaseControllers
 {
     public class BaseController<T> : Controller where T : class
     {
@@ -17,14 +16,14 @@ namespace UniversalWebApi.Controllers
             Db = db;
             ExceptionManager = exceptionManager;
         }
-
+        
         [HttpGet("get")]
         public virtual IActionResult Get()
         {
             var result = Db.GetAll<T>();
             return result != null ? (IActionResult) Ok(result) : BadRequest();
         }
-
+        
         [HttpGet("getAsync")]
         public virtual async Task<IActionResult> GetAsync()
         {

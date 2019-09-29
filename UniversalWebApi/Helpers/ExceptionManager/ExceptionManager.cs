@@ -1,24 +1,22 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.Extensions.Logging;
+using MongoRepository.Interfaces;
 using SqlRepository.Interfaces;
 
 namespace UniversalWebApi.Helpers.ExceptionManager
 {
     public class ExceptionManager : IExceptionManager
     {
-        private readonly IDataRepository _repository;
+        private readonly IDataRepository _dataRepository;
+        private readonly IMongoRepository _mongoRepository;
         private readonly ILogger<ExceptionManager> _logger;
 
-        public ExceptionManager(IDataRepository repository, ILogger<ExceptionManager> logger)
+        public ExceptionManager(IDataRepository dataRepository, IMongoRepository mongoRepository,
+            ILogger<ExceptionManager> logger)
         {
-            _repository = repository;
+            _dataRepository = dataRepository;
+            _mongoRepository = mongoRepository;
             _logger = logger;
         }
 
@@ -26,13 +24,13 @@ namespace UniversalWebApi.Helpers.ExceptionManager
         {
             try
             {
-                await _repository.InsertAsync(new ExceptionContract
+                await _dataRepository.InsertAsync(new ExceptionContract
                 {
                     Message = exception.Message,
                     Method = exception.TargetSite.Name
                 });
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _logger.LogError(exception.Message);
             }
@@ -42,14 +40,14 @@ namespace UniversalWebApi.Helpers.ExceptionManager
         {
             try
             {
-                await _repository.InsertAsync(new ExceptionContract
+                await _dataRepository.InsertAsync(new ExceptionContract
                 {
                     Message = exception.Message,
                     Class = className,
                     Method = methodName,
                 });
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _logger.LogError(exception.Message);
             }

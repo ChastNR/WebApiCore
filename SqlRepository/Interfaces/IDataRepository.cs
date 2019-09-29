@@ -11,10 +11,10 @@ namespace SqlRepository.Interfaces
         Task<IEnumerable<T>> GetAllAsync<T>()
             where T : class;
 
-        T Get<T>(int id)
+        T Get<T>(object id)
             where T : class;
 
-        Task<T> GetAsync<T>(int id)
+        Task<T> GetAsync<T>(object id)
             where T : class;
 
         T Get<T>(string condition)
@@ -29,7 +29,7 @@ namespace SqlRepository.Interfaces
         Task UpdateAsync<T>(T t)
             where T : class;
 
-        Task DeleteRowAsync<T>(int id)
+        Task DeleteRowAsync<T>(object id)
             where T : class;
     }
 }

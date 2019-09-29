@@ -3,12 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MongoRepository;
 using MongoRepository.Interfaces;
 using SqlRepository.Interfaces;
 using SqlRepository.Repositories;
 using UniversalWebApi.Extensions.EmailSender;
-using UniversalWebApi.Helpers.EncrytionHelper;
+using UniversalWebApi.Helpers.EncryptionHelper;
 using UniversalWebApi.Helpers.ExceptionManager;
 using UniversalWebApi.Helpers.Filters;
 using UniversalWebApi.Helpers.Serializer;
@@ -39,12 +38,12 @@ namespace UniversalWebApi
 
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
 
-            services.AddControllers();
-
-//            services.AddControllers(options =>
-//            {
-//                options.Filters.Add(typeof(ApiAsyncActionFilter));
-//            });
+            services.AddControllers(options =>
+            {
+                //options.Filters.Add(typeof(ApiAsyncActionFilter));
+                options.InputFormatters.Insert(0, new BinaryInputFormatter());
+                options.OutputFormatters.Insert(0, new BinaryOutputFormatter());
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

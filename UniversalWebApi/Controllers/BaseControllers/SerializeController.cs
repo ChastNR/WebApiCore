@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using UniversalWebApi.Helpers.Serializer;
 using Microsoft.AspNetCore.Mvc;
 using SqlRepository.Interfaces;
+using UniversalWebApi.Helpers.Serializer;
 
-namespace UniversalWebApi.Controllers
+namespace UniversalWebApi.Controllers.BaseControllers
 {
     public class SerializeController<T> : Controller where T : class
     {
@@ -45,7 +45,7 @@ namespace UniversalWebApi.Controllers
             }
             catch (Exception e)
             {
-                return Json(e);
+                return Json(e.Message);
             }
         }
 

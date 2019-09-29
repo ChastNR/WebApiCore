@@ -1,46 +1,43 @@
-﻿using System.IO;
+﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Logging;
 using SqlRepository.Interfaces;
 using UniversalWebApi.FilterModels;
+using UniversalWebApi.Helpers.ExceptionManager;
 
 namespace UniversalWebApi.Helpers.Filters
 {
     public class ApiAsyncActionFilter : IAsyncResultFilter
     {
         private readonly IDataRepository _repository;
-        private readonly ILogger<ApiAsyncActionFilter> _logger;
+        private readonly IExceptionManager _exceptionManager;
 
-        public ApiAsyncActionFilter(IDataRepository repository, ILogger<ApiAsyncActionFilter> logger)
+        public ApiAsyncActionFilter(IDataRepository repository, IExceptionManager exceptionManager)
         {
             _repository = repository;
-            _logger = logger;
+            _exceptionManager = exceptionManager;
         }
 
         public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
         {
-            var originalBody = context.HttpContext.Response.Body;
-
-            await using (var memStream = new MemoryStream())
+            try
             {
-                context.HttpContext.Response.Body = memStream;
-
-                memStream.Position = 0;
-
                 await _repository.InsertAsync(new ActionResultModel
                 {
                     Action = context.RouteData.Values["action"].ToString(),
                     Controller = context.RouteData.Values["controller"].ToString(),
-                    StatusCode = context.HttpContext.Response.StatusCode,
-                    Result = new StreamReader(memStream).ReadToEnd()
+                    IpAddress =
+                        $"{context.HttpContext.Connection.LocalIpAddress} {context.HttpContext.Connection.RemoteIpAddress}",
+                    StatusCode = context.HttpContext.Response.StatusCode
                 });
 
-                memStream.Position = 0;
-                await memStream.CopyToAsync(originalBody);
+                await next();
             }
-
-            await next();
+            catch (Exception exception)
+            {
+                await _exceptionManager.Log(exception);
+                await next();
+            }
         }
     }
 }
