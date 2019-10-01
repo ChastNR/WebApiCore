@@ -1,0 +1,8 @@
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\UnityApiController\bin\Debug\netstandard2.0\UnityApiController.deps.json
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\UnityApiController\bin\Debug\netstandard2.0\UnityApiController.dll
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\UnityApiController\bin\Debug\netstandard2.0\UnityApiController.pdb
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\UnityApiController\obj\Debug\netstandard2.0\UnityApiController.csprojAssemblyReference.cache
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\UnityApiController\obj\Debug\netstandard2.0\UnityApiController.AssemblyInfoInputs.cache
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\UnityApiController\obj\Debug\netstandard2.0\UnityApiController.AssemblyInfo.cs
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\UnityApiController\obj\Debug\netstandard2.0\UnityApiController.dll
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\UnityApiController\obj\Debug\netstandard2.0\UnityApiController.pdb

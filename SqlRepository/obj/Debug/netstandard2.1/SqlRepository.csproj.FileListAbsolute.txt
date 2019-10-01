@@ -1,0 +1,8 @@
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\bin\Debug\netstandard2.1\SqlRepository.deps.json
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\bin\Debug\netstandard2.1\SqlRepository.dll
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\bin\Debug\netstandard2.1\SqlRepository.pdb
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.1\SqlRepository.csprojAssemblyReference.cache
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.1\SqlRepository.AssemblyInfoInputs.cache
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.1\SqlRepository.AssemblyInfo.cs
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.1\SqlRepository.dll
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\SqlRepository\obj\Debug\netstandard2.1\SqlRepository.pdb

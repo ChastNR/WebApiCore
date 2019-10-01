@@ -253,28 +253,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/chast/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\ChastNR\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chast/Projects/WebApiCore/UnityApiController/UnityApiController.csproj",
+      "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UnityApiController\\UnityApiController.csproj",
       "projectName": "UnityApiController",
-      "projectPath": "/Users/chast/Projects/WebApiCore/UnityApiController/UnityApiController.csproj",
-      "packagesPath": "/Users/chast/.nuget/packages/",
-      "outputPath": "/Users/chast/Projects/WebApiCore/UnityApiController/obj/",
+      "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UnityApiController\\UnityApiController.csproj",
+      "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UnityApiController\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/chast/.config/NuGet/NuGet.Config"
+        "C:\\Users\\ChastNR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -315,7 +313,8 @@
           "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

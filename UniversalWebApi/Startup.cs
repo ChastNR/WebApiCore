@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using MongoRepository.Interfaces;
 using SqlRepository.Interfaces;
 using SqlRepository.Repositories;
+using System;
+using System.IO;
 using UniversalWebApi.Extensions.EmailSender;
 using UniversalWebApi.Helpers.EncryptionHelper;
 using UniversalWebApi.Helpers.ExceptionManager;
@@ -25,6 +27,7 @@ namespace UniversalWebApi
 
             services.AddTransient<IDataRepository>(s =>
                 new DataRepository(Configuration.GetConnectionString("DbConnection")));
+
             services.AddTransient<IMongoRepository>(s =>
                 new MongoRepository.MongoRepository(
                     Configuration.GetSection("MongoDbSettings").GetSection("DbConnection").Value,

@@ -1,38 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "/Users/chast/Projects/WebApiCore/ApplicationTests/ApplicationTests.csproj": {}
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\ApplicationTests.csproj": {}
   },
   "projects": {
-    "/Users/chast/Projects/WebApiCore/ApplicationTests/ApplicationTests.csproj": {
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\ApplicationTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chast/Projects/WebApiCore/ApplicationTests/ApplicationTests.csproj",
+        "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\ApplicationTests.csproj",
         "projectName": "ApplicationTests",
-        "projectPath": "/Users/chast/Projects/WebApiCore/ApplicationTests/ApplicationTests.csproj",
-        "packagesPath": "/Users/chast/.nuget/packages/",
-        "outputPath": "/Users/chast/Projects/WebApiCore/ApplicationTests/obj/",
+        "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\ApplicationTests.csproj",
+        "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\ApplicationTests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/chast/.config/NuGet/NuGet.Config"
+          "C:\\Users\\ChastNR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj": {
-                "projectPath": "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj"
+              "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {
+                "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj"
               },
-              "/Users/chast/Projects/WebApiCore/UniversalWebApi/UniversalWebApi.csproj": {
-                "projectPath": "/Users/chast/Projects/WebApiCore/UniversalWebApi/UniversalWebApi.csproj"
+              "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj": {
+                "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj"
               }
             }
           }
@@ -80,29 +79,37 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/chast/Projects/WebApiCore/MongoRepository/MongoRepository.csproj": {
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\MongoRepository\\MongoRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chast/Projects/WebApiCore/MongoRepository/MongoRepository.csproj",
+        "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\MongoRepository\\MongoRepository.csproj",
         "projectName": "MongoRepository",
-        "projectPath": "/Users/chast/Projects/WebApiCore/MongoRepository/MongoRepository.csproj",
-        "packagesPath": "/Users/chast/.nuget/packages/",
-        "outputPath": "/Users/chast/Projects/WebApiCore/MongoRepository/obj/",
+        "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\MongoRepository\\MongoRepository.csproj",
+        "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\MongoRepository\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/chast/.config/NuGet/NuGet.Config"
+          "C:\\Users\\ChastNR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -151,33 +158,33 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj": {
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj",
+        "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj",
         "projectName": "SqlRepository",
-        "projectPath": "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj",
-        "packagesPath": "/Users/chast/.nuget/packages/",
-        "outputPath": "/Users/chast/Projects/WebApiCore/SqlRepository/obj/",
+        "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj",
+        "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/chast/.config/NuGet/NuGet.Config"
+          "C:\\Users\\ChastNR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netstandard2.1": {
             "projectReferences": {}
           }
         },
@@ -188,17 +195,11 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
+        "netstandard2.1": {
           "dependencies": {
             "Dapper": {
               "target": "Package",
-              "version": "[2.0.4, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
+              "version": "[2.0.30, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -214,39 +215,44 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/chast/Projects/WebApiCore/UniversalWebApi/UniversalWebApi.csproj": {
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chast/Projects/WebApiCore/UniversalWebApi/UniversalWebApi.csproj",
+        "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj",
         "projectName": "UniversalWebApi",
-        "projectPath": "/Users/chast/Projects/WebApiCore/UniversalWebApi/UniversalWebApi.csproj",
-        "packagesPath": "/Users/chast/.nuget/packages/",
-        "outputPath": "/Users/chast/Projects/WebApiCore/UniversalWebApi/obj/",
+        "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\UniversalWebApi.csproj",
+        "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\UniversalWebApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/chast/.config/NuGet/NuGet.Config"
+          "C:\\Users\\ChastNR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/chast/Projects/WebApiCore/MongoRepository/MongoRepository.csproj": {
-                "projectPath": "/Users/chast/Projects/WebApiCore/MongoRepository/MongoRepository.csproj"
+              "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\MongoRepository\\MongoRepository.csproj": {
+                "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\MongoRepository\\MongoRepository.csproj"
               },
-              "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj": {
-                "projectPath": "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj"
+              "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {
+                "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj"
               }
             }
           }
@@ -260,6 +266,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.0.0, )"
@@ -292,7 +302,16 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

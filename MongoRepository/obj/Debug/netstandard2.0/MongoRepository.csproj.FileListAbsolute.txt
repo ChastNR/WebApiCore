@@ -6,3 +6,11 @@
 /Users/chast/Projects/WebApiCore/MongoRepository/obj/Debug/netstandard2.0/MongoRepository.AssemblyInfo.cs
 /Users/chast/Projects/WebApiCore/MongoRepository/obj/Debug/netstandard2.0/MongoRepository.dll
 /Users/chast/Projects/WebApiCore/MongoRepository/obj/Debug/netstandard2.0/MongoRepository.pdb
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\MongoRepository\bin\Debug\netstandard2.0\MongoRepository.deps.json
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\MongoRepository\bin\Debug\netstandard2.0\MongoRepository.dll
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\MongoRepository\bin\Debug\netstandard2.0\MongoRepository.pdb
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\MongoRepository\obj\Debug\netstandard2.0\MongoRepository.csprojAssemblyReference.cache
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\MongoRepository\obj\Debug\netstandard2.0\MongoRepository.AssemblyInfoInputs.cache
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\MongoRepository\obj\Debug\netstandard2.0\MongoRepository.AssemblyInfo.cs
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\MongoRepository\obj\Debug\netstandard2.0\MongoRepository.dll
+C:\Users\ChastNR\Documents\GitHub\WebApiCore\MongoRepository\obj\Debug\netstandard2.0\MongoRepository.pdb

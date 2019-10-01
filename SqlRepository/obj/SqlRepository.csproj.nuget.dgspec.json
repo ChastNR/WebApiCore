@@ -1,32 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj": {}
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {}
   },
   "projects": {
-    "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj": {
+    "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj",
+        "projectUniqueName": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj",
         "projectName": "SqlRepository",
-        "projectPath": "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj",
-        "packagesPath": "/Users/chast/.nuget/packages/",
-        "outputPath": "/Users/chast/Projects/WebApiCore/SqlRepository/obj/",
+        "projectPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\SqlRepository.csproj",
+        "packagesPath": "C:\\Users\\ChastNR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ChastNR\\Documents\\GitHub\\WebApiCore\\SqlRepository\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/chast/.config/NuGet/NuGet.Config"
+          "C:\\Users\\ChastNR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netstandard2.1": {
             "projectReferences": {}
           }
         },
@@ -37,17 +36,11 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
+        "netstandard2.1": {
           "dependencies": {
             "Dapper": {
               "target": "Package",
-              "version": "[2.0.4, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
+              "version": "[2.0.30, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -63,7 +56,13 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
