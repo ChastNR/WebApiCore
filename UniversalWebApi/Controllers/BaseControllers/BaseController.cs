@@ -1,100 +1,84 @@
 using System;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using SqlRepository.Interfaces;
+using SqlRepository.Repositories;
 using UniversalWebApi.Helpers.ExceptionManager;
+using UniversalWebApi.Helpers.Filters;
 
 namespace UniversalWebApi.Controllers.BaseControllers
 {
+    [ServiceFilter(typeof(ApiExceptionFilter))]
     public class BaseController<T> : Controller where T : class
     {
-        protected readonly IDataRepository Db;
-        protected readonly IExceptionManager ExceptionManager;
+        protected IDataRepository Db => (IDataRepository)HttpContext.RequestServices.GetService(typeof(IDataRepository));
 
-        public BaseController(IDataRepository db, IExceptionManager exceptionManager)
-        {
-            Db = db;
-            ExceptionManager = exceptionManager;
-        }
-        
         [HttpGet("get")]
-        public virtual IActionResult Get()
-        {
-            var result = Db.GetAll<T>();
-            return result != null ? (IActionResult) Ok(result) : BadRequest();
-        }
-        
-        [HttpGet("getAsync")]
-        public virtual async Task<IActionResult> GetAsync()
+        public virtual async Task<JsonResult> Get()
         {
             var result = await Db.GetAllAsync<T>();
-            return result != null ? (IActionResult) Ok(result) : BadRequest();
+
+            if(result == null)
+            {
+                HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json($"Server Error");
+            }
+
+            HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
+            return Json(result);
         }
 
         [HttpGet("get/{id}")]
-        public virtual IActionResult Get(int id)
-        {
-            var result = Db.Get<T>(id);
-            return result != null
-                ? (IActionResult) Ok(result)
-                : BadRequest($"There is no {typeof(T).Name} with id = {id}");
-        }
-
-        [HttpGet("getAsync/{id}")]
-        public virtual async Task<IActionResult> GetAsync(int id)
+        public virtual async Task<JsonResult> Get(int id)
         {
             var result = await Db.GetAsync<T>(id);
-            return result != null
-                ? (IActionResult) Ok(result)
-                : BadRequest($"There is no {typeof(T).Name} with id = {id}");
+
+            if (result == null)
+            {
+                HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json($"There is no {typeof(T).Name} with id = {id}");
+            }
+
+            HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
+            return Json(result);
         }
 
         [HttpPost("add")]
-        public virtual async Task<IActionResult> Add([FromBody] T entity)
+        public virtual async Task<JsonResult> Add([FromBody] T entity)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                await Db.InsertAsync(entity);
-                return Ok($"{typeof(T).Name} added successfully!");
+                HttpContext.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+                return Json($"Data error");
             }
-            catch (Exception e)
-            {
-                var controllerContext = ControllerContext.ActionDescriptor;
-                await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
-                return BadRequest(e.Message);
-            }
+
+            await Db.InsertAsync(entity);
+            HttpContext.Response.StatusCode = (int)HttpStatusCode.Created;
+            return Json($"{typeof(T).Name} added successfully!");
         }
 
         [HttpPut("update")]
         public virtual async Task<IActionResult> Update([FromBody] T entity)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                await Db.UpdateAsync(entity);
-                return Ok($"{typeof(T).Name} updated successfully!");
+                HttpContext.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+                return Json($"Data error");
             }
-            catch (Exception e)
-            {
-                var controllerContext = ControllerContext.ActionDescriptor;
-                await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
-                return BadRequest(e.Message);
-            }
+
+            await Db.UpdateAsync(entity);
+            HttpContext.Response.StatusCode = (int)HttpStatusCode.NoContent;
+            return Json($"{typeof(T).Name} updated successfully!");
         }
 
         [HttpDelete("delete/{id}")]
-        public virtual async Task<IActionResult> Delete(int id)
+        public virtual async Task<JsonResult> Delete(int id)
         {
-            try
-            {
-                await Db.DeleteRowAsync<T>(id);
-                return Ok($"{typeof(T).Name} with id: {id} deleted successfully!");
-            }
-            catch (Exception e)
-            {
-                var controllerContext = ControllerContext.ActionDescriptor;
-                await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
-                return BadRequest(e.Message);
-            }
+            await Db.DeleteRowAsync<T>(id);
+            HttpContext.Response.StatusCode = (int)HttpStatusCode.NoContent;
+            return Json($"{typeof(T).Name} with id: {id} deleted successfully!");
         }
     }
 }

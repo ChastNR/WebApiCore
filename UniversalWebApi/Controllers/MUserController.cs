@@ -9,8 +9,8 @@ namespace UniversalWebApi.Controllers
     [Route("api/[controller]")]
     public class MUserController : MongoDbController<MUser>
     {
-        public MUserController(IMongoRepository db, IExceptionManager exceptionManager) : base(db, exceptionManager)
-        {
-        }
+        //public MUserController(IMongoRepository db, IExceptionManager exceptionManager) : base(db, exceptionManager)
+        //{
+        //}
     }
 }

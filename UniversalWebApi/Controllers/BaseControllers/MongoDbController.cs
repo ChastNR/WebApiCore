@@ -9,33 +9,26 @@ namespace UniversalWebApi.Controllers.BaseControllers
 {
     public class MongoDbController<T> : Controller where T : class, IMongoDoc
     {
-        protected readonly IMongoRepository Db;
-        protected readonly IExceptionManager ExceptionManager;
+        //protected readonly IMongoRepository Db;
+        //protected readonly IExceptionManager ExceptionManager;
 
-        public MongoDbController(IMongoRepository db, IExceptionManager exceptionManager)
-        {
-            Db = db;
-            ExceptionManager = exceptionManager;
-        }
+        //public MongoDbController(IMongoRepository db, IExceptionManager exceptionManager)
+        //{
+        //    Db = db;
+        //    ExceptionManager = exceptionManager;
+        //}
+
+        protected IMongoRepository Db => (IMongoRepository)HttpContext.RequestServices.GetService(typeof(IMongoRepository));
 
         [HttpGet("get")]
-        public virtual IActionResult Get()
+        public virtual async Task<IActionResult> Get()
         {
-            var result = Db.Get<T>();
+            var result = await Db.GetAsync<T>();
             return result != null ? (IActionResult) Ok(result) : BadRequest();
         }
 
         [HttpGet("get/{id}")]
-        public virtual IActionResult Get(ObjectId id)
-        {
-            var result = Db.Get<T>(id);
-            return result != null
-                ? (IActionResult) Ok(result)
-                : BadRequest($"There is no {typeof(T).Name} with id = {id}");
-        }
-
-        [HttpGet("getAsync/{id}")]
-        public virtual async Task<IActionResult> GetAsync(ObjectId id)
+        public virtual async Task<IActionResult> Get(ObjectId id)
         {
             var result = await Db.GetAsync<T>(id);
             return result != null
@@ -48,13 +41,13 @@ namespace UniversalWebApi.Controllers.BaseControllers
         {
             try
             {
-                await Db.Add(entity);
+                await Db.AddAsync(entity);
                 return Ok($"{typeof(T).Name} added successfully!");
             }
             catch (Exception e)
             {
                 var controllerContext = ControllerContext.ActionDescriptor;
-                await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
+                //await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
                 return BadRequest(e.Message);
             }
         }
@@ -64,13 +57,13 @@ namespace UniversalWebApi.Controllers.BaseControllers
         {
             try
             {
-                await Db.Update(entity);
+                await Db.UpdateAsync(entity);
                 return Ok($"{typeof(T).Name} updated successfully!");
             }
             catch (Exception e)
             {
                 var controllerContext = ControllerContext.ActionDescriptor;
-                await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
+                //await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
                 return BadRequest(e.Message);
             }
         }
@@ -80,13 +73,13 @@ namespace UniversalWebApi.Controllers.BaseControllers
         {
             try
             {
-                await Db.Remove<T>(id);
+                await Db.RemoveAsync<T>(id);
                 return Ok($"{typeof(T).Name} with id: {id} deleted successfully!");
             }
             catch (Exception e)
             {
                 var controllerContext = ControllerContext.ActionDescriptor;
-                await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
+                //await ExceptionManager.Log(e, controllerContext.ControllerName, controllerContext.ActionName);
                 return BadRequest(e.Message);
             }
         }

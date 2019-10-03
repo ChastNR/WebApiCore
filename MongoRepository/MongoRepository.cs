@@ -13,21 +13,22 @@ namespace MongoRepository
         public MongoRepository(string connectionString, string dbName) =>
             _db = new MongoClient(connectionString).GetDatabase(dbName);
 
-        public IEnumerable<T> Get<T>() where T : class, IMongoDoc => _db.GetCollection<T>(typeof(T).Name).AsQueryable();
+        public async Task<IEnumerable<T>> GetAsync<T>() where T : class, IMongoDoc
+            => await _db.GetCollection<T>(typeof(T).Name).Find(_ => true).ToListAsync();
 
-        public T Get<T>(ObjectId id) where T : class, IMongoDoc =>
-            _db.GetCollection<T>(typeof(T).Name).Find(doc => doc.Id == id).FirstOrDefault();
+        public async Task<IEnumerable<T>> GetAsync2<T>() where T : class, IMongoDoc
+            => await _db.GetCollection<T>(typeof(T).Name).Find(new BsonDocument()).ToListAsync();
 
         public async Task<T> GetAsync<T>(ObjectId id) where T : class, IMongoDoc =>
             await _db.GetCollection<T>(typeof(T).Name).Find(doc => doc.Id == id).FirstOrDefaultAsync();
 
-        public async Task Add<T>(T t) where T : class, IMongoDoc =>
+        public async Task AddAsync<T>(T t) where T : class, IMongoDoc =>
             await _db.GetCollection<T>(typeof(T).Name).InsertOneAsync(t);
 
-        public async Task Update<T>(T t) where T : class, IMongoDoc => await _db.GetCollection<T>(typeof(T).Name)
+        public async Task UpdateAsync<T>(T t) where T : class, IMongoDoc => await _db.GetCollection<T>(typeof(T).Name)
             .ReplaceOneAsync(Builders<T>.Filter.Eq("_id", t.Id), t);
 
-        public async Task Remove<T>(ObjectId id) where T : class, IMongoDoc =>
+        public async Task RemoveAsync<T>(ObjectId id) where T : class, IMongoDoc =>
             await _db.GetCollection<T>(typeof(T).Name).DeleteOneAsync(Builders<T>.Filter.Eq("_id", id));
 
         //Additional methods

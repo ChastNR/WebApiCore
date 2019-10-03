@@ -17,20 +17,9 @@ namespace SqlRepository.Repositories
         public DataRepository(string connectionString) => _connectionString = connectionString;
         private IDbConnection CreateConnection() => new SqlConnection(_connectionString);
 
-        private static IEnumerable<PropertyInfo> GetProperties<T>()
-            where T : class => typeof(T).GetProperties();
+        private IEnumerable<PropertyInfo> GetProperties<T>() where T : class => typeof(T).GetProperties();
 
-        public IEnumerable<T> GetAll<T>()
-            where T : class
-        {
-            using (var connection = CreateConnection())
-            {
-                return connection.Query<T>($"SELECT * FROM [{typeof(T).Name}]");
-            }
-        }
-
-        public async Task<IEnumerable<T>> GetAllAsync<T>()
-            where T : class
+        public async Task<IEnumerable<T>> GetAllAsync<T>() where T : class
         {
             using (var connection = CreateConnection())
             {
@@ -38,39 +27,16 @@ namespace SqlRepository.Repositories
             }
         }
 
-        public T Get<T>(object id)
-            where T : class
-        {
-            using (var connection = CreateConnection())
-            {
-                return connection.QueryFirstOrDefault<T>($"SELECT * FROM [{typeof(T).Name}] WHERE Id=@Id",
-                    new {Id = id});
-            }
-        }
-
-        public async Task<T> GetAsync<T>(object id)
-            where T : class
+        public async Task<T> GetAsync<T>(object id) where T : class
         {
             using (var connection = CreateConnection())
             {
                 return await connection.QueryFirstOrDefaultAsync<T>($"SELECT * FROM [{typeof(T).Name}] WHERE Id=@Id",
-                    new {Id = id});
+                    new { Id = id });
             }
         }
 
-        public T Get<T>(string condition)
-            where T : class
-        {
-            using (var connection = CreateConnection())
-            {
-                return string.IsNullOrEmpty(condition)
-                    ? null
-                    : connection.QuerySingleOrDefault<T>($"SELECT * FROM [{typeof(T).Name}] WHERE {condition}");
-            }
-        }
-
-        public async Task InsertAsync<T>(T t)
-            where T : class
+        public async Task InsertAsync<T>(T t) where T : class
         {
             using (var connection = CreateConnection())
             {
@@ -78,8 +44,7 @@ namespace SqlRepository.Repositories
             }
         }
 
-        public async Task<int> SaveRangeAsync<T>(IEnumerable<T> list)
-            where T : class
+        public async Task<int> SaveRangeAsync<T>(IEnumerable<T> list) where T : class
         {
             var inserted = 0;
             using (var connection = CreateConnection())
@@ -90,17 +55,15 @@ namespace SqlRepository.Repositories
             return inserted;
         }
 
-        public async Task DeleteRowAsync<T>(object id)
-            where T : class
+        public async Task DeleteRowAsync<T>(object id) where T : class
         {
             using (var connection = CreateConnection())
             {
-                await connection.ExecuteAsync($"DELETE FROM [{typeof(T).Name}] WHERE Id=@Id", new {Id = id});
+                await connection.ExecuteAsync($"DELETE FROM [{typeof(T).Name}] WHERE Id=@Id", new { Id = id });
             }
         }
 
-        public async Task UpdateAsync<T>(T t)
-            where T : class
+        public async Task UpdateAsync<T>(T t) where T : class
         {
             using (var connection = CreateConnection())
             {
@@ -111,15 +74,14 @@ namespace SqlRepository.Repositories
         private List<string> GenerateListOfProperties(IEnumerable<PropertyInfo> listOfProperties)
         {
             var list = (from prop in listOfProperties
-                let attributes = prop.GetCustomAttributes(typeof(DescriptionAttribute), false)
-                where attributes.Length <= 0 || (attributes[0] as DescriptionAttribute)?.Description != "ignore"
-                select prop.Name).ToList();
+                        let attributes = prop.GetCustomAttributes(typeof(DescriptionAttribute), false)
+                        where attributes.Length <= 0 || (attributes[0] as DescriptionAttribute)?.Description != "ignore"
+                        select prop.Name).ToList();
             list.Remove("Id");
             return list;
         }
 
-        private string GenerateInsertQuery<T>()
-            where T : class
+        private string GenerateInsertQuery<T>() where T : class
         {
             var insertQuery = new StringBuilder($"INSERT INTO [{typeof(T).Name}] (");
 
@@ -139,8 +101,7 @@ namespace SqlRepository.Repositories
             return insertQuery.ToString();
         }
 
-        private string GenerateUpdateQuery<T>()
-            where T : class
+        private string GenerateUpdateQuery<T>() where T : class
         {
             var updateQuery = new StringBuilder($"UPDATE [{typeof(T).Name}] SET ");
 

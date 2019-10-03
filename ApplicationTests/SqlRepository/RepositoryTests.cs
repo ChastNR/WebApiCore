@@ -21,7 +21,7 @@ namespace ApplicationTests.SqlRepository
         {
             using( var scope = _serviceProvider.CreateScope())
             {
-                var expectedResult = scope.ServiceProvider.GetService<IDataRepository>().GetAll<User>();
+                var expectedResult = scope.ServiceProvider.GetService<IDataRepository>().GetAllAsync<User>();
                 
                 Assert.NotNull(expectedResult);
             }
@@ -32,7 +32,7 @@ namespace ApplicationTests.SqlRepository
         {
             using (var scope = _serviceProvider.CreateScope())
             {
-                var expectedResult = scope.ServiceProvider.GetService<IDataRepository>().Get<User>(1);
+                var expectedResult = scope.ServiceProvider.GetService<IDataRepository>().GetAsync<User>(1);
 
                 Assert.NotNull(expectedResult);
                 Assert.True(expectedResult.Id == 1);
@@ -55,7 +55,7 @@ namespace ApplicationTests.SqlRepository
 
                 await repository.InsertAsync(user);
 
-                var expectedResult = repository.Get<User>($"Name = '{name}'");
+                var expectedResult = repository.GetAsync<User>($"Name = '{name}'").Result;
 
                 Assert.Equal(expectedResult.Name, user.Name);
 

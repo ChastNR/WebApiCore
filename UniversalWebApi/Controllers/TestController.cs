@@ -14,7 +14,6 @@ using UniversalWebApi.Models;
 namespace UniversalWebApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class TestController : Controller
     {
         private readonly string _rootUrl;

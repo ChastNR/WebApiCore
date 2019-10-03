@@ -18,12 +18,13 @@ namespace UniversalWebApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration) => Configuration = configuration;
         private IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ApiAsyncActionFilter>();
+            services.AddScoped<ApiExceptionFilter>();
 
             services.AddTransient<IDataRepository>(s =>
                 new DataRepository(Configuration.GetConnectionString("DbConnection")));
