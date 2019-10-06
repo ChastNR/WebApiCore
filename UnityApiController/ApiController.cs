@@ -17,7 +17,7 @@ namespace UnityApiController
             using (var client = new HttpClient())
             {
                 client.BaseAddress = _baseAddress;
-                var response = client.GetAsync($"api/{typeof(T).Name}/get").Result;
+                var response = client.GetAsync($"api/{typeof(T).Name}").Result;
                 var result = JsonConvert.DeserializeObject<IEnumerable<T>>(response.Content.ReadAsStringAsync().Result);
                 return result;
             }
@@ -28,7 +28,7 @@ namespace UnityApiController
             using (var client = new HttpClient())
             {
                 client.BaseAddress = _baseAddress;
-                var response = client.GetAsync($"api/{typeof(T).Name}/get/{id}").Result;
+                var response = client.GetAsync($"api/{typeof(T).Name}/{id}").Result;
                 var result = JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
                 return result;
             }
@@ -40,7 +40,7 @@ namespace UnityApiController
             {
                 client.BaseAddress = _baseAddress;
                 var content = new StringContent(JsonConvert.SerializeObject(t), Encoding.UTF8, "application/json");
-                var result = client.PostAsync($"api/{typeof(T).Name}/post", content).Result;
+                var result = client.PostAsync($"api/{typeof(T).Name}", content).Result;
                 return result.IsSuccessStatusCode;
             }
         }
@@ -51,7 +51,7 @@ namespace UnityApiController
             {
                 client.BaseAddress = _baseAddress;
                 var content = new StringContent(JsonConvert.SerializeObject(t), Encoding.UTF8, "application/json");
-                var result = client.PutAsync($"api/{typeof(T).Name}/post", content).Result;
+                var result = client.PutAsync($"api/{typeof(T).Name}", content).Result;
                 return result.IsSuccessStatusCode;
             }
         }
@@ -61,7 +61,7 @@ namespace UnityApiController
             using (var client = new HttpClient())
             {
                 client.BaseAddress = _baseAddress;
-                var result = client.DeleteAsync($"api/{typeof(T).Name}/post/{id}").Result;
+                var result = client.DeleteAsync($"api/{typeof(T).Name}/{id}").Result;
                 return result.IsSuccessStatusCode;
             }
         }
