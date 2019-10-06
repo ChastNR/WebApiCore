@@ -21,7 +21,7 @@ namespace ApplicationTests.SqlRepository
         {
             using( var scope = _serviceProvider.CreateScope())
             {
-                var expectedResult = scope.ServiceProvider.GetService<IDataRepository>().GetAllAsync<User>();
+                var expectedResult = scope.ServiceProvider.GetService<ISqlRepository>().GetAllAsync<User>();
                 
                 Assert.NotNull(expectedResult);
             }
@@ -32,7 +32,7 @@ namespace ApplicationTests.SqlRepository
         {
             using (var scope = _serviceProvider.CreateScope())
             {
-                var expectedResult = scope.ServiceProvider.GetService<IDataRepository>().GetAsync<User>(1);
+                var expectedResult = scope.ServiceProvider.GetService<ISqlRepository>().GetAsync<User>(1);
 
                 Assert.NotNull(expectedResult);
                 Assert.True(expectedResult.Id == 1);
@@ -44,7 +44,7 @@ namespace ApplicationTests.SqlRepository
         {
             using (var scope = _serviceProvider.CreateScope())
             {
-                var repository = scope.ServiceProvider.GetService<IDataRepository>();
+                var repository = scope.ServiceProvider.GetService<ISqlRepository>();
                 var name = Guid.NewGuid().ToString();
                 var user = new User
                 {

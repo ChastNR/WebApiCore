@@ -2,10 +2,12 @@ namespace UniversalWebApi.Helpers.Serializer
 {
     public interface ISerializeHelper
     {
-        byte[] SerializeObject<T>(T t) where T : class;
+        byte[] ToByteArray<T>(T obj) where T : class;
+        T FromByteArray<T>(byte[] data) where T : class;
+        //byte[] SerializeObject<T>(T t) where T : class;
 
-        T DeserializeObject<T>(byte[] byteArray) where T : class;
+        //T DeserializeObject<T>(byte[] byteArray) where T : class;
 
-        object DeserializeId(byte[] byteArray);
+        //object DeserializeId(byte[] byteArray);
     }
 }

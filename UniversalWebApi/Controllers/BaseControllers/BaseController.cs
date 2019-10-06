@@ -1,84 +1,29 @@
-using System;
-using System.Net;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 using SqlRepository.Interfaces;
-using SqlRepository.Repositories;
-using UniversalWebApi.Helpers.ExceptionManager;
 using UniversalWebApi.Helpers.Filters;
 
 namespace UniversalWebApi.Controllers.BaseControllers
 {
-    [ServiceFilter(typeof(ApiExceptionFilter))]
-    public class BaseController<T> : Controller where T : class
+    [ApiExceptionFilter]
+    public abstract class BaseController<T> : Controller where T : class
     {
-        protected IDataRepository Db => (IDataRepository)HttpContext.RequestServices.GetService(typeof(IDataRepository));
+        protected ISqlRepository Db => (ISqlRepository)HttpContext.RequestServices.GetService(typeof(ISqlRepository));
 
-        [HttpGet("get")]
-        public virtual async Task<JsonResult> Get()
-        {
-            var result = await Db.GetAllAsync<T>();
+        [HttpGet]
+        public async Task<IEnumerable<T>> Get() => await Db.GetAllAsync<T>();
 
-            if(result == null)
-            {
-                HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json($"Server Error");
-            }
+        [HttpGet("{id:int}")]
+        public async Task<T> Get(int id) => await Db.GetAsync<T>(id);
 
-            HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
-            return Json(result);
-        }
+        [HttpPost]
+        public async Task Post([FromBody] T entity) => await Db.InsertAsync(entity);
 
-        [HttpGet("get/{id}")]
-        public virtual async Task<JsonResult> Get(int id)
-        {
-            var result = await Db.GetAsync<T>(id);
+        [HttpPut]
+        public async Task Put([FromBody] T entity) => await Db.UpdateAsync(entity);
 
-            if (result == null)
-            {
-                HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json($"There is no {typeof(T).Name} with id = {id}");
-            }
-
-            HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
-            return Json(result);
-        }
-
-        [HttpPost("add")]
-        public virtual async Task<JsonResult> Add([FromBody] T entity)
-        {
-            if (!ModelState.IsValid)
-            {
-                HttpContext.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
-                return Json($"Data error");
-            }
-
-            await Db.InsertAsync(entity);
-            HttpContext.Response.StatusCode = (int)HttpStatusCode.Created;
-            return Json($"{typeof(T).Name} added successfully!");
-        }
-
-        [HttpPut("update")]
-        public virtual async Task<IActionResult> Update([FromBody] T entity)
-        {
-            if (!ModelState.IsValid)
-            {
-                HttpContext.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
-                return Json($"Data error");
-            }
-
-            await Db.UpdateAsync(entity);
-            HttpContext.Response.StatusCode = (int)HttpStatusCode.NoContent;
-            return Json($"{typeof(T).Name} updated successfully!");
-        }
-
-        [HttpDelete("delete/{id}")]
-        public virtual async Task<JsonResult> Delete(int id)
-        {
-            await Db.DeleteRowAsync<T>(id);
-            HttpContext.Response.StatusCode = (int)HttpStatusCode.NoContent;
-            return Json($"{typeof(T).Name} with id: {id} deleted successfully!");
-        }
+        [HttpDelete("{id:int}")]
+        public async Task Delete(int id) => await Db.DeleteRowAsync<T>(id);
     }
 }

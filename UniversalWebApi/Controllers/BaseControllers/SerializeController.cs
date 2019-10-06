@@ -8,38 +8,41 @@ namespace UniversalWebApi.Controllers.BaseControllers
 {
     public class SerializeController<T> : Controller where T : class
     {
-        protected readonly IDataRepository Db;
-        protected readonly ISerializeHelper SerializeHelper;
+        protected ISqlRepository Db => (ISqlRepository)HttpContext.RequestServices.GetService(typeof(ISqlRepository));
+        protected ISerializeHelper SerializeHelper => (ISerializeHelper)HttpContext.RequestServices.GetService(typeof(ISerializeHelper));
 
-        public SerializeController(IDataRepository db, ISerializeHelper serializeHelper)
-        {
-            Db = db;
-            SerializeHelper = serializeHelper;
-        }
+        //protected readonly ISqlRepository Db;
+        //protected readonly ISerializeHelper SerializeHelper;
 
-        [HttpGet("get")]
-        public virtual async Task<byte[]> Get()
+        //public SerializeController(ISqlRepository db, ISerializeHelper serializeHelper)
+        //{
+        //    Db = db;
+        //    SerializeHelper = serializeHelper;
+        //}
+
+        [HttpGet]
+        public async Task<byte[]> Get()
         {
             var result = await Db.GetAllAsync<T>();
-            return SerializeHelper.SerializeObject(result);
+            return SerializeHelper.ToByteArray(result);
         }
 
-        [HttpGet("get/{id}")]
-        public virtual async Task<byte[]> Get(byte[] byteArray)
-        {
-            var deserializedObject = (int) SerializeHelper.DeserializeId(byteArray);
+        //[HttpGet("get/{id}")]
+        //public async Task<byte[]> Get(byte[] byteArray)
+        //{
+        //    var deserializedObject = (int) SerializeHelper.DeserializeId(byteArray);
 
-            var result = await Db.GetAsync<T>(deserializedObject);
+        //    var result = await Db.GetAsync<T>(deserializedObject);
 
-            return SerializeHelper.SerializeObject(result);
-        }
+        //    return SerializeHelper.ToByteArray(result);
+        //}
 
-        [HttpPost("add")]
-        public virtual async Task<IActionResult> Add([FromBody] byte[] byteArray)
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] byte[] byteArray)
         {
             try
             {
-                var result = SerializeHelper.DeserializeObject<T>(byteArray);
+                var result = SerializeHelper.FromByteArray<T>(byteArray);
                 await Db.InsertAsync(result);
                 return Ok("Added successfully!");
             }
@@ -49,12 +52,12 @@ namespace UniversalWebApi.Controllers.BaseControllers
             }
         }
 
-        [HttpPut("update")]
-        public virtual async Task<IActionResult> Update([FromBody] byte[] byteArray)
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] byte[] byteArray)
         {
             try
             {
-                var result = SerializeHelper.DeserializeObject<T>(byteArray);
+                var result = SerializeHelper.FromByteArray<T>(byteArray);
 
                 await Db.UpdateAsync(result);
                 return Ok("Updated successfully!");
@@ -65,19 +68,19 @@ namespace UniversalWebApi.Controllers.BaseControllers
             }
         }
 
-        [HttpDelete("delete/{id}")]
-        public virtual async Task<IActionResult> Delete(byte[] byteArray)
-        {
-            try
-            {
-                var deserializedObject = (int) SerializeHelper.DeserializeId(byteArray);
-                await Db.DeleteRowAsync<T>(deserializedObject);
-                return Ok("Deleted successfully!");
-            }
-            catch (Exception e)
-            {
-                return Json(e);
-            }
-        }
+        //[HttpDelete("delete/{id}")]
+        //public async Task<IActionResult> Delete(byte[] byteArray)
+        //{
+        //    try
+        //    {
+        //        var deserializedObject = (int) SerializeHelper.DeserializeId(byteArray);
+        //        await Db.DeleteRowAsync<T>(deserializedObject);
+        //        return Ok("Deleted successfully!");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return Json(e);
+        //    }
+        //}
     }
 }

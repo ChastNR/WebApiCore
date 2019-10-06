@@ -5,9 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MongoRepository.Interfaces;
 using SqlRepository.Interfaces;
-using SqlRepository.Repositories;
-using System;
-using System.IO;
 using UniversalWebApi.Extensions.EmailSender;
 using UniversalWebApi.Helpers.EncryptionHelper;
 using UniversalWebApi.Helpers.ExceptionManager;
@@ -24,10 +21,10 @@ namespace UniversalWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ApiAsyncActionFilter>();
-            services.AddScoped<ApiExceptionFilter>();
+            //services.AddScoped<ApiExceptionFilter>();
 
-            services.AddTransient<IDataRepository>(s =>
-                new DataRepository(Configuration.GetConnectionString("DbConnection")));
+            services.AddTransient<ISqlRepository>(s =>
+                new SqlRepository.Repositories.SqlRepository(Configuration.GetConnectionString("DbConnection")));
 
             services.AddTransient<IMongoRepository>(s =>
                 new MongoRepository.MongoRepository(

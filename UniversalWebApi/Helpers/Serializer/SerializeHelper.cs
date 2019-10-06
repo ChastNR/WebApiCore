@@ -9,35 +9,36 @@ namespace UniversalWebApi.Helpers.Serializer
 {
     public class SerializeHelper : ISerializeHelper
     {
-        public byte[] SerializeObject<T>(T t) where T : class
-            => ObjectToByteArray(t);
+        //public byte[] SerializeObject<T>(T t) where T : class
+        //    => ObjectToByteArray(t);
 
-        public T DeserializeObject<T>(byte[] byteArray) where T : class
-            => (T) ByteArrayToObject(byteArray);
+        //public T DeserializeObject<T>(byte[] byteArray) where T : class
+        //    => (T) ByteArrayToObject(byteArray);
 
-        public object DeserializeId(byte[] byteArray)
-            => ByteArrayToObject(byteArray);
+        //public object DeserializeId(byte[] byteArray)
+        //    => ByteArrayToObject(byteArray);
 
-        private byte[] ObjectToByteArray(object obj)
+        public byte[] ToByteArray<T>(T obj) where T : class
         {
-            if (obj == null) return null;
-
-            using (var ms = new MemoryStream())
+            if (obj == null)
+                return null;
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
             {
-                new BinaryFormatter().Serialize(ms, obj);
+                bf.Serialize(ms, obj);
                 return ms.ToArray();
             }
         }
 
-        private object ByteArrayToObject(byte[] arrBytes)
+        public T FromByteArray<T>(byte[] data) where T : class
         {
-            using (var ms = new MemoryStream())
+            if (data == null)
+                return default(T);
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream(data))
             {
-                ms.Write(arrBytes, 0, arrBytes.Length);
-                ms.Seek(0, SeekOrigin.Begin);
-                var obj = (object) new BinaryFormatter().Deserialize(ms);
-
-                return obj;
+                object obj = bf.Deserialize(ms);
+                return (T)obj;
             }
         }
     }

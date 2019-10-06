@@ -1,7 +1,5 @@
-using MongoRepository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using UniversalWebApi.Controllers.BaseControllers;
-using UniversalWebApi.Helpers.ExceptionManager;
 using UniversalWebApi.Models;
 
 namespace UniversalWebApi.Controllers

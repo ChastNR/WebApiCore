@@ -8,11 +8,11 @@ namespace UniversalWebApi.Helpers.ExceptionManager
 {
     public class ExceptionManager : IExceptionManager
     {
-        private readonly IDataRepository _dataRepository;
+        private readonly ISqlRepository _dataRepository;
         private readonly IMongoRepository _mongoRepository;
         private readonly ILogger<ExceptionManager> _logger;
 
-        public ExceptionManager(IDataRepository dataRepository, IMongoRepository mongoRepository,
+        public ExceptionManager(ISqlRepository dataRepository, IMongoRepository mongoRepository,
             ILogger<ExceptionManager> logger)
         {
             _dataRepository = dataRepository;

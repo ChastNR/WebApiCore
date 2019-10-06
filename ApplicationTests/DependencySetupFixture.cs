@@ -19,7 +19,7 @@ namespace ApplicationTests
 
             var serviceCollection = new ServiceCollection();
 
-            serviceCollection.AddTransient<IDataRepository>(s => new DataRepository(builder.GetSection("DbConnection").Value));
+            serviceCollection.AddTransient<ISqlRepository>(s => new global::SqlRepository.Repositories.SqlRepository(builder.GetSection("DbConnection").Value));
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
         }
