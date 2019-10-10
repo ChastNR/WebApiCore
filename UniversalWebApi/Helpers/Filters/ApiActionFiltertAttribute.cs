@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
+using DataRepository.Interfaces.Base;
 using Microsoft.AspNetCore.Mvc.Filters;
-using SqlRepository.Interfaces;
 using UniversalWebApi.FilterModels;
 using UniversalWebApi.Helpers.ExceptionManager;
 
 namespace UniversalWebApi.Helpers.Filters
 {
-    public class ApiAsyncActionFilter : IAsyncResultFilter
+    public class ApiAsyncActionFilter : IAsyncResultFilter, IAsyncActionFilter
     {
-        private readonly ISqlRepository _repository;
         private readonly IExceptionManager _exceptionManager;
+        private readonly IMongoRepository _mongoRepository;
 
-        public ApiAsyncActionFilter(ISqlRepository repository, IExceptionManager exceptionManager)
+        public ApiAsyncActionFilter(IMongoRepository mongoRepository, IExceptionManager exceptionManager)
         {
-            _repository = repository;
+            _mongoRepository = mongoRepository;
             _exceptionManager = exceptionManager;
         }
 
@@ -22,14 +22,14 @@ namespace UniversalWebApi.Helpers.Filters
         {
             try
             {
-                await _repository.InsertAsync(new ActionResultModel
-                {
-                    Action = context.RouteData.Values["action"].ToString(),
-                    Controller = context.RouteData.Values["controller"].ToString(),
-                    IpAddress =
-                        $"{context.HttpContext.Connection.LocalIpAddress} {context.HttpContext.Connection.RemoteIpAddress}",
-                    StatusCode = context.HttpContext.Response.StatusCode
-                });
+//                await _mongoRepository.AddAsync(new ActionResultModel
+//                {
+//                    Action = context.RouteData.Values["action"].ToString(),
+//                    Controller = context.RouteData.Values["controller"].ToString(),
+//                    IpAddress =
+//                        $"{context.HttpContext.Connection.LocalIpAddress} {context.HttpContext.Connection.RemoteIpAddress}",
+//                    StatusCode = context.HttpContext.Response.StatusCode
+//                });
 
                 await next();
             }
@@ -38,6 +38,11 @@ namespace UniversalWebApi.Helpers.Filters
                 await _exceptionManager.Log(exception);
                 await next();
             }
+        }
+
+        public Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        {
+            throw new NotImplementedException();
         }
     }
 }

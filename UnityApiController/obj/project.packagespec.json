@@ -1,14 +1,11 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Users/chast/Projects/WebApiCore/UnityApiController/UnityApiController.csproj",
+    "projectUniqueName": "/Users/chastnr/Documents/GitHub/WebApiCore/UnityApiController/UnityApiController.csproj",
     "projectName": "UnityApiController",
-    "projectPath": "/Users/chast/Projects/WebApiCore/UnityApiController/UnityApiController.csproj",
-    "outputPath": "/Users/chast/Projects/WebApiCore/UnityApiController/obj/",
+    "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/UnityApiController/UnityApiController.csproj",
+    "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/UnityApiController/obj/",
     "projectStyle": "PackageReference",
-    "fallbackFolders": [
-      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-    ],
     "originalTargetFrameworks": [
       "netstandard2.0"
     ],

@@ -1,0 +1,58 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/AuthenticationProcessor.csproj",
+    "projectName": "AuthenticationProcessor",
+    "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/AuthenticationProcessor.csproj",
+    "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/obj/",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "netstandard2.1"
+    ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netstandard2.1": {
+        "projectReferences": {
+          "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
+            "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netstandard2.1": {
+      "dependencies": {
+        "BCrypt.Net-Next": {
+          "target": "Package",
+          "version": "[3.2.1, )"
+        },
+        "Microsoft.Extensions.Options": {
+          "target": "Package",
+          "version": "[3.0.0, )"
+        },
+        "System.IdentityModel.Tokens.Jwt": {
+          "target": "Package",
+          "version": "[5.5.0, )"
+        }
+      },
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

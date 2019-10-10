@@ -1,0 +1,11 @@
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/bin/Debug/netstandard2.1/AuthenticationProcessor.deps.json
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/bin/Debug/netstandard2.1/AuthenticationProcessor.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/bin/Debug/netstandard2.1/AuthenticationProcessor.pdb
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/bin/Debug/netstandard2.1/DataRepository.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/bin/Debug/netstandard2.1/DataRepository.pdb
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/obj/Debug/netstandard2.1/AuthenticationProcessor.csprojAssemblyReference.cache
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/obj/Debug/netstandard2.1/AuthenticationProcessor.AssemblyInfoInputs.cache
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/obj/Debug/netstandard2.1/AuthenticationProcessor.AssemblyInfo.cs
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/obj/Debug/netstandard2.1/AuthenticationProcessor.csproj.CopyComplete
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/obj/Debug/netstandard2.1/AuthenticationProcessor.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/obj/Debug/netstandard2.1/AuthenticationProcessor.pdb

@@ -1,14 +1,11 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Users/chast/Projects/WebApiCore/UniversalWebApi/UniversalWebApi.csproj",
+    "projectUniqueName": "/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/UniversalWebApi.csproj",
     "projectName": "UniversalWebApi",
-    "projectPath": "/Users/chast/Projects/WebApiCore/UniversalWebApi/UniversalWebApi.csproj",
-    "outputPath": "/Users/chast/Projects/WebApiCore/UniversalWebApi/obj/",
+    "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/UniversalWebApi.csproj",
+    "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/obj/",
     "projectStyle": "PackageReference",
-    "fallbackFolders": [
-      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-    ],
     "originalTargetFrameworks": [
       "netcoreapp3.0"
     ],
@@ -18,11 +15,11 @@
     "frameworks": {
       "netcoreapp3.0": {
         "projectReferences": {
-          "/Users/chast/Projects/WebApiCore/MongoRepository/MongoRepository.csproj": {
-            "projectPath": "/Users/chast/Projects/WebApiCore/MongoRepository/MongoRepository.csproj"
+          "/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/AuthenticationProcessor.csproj": {
+            "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/AuthenticationProcessor.csproj"
           },
-          "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj": {
-            "projectPath": "/Users/chast/Projects/WebApiCore/SqlRepository/SqlRepository.csproj"
+          "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
+            "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj"
           }
         }
       }
@@ -36,6 +33,10 @@
   "frameworks": {
     "netcoreapp3.0": {
       "dependencies": {
+        "Microsoft.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[3.0.0, )"
+        },
         "Microsoft.EntityFrameworkCore.SqlServer": {
           "target": "Package",
           "version": "[3.0.0, )"

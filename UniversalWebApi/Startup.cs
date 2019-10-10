@@ -1,10 +1,12 @@
+using DataRepository.Interfaces.Base;
+using DataRepository.Repositories;
+using DataRepository.Repositories.Base;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MongoRepository.Interfaces;
-using SqlRepository.Interfaces;
 using UniversalWebApi.Extensions.EmailSender;
 using UniversalWebApi.Helpers.EncryptionHelper;
 using UniversalWebApi.Helpers.ExceptionManager;
@@ -23,11 +25,19 @@ namespace UniversalWebApi
             services.AddScoped<ApiAsyncActionFilter>();
             //services.AddScoped<ApiExceptionFilter>();
 
+
             services.AddTransient<ISqlRepository>(s =>
-                new SqlRepository.Repositories.SqlRepository(Configuration.GetConnectionString("DbConnection")));
+                new SqlRepository(Configuration.GetConnectionString("DbConnection")));
+
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DbConnection"));
+            });
+            services.AddScoped<IEfRepository, EfRepository<ApplicationDbContext>>();
 
             services.AddTransient<IMongoRepository>(s =>
-                new MongoRepository.MongoRepository(
+                new MongoRepository(
                     Configuration.GetSection("MongoDbSettings").GetSection("DbConnection").Value,
                     Configuration.GetSection("MongoDbSettings").GetSection("DbName").Value));
 

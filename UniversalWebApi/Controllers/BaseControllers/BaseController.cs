@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DataRepository.Interfaces.Base;
 using Microsoft.AspNetCore.Mvc;
-using SqlRepository.Interfaces;
 using UniversalWebApi.Helpers.Filters;
 
 namespace UniversalWebApi.Controllers.BaseControllers
@@ -9,8 +9,8 @@ namespace UniversalWebApi.Controllers.BaseControllers
     [ApiExceptionFilter]
     public abstract class BaseController<T> : Controller where T : class
     {
-        protected ISqlRepository Db => (ISqlRepository)HttpContext.RequestServices.GetService(typeof(ISqlRepository));
-
+        private ISqlRepository Db => (ISqlRepository)HttpContext.RequestServices.GetService(typeof(ISqlRepository));
+        
         [HttpGet]
         public async Task<IEnumerable<T>> Get() => await Db.GetAllAsync<T>();
 

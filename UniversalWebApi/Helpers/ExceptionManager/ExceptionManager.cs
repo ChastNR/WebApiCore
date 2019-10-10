@@ -1,21 +1,18 @@
 using System;
 using System.Threading.Tasks;
+using DataRepository.Interfaces.Base;
 using Microsoft.Extensions.Logging;
-using MongoRepository.Interfaces;
-using SqlRepository.Interfaces;
 
 namespace UniversalWebApi.Helpers.ExceptionManager
 {
     public class ExceptionManager : IExceptionManager
     {
-        private readonly ISqlRepository _dataRepository;
         private readonly IMongoRepository _mongoRepository;
         private readonly ILogger<ExceptionManager> _logger;
 
-        public ExceptionManager(ISqlRepository dataRepository, IMongoRepository mongoRepository,
+        public ExceptionManager(IMongoRepository mongoRepository,
             ILogger<ExceptionManager> logger)
         {
-            _dataRepository = dataRepository;
             _mongoRepository = mongoRepository;
             _logger = logger;
         }
@@ -24,7 +21,7 @@ namespace UniversalWebApi.Helpers.ExceptionManager
         {
             try
             {
-                await _dataRepository.InsertAsync(new ExceptionContract
+                await _mongoRepository.AddAsync(new MExceptionContract
                 {
                     Message = exception.Message,
                     Method = exception.TargetSite.Name
@@ -40,7 +37,7 @@ namespace UniversalWebApi.Helpers.ExceptionManager
         {
             try
             {
-                await _dataRepository.InsertAsync(new ExceptionContract
+                await _mongoRepository.AddAsync(new MExceptionContract
                 {
                     Message = exception.Message,
                     Class = className,

@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/chastnr/Documents/GitHub/WebApiCore/SqlRepository/SqlRepository.csproj": {}
+  },
+  "projects": {
+    "/Users/chastnr/Documents/GitHub/WebApiCore/SqlRepository/SqlRepository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/chastnr/Documents/GitHub/WebApiCore/SqlRepository/SqlRepository.csproj",
+        "projectName": "SqlRepository",
+        "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/SqlRepository/SqlRepository.csproj",
+        "packagesPath": "/Users/chastnr/.nuget/packages/",
+        "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/SqlRepository/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/chastnr/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.30, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

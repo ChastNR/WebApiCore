@@ -1,6 +1,6 @@
 using System;
+using DataRepository.Interfaces.Base;
 using MongoDB.Bson;
-using MongoRepository.Interfaces;
 
 namespace UniversalWebApi.Helpers.ExceptionManager
 {

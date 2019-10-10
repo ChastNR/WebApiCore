@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DataRepository.Interfaces.Base;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
-using MongoRepository.Interfaces;
 using UniversalWebApi.Helpers.Filters;
 
 namespace UniversalWebApi.Controllers.BaseControllers
