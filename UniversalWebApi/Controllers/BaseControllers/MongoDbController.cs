@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using DataRepository.Interfaces.Base;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
-using UniversalWebApi.Helpers.Filters;
+using UniversalWebApi.Filters;
 
 namespace UniversalWebApi.Controllers.BaseControllers
 {
-    [ApiExceptionFilter]
+    [ServiceFilter(typeof(ApiExceptionFilter))]
     public abstract class MongoDbController<T> : Controller where T : class, IMongoDoc
     {
         protected IMongoRepository Db => (IMongoRepository)HttpContext.RequestServices.GetService(typeof(IMongoRepository));

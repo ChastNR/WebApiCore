@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataRepository.Interfaces.Base;
 using Microsoft.AspNetCore.Mvc;
-using UniversalWebApi.Helpers.Filters;
+using UniversalWebApi.Filters;
 
 namespace UniversalWebApi.Controllers.BaseControllers
 {
-    [ApiExceptionFilter]
+    [ServiceFilter(typeof(ApiExceptionFilter))]
     public abstract class BaseController<T> : Controller where T : class
     {
         private ISqlRepository Db => (ISqlRepository)HttpContext.RequestServices.GetService(typeof(ISqlRepository));

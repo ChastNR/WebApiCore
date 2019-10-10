@@ -6,6 +6,12 @@ using MongoDB.Driver;
 
 namespace DataRepository.Repositories.Base
 {
+    public class MongoDbSettings
+    {
+        public string DbConnection { get; set; }
+        public int DbName { get; set; }
+    }
+    
     public class MongoRepository : IMongoRepository
     {
         private readonly IMongoDatabase _db;
@@ -15,9 +21,6 @@ namespace DataRepository.Repositories.Base
 
         public async Task<IEnumerable<T>> GetAsync<T>() where T : class, IMongoDoc
             => await _db.GetCollection<T>(typeof(T).Name).Find(_ => true).ToListAsync();
-
-        public async Task<IEnumerable<T>> GetAsync2<T>() where T : class, IMongoDoc
-            => await _db.GetCollection<T>(typeof(T).Name).Find(new BsonDocument()).ToListAsync();
 
         public async Task<T> GetAsync<T>(ObjectId id) where T : class, IMongoDoc =>
             await _db.GetCollection<T>(typeof(T).Name).Find(doc => doc.Id == id).FirstOrDefaultAsync();

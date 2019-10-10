@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AuthenticationProcessor.Contracts;
+using AuthenticationProcessor.Interfaces;
 using AuthenticationProcessor.ProcessorComponents;
 using AuthenticationProcessor.Settings;
 using DataRepository.Interfaces;
@@ -8,7 +9,7 @@ using DataRepository.Interfaces.Base;
 
 namespace AuthenticationProcessor
 {
-    public class AuthProcessor
+    public class AuthProcessor : IAuthProcessor
     {
         private readonly IUserRepository _sqlRepository;
         private readonly AuthLogger _logger;

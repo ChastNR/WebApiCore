@@ -20,5 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AuthenticationProcessor\AuthenticationProcessor.csproj" />
     <ProjectReference Include="..\DataRepository\DataRepository.csproj" />
+    <ProjectReference Include="..\Tools\Tools.csproj" />
   </ItemGroup>
 </Project>

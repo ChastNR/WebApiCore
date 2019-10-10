@@ -17,7 +17,7 @@ namespace AuthenticationProcessor.ProcessorComponents
         {
             AuthOptions = authOptions.Value;
         }
-        
+
         public string GetToken(string id)
         {
             var signingCredentials =
@@ -39,33 +39,5 @@ namespace AuthenticationProcessor.ProcessorComponents
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-        
-        //JWT Startup Config
-        /*
-        services.Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));
-
-        var authConfig = Configuration.GetSection("AuthOptions").Get<AuthOptions>();
-
-        var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authConfig.SecurityKey));
-
-        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(options =>
-        {
-            options.RequireHttpsMetadata = false;
-            options.SaveToken = true;
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                //what to validate
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateIssuerSigningKey = true,
-                //setup validate data
-                ValidIssuer = authConfig.Issuer,
-                ValidAudience = authConfig.Audience,
-                IssuerSigningKey = symmetricSecurityKey,
-                ClockSkew = TimeSpan.Zero
-            };
-        });
-        */
     }
 }

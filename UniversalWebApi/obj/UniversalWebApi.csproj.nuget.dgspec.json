@@ -27,6 +27,9 @@
             "projectReferences": {
               "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
                 "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj"
+              },
+              "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj": {
+                "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj"
               }
             }
           }
@@ -140,6 +143,64 @@
         }
       }
     },
+    "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj",
+        "projectName": "Tools",
+        "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj",
+        "packagesPath": "/Users/chastnr/.nuget/packages/",
+        "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/chastnr/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {
+              "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
+                "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
     "/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/UniversalWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -166,6 +227,9 @@
               },
               "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
                 "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj"
+              },
+              "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj": {
+                "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj"
               }
             }
           }
