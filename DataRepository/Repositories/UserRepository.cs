@@ -11,7 +11,7 @@ namespace DataRepository.Repositories
         {
             ConnectionString = connectionString;
         }
-        
+
         public async Task<User> GetUserWithConditionAsync(string email, string phoneNumber)
         {
             using var connection = CreateConnection();

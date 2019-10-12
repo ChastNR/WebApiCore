@@ -7,22 +7,15 @@ namespace Tools.Serializer
     {
         public byte[] ToByteArray<T>(T obj) where T : class
         {
-            if (obj == null)
-                return null;
-            var bf = new BinaryFormatter();
             using var ms = new MemoryStream();
-            bf.Serialize(ms, obj);
+            new BinaryFormatter().Serialize(ms, obj);
             return ms.ToArray();
         }
 
         public T FromByteArray<T>(byte[] data) where T : class
         {
-            if (data == null)
-                return default;
-            var bf = new BinaryFormatter();
             using var ms = new MemoryStream(data);
-            var obj = bf.Deserialize(ms);
-            return (T)obj;
+            return (T) new BinaryFormatter().Deserialize(ms);
         }
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Tools.EncryptTool;
+using Tools.EnumTool;
 using Tools.Logger;
 using Tools.Messages.EmailSender;
 using Tools.Serializer;

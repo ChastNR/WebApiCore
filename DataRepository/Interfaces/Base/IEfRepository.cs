@@ -23,7 +23,7 @@ namespace DataRepository.Interfaces.Base
         void Save();
 
         Task SaveAsync();
-        
+
         IEnumerable<TEntity> GetAll<TEntity>(
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = null,

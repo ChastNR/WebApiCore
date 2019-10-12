@@ -402,3 +402,5 @@ C:/Users/ChastNR/Documents/GitHub/WebApiCore/UniversalWebApi/obj/Debug/netcoreap
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/DataRepository.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/AuthenticationProcessor.pdb
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/DataRepository.pdb
+/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/Tools.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/Tools.pdb

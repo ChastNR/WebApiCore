@@ -1,1250 +1,754 @@
+using System.ComponentModel;
+
 namespace AuthenticationProcessor.UserData
 {
     public enum CountryCodes : byte
     {
-        ///<sumary>
-        /// Andorra
-        ///</sumary>
+        [Description("Andorra"), DefaultValue("376")]
         AD = 1,
 
-        ///<sumary>
-        /// United Arab Emirates
-        ///</sumary>
+        [Description("United Arab Emirates"), DefaultValue("971")]
         AE,
 
-        ///<sumary>
-        /// Afghanistan
-        ///</sumary>
+        [Description("Afghanistan"), DefaultValue("93")]
         AF,
 
-        ///<sumary>
-        /// Antigua and Barbuda
-        ///</sumary>
+        [Description("Antigua and Barbuda"), DefaultValue("1-268")]
         AG,
 
-        ///<sumary>
-        /// Anguilla
-        ///</sumary>
+        [Description("Anguilla"), DefaultValue("1-264")]
         AI,
 
-        ///<sumary>
-        /// Albania
-        ///</sumary>
+        [Description("Albania"), DefaultValue("355")]
         AL,
 
-        ///<sumary>
-        /// Armenia
-        ///</sumary>
+        [Description("Armenia"), DefaultValue("374")]
         AM,
 
-        ///<sumary>
-        /// Angola
-        ///</sumary>
+        [Description("Angola"), DefaultValue("244")]
         AO,
 
-        ///<sumary>
-        /// Antarctica
-        ///</sumary>
+        [Description("Antarctica"), DefaultValue("672")]
         AQ,
 
-        ///<sumary>
-        /// Argentina
-        ///</sumary>
+        [Description("Argentina"), DefaultValue("54")]
         AR,
 
-        ///<sumary>
-        /// American Samoa
-        ///</sumary>
+        [Description("American Samoa"), DefaultValue("1-684")]
         AS,
 
-        ///<sumary>
-        /// Austria
-        ///</sumary>
+        [Description("Austria"), DefaultValue("43")]
         AT,
 
-        ///<sumary>
-        /// Australia
-        ///</sumary>
+        [Description("Australia"), DefaultValue("61")]
         AU,
 
-        ///<sumary>
-        /// Aruba
-        ///</sumary>
+        [Description("Aruba"), DefaultValue("297")]
         AW,
 
-        ///<sumary>
-        /// Åland Islands
-        ///</sumary>
+        [Description("Åland Islands"), DefaultValue("")]
         AX,
 
-        ///<sumary>
-        /// Azerbaijan
-        ///</sumary>
+        [Description("Azerbaijan"), DefaultValue("994")]
         AZ,
 
-        ///<sumary>
-        /// Bosnia and Herzegovina
-        ///</sumary>
+        [Description("Bosnia and Herzegovina"), DefaultValue("387")]
         BA,
 
-        ///<sumary>
-        /// Barbados
-        ///</sumary>
+        [Description("Barbados"), DefaultValue("1-246")]
         BB,
 
-        ///<sumary>
-        /// Bangladesh
-        ///</sumary>
+        [Description("Bangladesh"), DefaultValue("880")]
         BD,
 
-        ///<sumary>
-        /// Belgium
-        ///</sumary>
+        [Description("Belgium"), DefaultValue("32")]
         BE,
 
-        ///<sumary>
-        /// Burkina Faso
-        ///</sumary>
+        [Description("Burkina Faso"), DefaultValue("226")]
         BF,
 
-        ///<sumary>
-        /// Bulgaria
-        ///</sumary>
+        [Description("Bulgaria"), DefaultValue("359")]
         BG,
 
-        ///<sumary>
-        /// Bahrain
-        ///</sumary>
+        [Description("Bahrain"), DefaultValue("973")]
         BH,
 
-        ///<sumary>
-        /// Burundi
-        ///</sumary>
+        [Description("Burundi"), DefaultValue("257")]
         BI,
 
-        ///<sumary>
-        /// Benin
-        ///</sumary>
+        [Description("Benin"), DefaultValue("229")]
         BJ,
 
-        ///<sumary>
-        /// Saint Barthélemy
-        ///</sumary>
+        [Description("Saint Barthélemy"), DefaultValue("590")]
         BL,
 
-        ///<sumary>
-        /// Bermuda
-        ///</sumary>
+        [Description("Bermuda"), DefaultValue("1-441")]
         BM,
 
-        ///<sumary>
-        /// Brunei Darussalam
-        ///</sumary>
+        [Description("Brunei"), DefaultValue("673")]
         BN,
 
-        ///<sumary>
-        /// Bolivia, Plurinational State of
-        ///</sumary>
+        [Description("Bolivia"), DefaultValue("591")]
         BO,
 
-        ///<sumary>
-        /// Bonaire, Sint Eustatius and Saba
-        ///</sumary>
+        [Description("Bonaire"), DefaultValue("")]
         BQ,
 
-        ///<sumary>
-        /// Brazil
-        ///</sumary>
+        [Description("Brazil"), DefaultValue("55")]
         BR,
 
-        ///<sumary>
-        /// Bahamas
-        ///</sumary>
+        [Description("Bahamas"), DefaultValue("1-242")]
         BS,
 
-        ///<sumary>
-        /// Bhutan
-        ///</sumary>
+        [Description("Bhutan"), DefaultValue("975")]
         BT,
 
-        ///<sumary>
-        /// Bouvet Island
-        ///</sumary>
+        [Description("Bouvet Island"), DefaultValue("")]
         BV,
 
-        ///<sumary>
-        /// Botswana
-        ///</sumary>
+        [Description("Botswana"), DefaultValue("267")]
         BW,
 
-        ///<sumary>
-        /// Belarus
-        ///</sumary>
+        [Description("Belarus"), DefaultValue("375")]
         BY,
 
-        ///<sumary>
-        /// Belize
-        ///</sumary>
+        [Description("Belize"), DefaultValue("501")]
         BZ,
 
-        ///<sumary>
-        /// Canada
-        ///</sumary>
+        [Description("Canada"), DefaultValue("1")]
         CA,
 
-        ///<sumary>
-        /// Cocos (Keeling) Islands
-        ///</sumary>
+        [Description("Cocos Islands"), DefaultValue("61")]
         CC,
 
-        ///<sumary>
-        /// Congo, the Democratic Republic of the
-        ///</sumary>
+        [Description("Democratic Republic of the Congo"), DefaultValue("243")]
         CD,
 
-        ///<sumary>
-        /// Central African Republic
-        ///</sumary>
+        [Description("Central African Republic"), DefaultValue("236")]
         CF,
 
-        ///<sumary>
-        /// Congo
-        ///</sumary>
+        [Description("Congo"), DefaultValue("243")]
         CG,
 
-        ///<sumary>
-        /// Switzerland
-        ///</sumary>
+        [Description("Switzerland"), DefaultValue("41")]
         CH,
 
-        ///<sumary>
-        /// Côte d'Ivoire
-        ///</sumary>
+        [Description("Côte d'Ivoire"), DefaultValue("")]
         CI,
 
-        ///<sumary>
-        /// Cook Islands
-        ///</sumary>
+        [Description("Cook Islands"), DefaultValue("682")]
         CK,
 
-        ///<sumary>
-        /// Chile
-        ///</sumary>
+        [Description("Chile"), DefaultValue("56")]
         CL,
 
-        ///<sumary>
-        /// Cameroon
-        ///</sumary>
+        [Description("Cameroon"), DefaultValue("237")]
         CM,
 
-        ///<sumary>
-        /// China
-        ///</sumary>
+        [Description("China"), DefaultValue("86")]
         CN,
 
-        ///<sumary>
-        /// Colombia
-        ///</sumary>
+        [Description("Colombia"), DefaultValue("57")]
         CO,
 
-        ///<sumary>
-        /// Costa Rica
-        ///</sumary>
+        [Description("Costa Rica"), DefaultValue("506")]
         CR,
 
-        ///<sumary>
-        /// Cuba
-        ///</sumary>
+        [Description("Cuba"), DefaultValue("53")]
         CU,
 
-        ///<sumary>
-        /// Cabo Verde
-        ///</sumary>
+        [Description("Cape Verde"), DefaultValue("238")]
         CV,
 
-        ///<sumary>
-        /// Curaçao
-        ///</sumary>
+        [Description("Curacao"), DefaultValue("599")]
         CW,
 
-        ///<sumary>
-        /// Christmas Island
-        ///</sumary>
+        [Description("Christmas Island"), DefaultValue("61")]
         CX,
 
-        ///<sumary>
-        /// Cyprus
-        ///</sumary>
+        [Description("Cyprus"), DefaultValue("357")]
         CY,
 
-        ///<sumary>
-        /// Czech Republic
-        ///</sumary>
+        [Description("Czech Republic"), DefaultValue("420")]
         CZ,
 
-        ///<sumary>
-        /// Germany
-        ///</sumary>
+        [Description("Germany"), DefaultValue("49")]
         DE,
 
-        ///<sumary>
-        /// Djibouti
-        ///</sumary>
+        [Description("Djibouti"), DefaultValue("253")]
         DJ,
 
-        ///<sumary>
-        /// Denmark
-        ///</sumary>
+        [Description("Denmark"), DefaultValue("45")]
         DK,
 
-        ///<sumary>
-        /// Dominica
-        ///</sumary>
+        [Description("Dominica"), DefaultValue("1-767")]
         DM,
 
-        ///<sumary>
-        /// Dominican Republic
-        ///</sumary>
+        [Description("Dominican Republic"), DefaultValue("1-809, 1-829, 1-849")]
         DO,
 
-        ///<sumary>
-        /// Algeria
-        ///</sumary>
+        [Description("Algeria"), DefaultValue("213")]
         DZ,
 
-        ///<sumary>
-        /// Ecuador
-        ///</sumary>
+        [Description("Ecuador"), DefaultValue("593")]
         EC,
 
-        ///<sumary>
-        /// Estonia
-        ///</sumary>
+        [Description("Estonia"), DefaultValue("372")]
         EE,
 
-        ///<sumary>
-        /// Egypt
-        ///</sumary>
+        [Description("Egypt"), DefaultValue("20")]
         EG,
 
-        ///<sumary>
-        /// Western Sahara
-        ///</sumary>
+        [Description("Western Sahara"), DefaultValue("212")]
         EH,
 
-        ///<sumary>
-        /// Eritrea
-        ///</sumary>
+        [Description("Eritrea"), DefaultValue("291")]
         ER,
 
-        ///<sumary>
-        /// Spain
-        ///</sumary>
+        [Description("Spain"), DefaultValue("34")]
         ES,
 
-        ///<sumary>
-        /// Ethiopia
-        ///</sumary>
+        [Description("Ethiopia"), DefaultValue("251")]
         ET,
 
-        ///<sumary>
-        /// Finland
-        ///</sumary>
+        [Description("Finland"), DefaultValue("358")]
         FI,
 
-        ///<sumary>
-        /// Fiji
-        ///</sumary>
+        [Description("Fiji"), DefaultValue("679")]
         FJ,
 
-        ///<sumary>
-        /// Falkland Islands (Malvinas)
-        ///</sumary>
+        [Description("Falkland Islands"), DefaultValue("500")]
         FK,
 
-        ///<sumary>
-        /// Micronesia, Federated States of
-        ///</sumary>
+        [Description("Micronesia"), DefaultValue("691")]
         FM,
 
-        ///<sumary>
-        /// Faroe Islands
-        ///</sumary>
+        [Description("Faroe Islands"), DefaultValue("298")]
         FO,
 
-        ///<sumary>
-        /// France
-        ///</sumary>
+        [Description("France"), DefaultValue("33")]
         FR,
 
-        ///<sumary>
-        /// Gabon
-        ///</sumary>
+        [Description("Gabon"), DefaultValue("241")]
         GA,
 
-        ///<sumary>
-        /// United Kingdom of Great Britain
-        ///</sumary>
+        [Description("United Kingdom"), DefaultValue("44")]
         GB,
 
-        ///<sumary>
-        /// Grenada
-        ///</sumary>
+        [Description("Grenada"), DefaultValue("1-473")]
         GD,
 
-        ///<sumary>
-        /// Georgia
-        ///</sumary>
+        [Description("Georgia"), DefaultValue("995")]
         GE,
 
-        ///<sumary>
-        /// French Guiana
-        ///</sumary>
+        [Description("French Guiana"), DefaultValue("")]
         GF,
 
-        ///<sumary>
-        /// Guernsey
-        ///</sumary>
+        [Description("Guernsey"), DefaultValue("44-1481")]
         GG,
 
-        ///<sumary>
-        /// Ghana
-        ///</sumary>
+        [Description("Ghana"), DefaultValue("233")]
         GH,
 
-        ///<sumary>
-        /// Gibraltar
-        ///</sumary>
+        [Description("Gibraltar"), DefaultValue("350")]
         GI,
 
-        ///<sumary>
-        /// Greenland
-        ///</sumary>
+        [Description("Greenland"), DefaultValue("299")]
         GL,
 
-        ///<sumary>
-        /// Gambia
-        ///</sumary>
+        [Description("Gambia"), DefaultValue("220")]
         GM,
 
-        ///<sumary>
-        /// Guinea
-        ///</sumary>
+        [Description("Guinea"), DefaultValue("224")]
         GN,
 
-        ///<sumary>
-        /// Guadeloupe
-        ///</sumary>
+        [Description("Guadeloupe"), DefaultValue("")]
         GP,
 
-        ///<sumary>
-        /// Equatorial Guinea
-        ///</sumary>
+        [Description("Equatorial Guinea"), DefaultValue("240")]
         GQ,
 
-        ///<sumary>
-        /// Greece
-        ///</sumary>
+        [Description("Greece"), DefaultValue("30")]
         GR,
 
-        ///<sumary>
-        /// South Georgia and the South Sandwich Islands
-        ///</sumary>
+        [Description("South Georgia and the South Sandwich Islands"), DefaultValue("")]
         GS,
 
-        ///<sumary>
-        /// Guatemala
-        ///</sumary>
+        [Description("Guatemala"), DefaultValue("502")]
         GT,
 
-        ///<sumary>
-        /// Guam
-        ///</sumary>
+        [Description("Guam"), DefaultValue("1-671")]
         GU,
 
-        ///<sumary>
-        /// Guinea-Bissau
-        ///</sumary>
+        [Description("Guinea-Bissau"), DefaultValue("245")]
         GW,
 
-        ///<sumary>
-        /// Guyana
-        ///</sumary>
+        [Description("Guyana"), DefaultValue("592")]
         GY,
 
-        ///<sumary>
-        /// Hong Kong
-        ///</sumary>
+        [Description("Hong Kong"), DefaultValue("852")]
         HK,
 
-        ///<sumary>
-        /// Heard Island and McDonald Islands
-        ///</sumary>
+        [Description("Heard Island and McDonald Islands"), DefaultValue("")]
         HM,
 
-        ///<sumary>
-        /// Honduras
-        ///</sumary>
+        [Description("Honduras"), DefaultValue("504")]
         HN,
 
-        ///<sumary>
-        /// Croatia
-        ///</sumary>
+        [Description("Croatia"), DefaultValue("385")]
         HR,
 
-        ///<sumary>
-        /// Haiti
-        ///</sumary>
+        [Description("Haiti"), DefaultValue("509")]
         HT,
 
-        ///<sumary>
-        /// Hungary
-        ///</sumary>
+        [Description("Hungary"), DefaultValue("36")]
         HU,
 
-        ///<sumary>
-        /// Indonesia
-        ///</sumary>
+        [Description("Indonesia"), DefaultValue("62")]
         ID,
 
-        ///<sumary>
-        /// Ireland
-        ///</sumary>
+        [Description("Ireland"), DefaultValue("353")]
         IE,
 
-        ///<sumary>
-        /// Israel
-        ///</sumary>
+        [Description("Israel"), DefaultValue("972")]
         IL,
 
-        ///<sumary>
-        /// Isle of Man
-        ///</sumary>
+        [Description("Isle of Man"), DefaultValue("44-1624")]
         IM,
 
-        ///<sumary>
-        /// India
-        ///</sumary>
+        [Description("India"), DefaultValue("91")]
         IN,
 
-        ///<sumary>
-        /// British Indian Ocean Territory
-        ///</sumary>
+        [Description("British Indian Ocean Territory"), DefaultValue("246")]
         IO,
 
-        ///<sumary>
-        /// Iraq
-        ///</sumary>
+        [Description("Iraq"), DefaultValue("964")]
         IQ,
 
-        ///<sumary>
-        /// Iran, Islamic Republic of
-        ///</sumary>
+        [Description("Iran"), DefaultValue("98")]
         IR,
 
-        ///<sumary>
-        /// Iceland
-        ///</sumary>
+        [Description("Iceland"), DefaultValue("354")]
         IS,
 
-        ///<sumary>
-        /// Italy
-        ///</sumary>
+        [Description("Italy"), DefaultValue("39")]
         IT,
 
-        ///<sumary>
-        /// Jersey
-        ///</sumary>
+        [Description("Jersey"), DefaultValue("44-1534")]
         JE,
 
-        ///<sumary>
-        /// Jamaica
-        ///</sumary>
+        [Description("Jamaica"), DefaultValue("1-876")]
         JM,
 
-        ///<sumary>
-        /// Jordan
-        ///</sumary>
+        [Description("Jordan"), DefaultValue("962")]
         JO,
 
-        ///<sumary>
-        /// Japan
-        ///</sumary>
+        [Description("Japan"), DefaultValue("81")]
         JP,
 
-        ///<sumary>
-        /// Kenya
-        ///</sumary>
+        [Description("Kenya"), DefaultValue("254")]
         KE,
 
-        ///<sumary>
-        /// Kyrgyzstan
-        ///</sumary>
+        [Description("Kyrgyzstan"), DefaultValue("996")]
         KG,
 
-        ///<sumary>
-        /// Cambodia
-        ///</sumary>
+        [Description("Cambodia"), DefaultValue("855")]
         KH,
 
-        ///<sumary>
-        /// Kiribati
-        ///</sumary>
+        [Description("Kiribati"), DefaultValue("686")]
         KI,
 
-        ///<sumary>
-        /// Comoros
-        ///</sumary>
+        [Description("Comoros"), DefaultValue("269")]
         KM,
 
-        ///<sumary>
-        /// Saint Kitts and Nevis
-        ///</sumary>
+        [Description("Saint Kitts and Nevis"), DefaultValue("1-869")]
         KN,
 
-        ///<sumary>
-        /// Korea, Democratic People's Republic of
-        ///</sumary>
+        [Description("North Korea"), DefaultValue("850")]
         KP,
 
-        ///<sumary>
-        /// Korea, Republic of
-        ///</sumary>
+        [Description("South Korea"), DefaultValue("82")]
         KR,
 
-        ///<sumary>
-        /// Kuwait
-        ///</sumary>
+        [Description("Kuwait"), DefaultValue("965")]
         KW,
 
-        ///<sumary>
-        /// Cayman Islands
-        ///</sumary>
+        [Description("Cayman Islands"), DefaultValue("1-345")]
         KY,
 
-        ///<sumary>
-        /// Kazakhstan
-        ///</sumary>
+        [Description("Kazakhstan"), DefaultValue("7")]
         KZ,
 
-        ///<sumary>
-        /// Lao People's Democratic Republic
-        ///</sumary>
+        [Description("Laos"), DefaultValue("856")]
         LA,
 
-        ///<sumary>
-        /// Lebanon
-        ///</sumary>
+        [Description("Lebanon"), DefaultValue("961")]
         LB,
 
-        ///<sumary>
-        /// Saint Lucia
-        ///</sumary>
+        [Description("Saint Lucia"), DefaultValue("1-758")]
         LC,
 
-        ///<sumary>
-        /// Liechtenstein
-        ///</sumary>
+        [Description("Liechtenstein"), DefaultValue("423")]
         LI,
 
-        ///<sumary>
-        /// Sri Lanka
-        ///</sumary>
+        [Description("Sri Lanka"), DefaultValue("94")]
         LK,
 
-        ///<sumary>
-        /// Liberia
-        ///</sumary>
+        [Description("Liberia"), DefaultValue("231")]
         LR,
 
-        ///<sumary>
-        /// Lesotho
-        ///</sumary>
+        [Description("Lesotho"), DefaultValue("266")]
         LS,
 
-        ///<sumary>
-        /// Lithuania
-        ///</sumary>
+        [Description("Lithuania"), DefaultValue("370")]
         LT,
 
-        ///<sumary>
-        /// Luxembourg
-        ///</sumary>
+        [Description("Luxembourg"), DefaultValue("352")]
         LU,
 
-        ///<sumary>
-        /// Latvia
-        ///</sumary>
+        [Description("Latvia"), DefaultValue("371")]
         LV,
 
-        ///<sumary>
-        /// Libya
-        ///</sumary>
+        [Description("Libya"), DefaultValue("218")]
         LY,
 
-        ///<sumary>
-        /// Morocco
-        ///</sumary>
+        [Description("Morocco"), DefaultValue("212")]
         MA,
 
-        ///<sumary>
-        /// Monaco
-        ///</sumary>
+        [Description("Monaco"), DefaultValue("377")]
         MC,
 
-        ///<sumary>
-        /// Moldova, Republic of
-        ///</sumary>
+        [Description("Moldova"), DefaultValue("373")]
         MD,
 
-        ///<sumary>
-        /// Montenegro
-        ///</sumary>
+        [Description("Montenegro"), DefaultValue("382")]
         ME,
 
-        ///<sumary>
-        /// Saint Martin (French part)
-        ///</sumary>
+        [Description("Saint Martin"), DefaultValue("590")]
         MF,
 
-        ///<sumary>
-        /// Madagascar
-        ///</sumary>
+        [Description("Madagascar"), DefaultValue("261")]
         MG,
 
-        ///<sumary>
-        /// Marshall Islands
-        ///</sumary>
+        [Description("Marshall Islands"), DefaultValue("692")]
         MH,
 
-        ///<sumary>
-        /// Macedonia
-        ///</sumary>
+        [Description("Macedonia"), DefaultValue("389")]
         MK,
 
-        ///<sumary>
-        /// Mali
-        ///</sumary>
+        [Description("Mali"), DefaultValue("223")]
         ML,
 
-        ///<sumary>
-        /// Myanmar
-        ///</sumary>
+        [Description("Myanmar"), DefaultValue("95")]
         MM,
 
-        ///<sumary>
-        /// Mongolia
-        ///</sumary>
+        [Description("Mongolia"), DefaultValue("976")]
         MN,
 
-        ///<sumary>
-        /// Macao
-        ///</sumary>
+        [Description("Macau"), DefaultValue("853")]
         MO,
 
-        ///<sumary>
-        /// Northern Mariana Islands
-        ///</sumary>
+        [Description("Northern Mariana Islands"), DefaultValue("1-670")]
         MP,
 
-        ///<sumary>
-        /// Martinique
-        ///</sumary>
+        [Description("Martinique"), DefaultValue("")]
         MQ,
 
-        ///<sumary>
-        /// Mauritania
-        ///</sumary>
+        [Description("Mauritania"), DefaultValue("222")]
         MR,
 
-        ///<sumary>
-        /// Montserrat
-        ///</sumary>
+        [Description("Montserrat"), DefaultValue("1-664")]
         MS,
 
-        ///<sumary>
-        /// Malta
-        ///</sumary>
+        [Description("Malta"), DefaultValue("356")]
         MT,
 
-        ///<sumary>
-        /// Mauritius
-        ///</sumary>
+        [Description("Mauritius"), DefaultValue("230")]
         MU,
 
-        ///<sumary>
-        /// Maldives
-        ///</sumary>
+        [Description("Maldives"), DefaultValue("960")]
         MV,
 
-        ///<sumary>
-        /// Malawi
-        ///</sumary>
+        [Description("Malawi"), DefaultValue("265")]
         MW,
 
-        ///<sumary>
-        /// Mexico
-        ///</sumary>
+        [Description("Mexico"), DefaultValue("52")]
         MX,
 
-        ///<sumary>
-        /// Malaysia
-        ///</sumary>
+        [Description("Malaysia"), DefaultValue("60")]
         MY,
 
-        ///<sumary>
-        /// Mozambique
-        ///</sumary>
+        [Description("Mozambique"), DefaultValue("258")]
         MZ,
 
-        ///<sumary>
-        /// Namibia
-        ///</sumary>
+        [Description("Namibia"), DefaultValue("264")]
         NA,
 
-        ///<sumary>
-        /// New Caledonia
-        ///</sumary>
+        [Description("New Caledonia"), DefaultValue("687")]
         NC,
 
-        ///<sumary>
-        /// Niger
-        ///</sumary>
+        [Description("Niger"), DefaultValue("227")]
         NE,
 
-        ///<sumary>
-        /// Norfolk Island
-        ///</sumary>
+        [Description("Norfolk Island"), DefaultValue("")]
         NF,
 
-        ///<sumary>
-        /// Nigeria
-        ///</sumary>
+        [Description("Nigeria"), DefaultValue("234")]
         NG,
 
-        ///<sumary>
-        /// Nicaragua
-        ///</sumary>
+        [Description("Nicaragua"), DefaultValue("505")]
         NI,
 
-        ///<sumary>
-        /// Netherlands
-        ///</sumary>
+        [Description("Netherlands"), DefaultValue("31")]
         NL,
 
-        ///<sumary>
-        /// Norway
-        ///</sumary>
+        [Description("Norway"), DefaultValue("47")]
         NO,
 
-        ///<sumary>
-        /// Nepal
-        ///</sumary>
+        [Description("Nepal"), DefaultValue("977")]
         NP,
 
-        ///<sumary>
-        /// Nauru
-        ///</sumary>
+        [Description("Nauru"), DefaultValue("674")]
         NR,
 
-        ///<sumary>
-        /// Niue
-        ///</sumary>
+        [Description("Niue"), DefaultValue("683")]
         NU,
 
-        ///<sumary>
-        /// New Zealand
-        ///</sumary>
+        [Description("New Zealand"), DefaultValue("64")]
         NZ,
 
-        ///<sumary>
-        /// Oman
-        ///</sumary>
+        [Description("Oman"), DefaultValue("968")]
         OM,
 
-        ///<sumary>
-        /// Panama
-        ///</sumary>
+        [Description("Panama"), DefaultValue("507")]
         PA,
 
-        ///<sumary>
-        /// Peru
-        ///</sumary>
+        [Description("Peru"), DefaultValue("51")]
         PE,
 
-        ///<sumary>
-        /// French Polynesia
-        ///</sumary>
+        [Description("French Polynesia"), DefaultValue("689")]
         PF,
 
-        ///<sumary>
-        /// Papua New Guinea
-        ///</sumary>
+        [Description("Papua New Guinea"), DefaultValue("675")]
         PG,
 
-        ///<sumary>
-        /// Philippines
-        ///</sumary>
+        [Description("Philippines"), DefaultValue("63")]
         PH,
 
-        ///<sumary>
-        /// Pakistan
-        ///</sumary>
+        [Description("Pakistan"), DefaultValue("92")]
         PK,
 
-        ///<sumary>
-        /// Poland
-        ///</sumary>
+        [Description("Poland"), DefaultValue("48")]
         PL,
 
-        ///<sumary>
-        /// Saint Pierre and Miquelon
-        ///</sumary>
+        [Description("Saint Pierre and Miquelon"), DefaultValue("508")]
         PM,
 
-        ///<sumary>
-        /// Pitcairn
-        ///</sumary>
+        [Description("Pitcairn"), DefaultValue("64")]
         PN,
 
-        ///<sumary>
-        /// Puerto Rico
-        ///</sumary>
+        [Description("Puerto Rico"), DefaultValue("1-787, 1-939")]
         PR,
 
-        ///<sumary>
-        /// Palestine, State of
-        ///</sumary>
+        [Description("Palestine"), DefaultValue("970")]
         PS,
 
-        ///<sumary>
-        /// Portugal
-        ///</sumary>
+        [Description("Portugal"), DefaultValue("351")]
         PT,
 
-        ///<sumary>
-        /// Palau
-        ///</sumary>
+        [Description("Palau"), DefaultValue("680")]
         PW,
 
-        ///<sumary>
-        /// Paraguay
-        ///</sumary>
+        [Description("Paraguay"), DefaultValue("595")]
         PY,
 
-        ///<sumary>
-        /// Qatar
-        ///</sumary>
+        [Description("Qatar"), DefaultValue("974")]
         QA,
 
-        ///<sumary>
-        /// Réunion
-        ///</sumary>
+        [Description("Réunion"), DefaultValue("262")]
         RE,
 
-        ///<sumary>
-        /// Romania
-        ///</sumary>
+        [Description("Romania"), DefaultValue("40")]
         RO,
 
-        ///<sumary>
-        /// Serbia
-        ///</sumary>
+        [Description("Serbia"), DefaultValue("381")]
         RS,
 
-        ///<sumary>
-        /// Russian Federation
-        ///</sumary>
+        [Description("Russia"), DefaultValue("7")]
         RU,
 
-        ///<sumary>
-        /// Rwanda
-        ///</sumary>
+        [Description("Rwanda"), DefaultValue("250")]
         RW,
 
-        ///<sumary>
-        /// Saudi Arabia
-        ///</sumary>
+        [Description("Saudi Arabia"), DefaultValue("966")]
         SA,
 
-        ///<sumary>
-        /// Solomon Islands
-        ///</sumary>
+        [Description("Solomon Islands"), DefaultValue("677")]
         SB,
 
-        ///<sumary>
-        /// Seychelles
-        ///</sumary>
+        [Description("Seychelles"), DefaultValue("248")]
         SC,
 
-        ///<sumary>
-        /// Sudan
-        ///</sumary>
+        [Description("Sudan"), DefaultValue("249")]
         SD,
 
-        ///<sumary>
-        /// Sweden
-        ///</sumary>
+        [Description("Sweden"), DefaultValue("46")]
         SE,
 
-        ///<sumary>
-        /// Singapore
-        ///</sumary>
+        [Description("Singapore"), DefaultValue("65")]
         SG,
 
-        ///<sumary>
-        /// Saint Helena, Ascension and Tristan da Cunha
-        ///</sumary>
+        [Description("Saint Helena"), DefaultValue("290")]
         SH,
 
-        ///<sumary>
-        /// Slovenia
-        ///</sumary>
+        [Description("Slovenia"), DefaultValue("386")]
         SI,
 
-        ///<sumary>
-        /// Svalbard and Jan Mayen
-        ///</sumary>
+        [Description("Svalbard and Jan Mayen"), DefaultValue("47")]
         SJ,
 
-        ///<sumary>
-        /// Slovakia
-        ///</sumary>
+        [Description("Slovakia"), DefaultValue("421")]
         SK,
 
-        ///<sumary>
-        /// Sierra Leone
-        ///</sumary>
+        [Description("Sierra Leone"), DefaultValue("232")]
         SL,
 
-        ///<sumary>
-        /// San Marino
-        ///</sumary>
+        [Description("San Marino"), DefaultValue("378")]
         SM,
 
-        ///<sumary>
-        /// Senegal
-        ///</sumary>
+        [Description("Senegal"), DefaultValue("221")]
         SN,
 
-        ///<sumary>
-        /// Somalia
-        ///</sumary>
+        [Description("Somalia"), DefaultValue("252")]
         SO,
 
-        ///<sumary>
-        /// Suriname
-        ///</sumary>
+        [Description("Suriname"), DefaultValue("597")]
         SR,
 
-        ///<sumary>
-        /// South Sudan
-        ///</sumary>
+        [Description("South Sudan"), DefaultValue("211")]
         SS,
 
-        ///<sumary>
-        /// Sao Tome and Principe
-        ///</sumary>
+        [Description("Sao Tome and Principe"), DefaultValue("239")]
         ST,
 
-        ///<sumary>
-        /// El Salvador
-        ///</sumary>
+        [Description("El Salvador"), DefaultValue("503")]
         SV,
 
-        ///<sumary>
-        /// Sint Maarten (Dutch part)
-        ///</sumary>
+        [Description("Sint Maarten"), DefaultValue("1-721")]
         SX,
 
-        ///<sumary>
-        /// Syrian Arab Republic
-        ///</sumary>
+        [Description("Syria"), DefaultValue("963")]
         SY,
 
-        ///<sumary>
-        /// Swaziland
-        ///</sumary>
+        [Description("Swaziland"), DefaultValue("268")]
         SZ,
 
-        ///<sumary>
-        /// Turks and Caicos Islands
-        ///</sumary>
+        [Description("Turks and Caicos Islands"), DefaultValue("1-649")]
         TC,
 
-        ///<sumary>
-        /// Chad
-        ///</sumary>
+        [Description("Chad"), DefaultValue("235")]
         TD,
 
-        ///<sumary>
-        /// French Southern Territories
-        ///</sumary>
+        [Description("French Southern Territories"), DefaultValue("")]
         TF,
 
-        ///<sumary>
-        /// Togo
-        ///</sumary>
+        [Description("Togo"), DefaultValue("228")]
         TG,
 
-        ///<sumary>
-        /// Thailand
-        ///</sumary>
+        [Description("Thailand"), DefaultValue("66")]
         TH,
 
-        ///<sumary>
-        /// Tajikistan
-        ///</sumary>
+        [Description("Tajikistan"), DefaultValue("992")]
         TJ,
 
-        ///<sumary>
-        /// Tokelau
-        ///</sumary>
+        [Description("Tokelau"), DefaultValue("690")]
         TK,
 
-        ///<sumary>
-        /// Timor-Leste
-        ///</sumary>
+        [Description("East Timor"), DefaultValue("670")]
         TL,
 
-        ///<sumary>
-        /// Turkmenistan
-        ///</sumary>
+        [Description("Turkmenistan"), DefaultValue("993")]
         TM,
 
-        ///<sumary>
-        /// Tunisia
-        ///</sumary>
+        [Description("Tunisia"), DefaultValue("216")]
         TN,
 
-        ///<sumary>
-        /// Tonga
-        ///</sumary>
+        [Description("Tonga"), DefaultValue("676")]
         TO,
 
-        ///<sumary>
-        /// Turkey
-        ///</sumary>
+        [Description("Turkey"), DefaultValue("90")]
         TR,
 
-        ///<sumary>
-        /// Trinidad and Tobago
-        ///</sumary>
+        [Description("Trinidad and Tobago"), DefaultValue("1-868")]
         TT,
 
-        ///<sumary>
-        /// Tuvalu
-        ///</sumary>
+        [Description("Tuvalu"), DefaultValue("688")]
         TV,
 
-        ///<sumary>
-        /// Taiwan, Province of China
-        ///</sumary>
+        [Description("Taiwan"), DefaultValue("886")]
         TW,
 
-        ///<sumary>
-        /// Tanzania, United Republic of
-        ///</sumary>
+        [Description("Tanzania"), DefaultValue("255")]
         TZ,
 
-        ///<sumary>
-        /// Ukraine
-        ///</sumary>
+        [Description("Ukraine"), DefaultValue("380")]
         UA,
 
-        ///<sumary>
-        /// Uganda
-        ///</sumary>
+        [Description("Uganda"), DefaultValue("256")]
         UG,
 
-        ///<sumary>
-        /// United States Minor Outlying Islands
-        ///</sumary>
+        [Description("United States Minor Outlying Islands"), DefaultValue("")]
         UM,
 
-        ///<sumary>
-        /// United States of America
-        ///</sumary>
+        [Description("United States of America"), DefaultValue("1")]
         US,
 
-        ///<sumary>
-        /// Uruguay
-        ///</sumary>
+        [Description("Uruguay"), DefaultValue("598")]
         UY,
 
-        ///<sumary>
-        /// Uzbekistan
-        ///</sumary>
+        [Description("Uzbekistan"), DefaultValue("998")]
         UZ,
 
-        ///<sumary>
-        /// Holy See
-        ///</sumary>
+        [Description("Holy See"), DefaultValue("")]
         VA,
 
-        ///<sumary>
-        /// Saint Vincent and the Grenadines
-        ///</sumary>
+        [Description("Saint Vincent and the Grenadines"), DefaultValue("1-784")]
         VC,
 
-        ///<sumary>
-        /// Venezuela, Bolivarian Republic of
-        ///</sumary>
+        [Description("Venezuela"), DefaultValue("58")]
         VE,
 
-        ///<sumary>
-        /// Virgin Islands, British
-        ///</sumary>
+        [Description("British Virgin Islands"), DefaultValue("1-284")]
         VG,
 
-        ///<sumary>
-        /// Virgin Islands, U.S.
-        ///</sumary>
+        [Description("U.S. Virgin Islands"), DefaultValue("1-340")]
         VI,
 
-        ///<sumary>
-        /// Viet Nam
-        ///</sumary>
+        [Description("Vietnam"), DefaultValue("84")]
         VN,
 
-        ///<sumary>
-        /// Vanuatu
-        ///</sumary>
+        [Description("Vanuatu"), DefaultValue("678")]
         VU,
 
-        ///<sumary>
-        /// Wallis and Futuna
-        ///</sumary>
+        [Description("Wallis and Futuna"), DefaultValue("681")]
         WF,
 
-        ///<sumary>
-        /// Samoa
-        ///</sumary>
+        [Description("Samoa"), DefaultValue("685")]
         WS,
 
-        ///<sumary>
-        /// Yemen
-        ///</sumary>
+        [Description("Yemen"), DefaultValue("967")]
         YE,
 
-        ///<sumary>
-        /// Mayotte
-        ///</sumary>
+        [Description("Mayotte"), DefaultValue("262")]
         YT,
 
-        ///<sumary>
-        /// South Africa
-        ///</sumary>
+        [Description("Uganda"), DefaultValue("27")]
         ZA,
 
-        ///<sumary>
-        /// Zambia
-        ///</sumary>
+        [Description("Zambia"), DefaultValue("260")]
         ZM,
 
-        ///<sumary>
-        /// Zimbabwe
-        ///</sumary>
+        [Description("Zimbabwe"), DefaultValue("263")]
         ZW
     }
 }

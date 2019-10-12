@@ -9,4 +9,4 @@
         public string FromEmail { get; set; }
         public string DisplayName { get; set; }
     }
-}
+} 

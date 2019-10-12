@@ -74,6 +74,9 @@
           <e p="EncryptionHelper.cs" t="Include" />
           <e p="IEncryptionHelper.cs" t="Include" />
         </e>
+        <e p="EnumTool" t="Include">
+          <e p="EnumHelper.cs" t="Include" />
+        </e>
         <e p="Logger" t="Include">
           <e p="ExceptionContract.cs" t="Include" />
           <e p="ExceptionManager.cs" t="Include" />

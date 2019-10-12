@@ -11,7 +11,7 @@ namespace DataRepository.Repositories.Base
         public string DbConnection { get; set; }
         public int DbName { get; set; }
     }
-    
+
     public class MongoRepository : IMongoRepository
     {
         private readonly IMongoDatabase _db;

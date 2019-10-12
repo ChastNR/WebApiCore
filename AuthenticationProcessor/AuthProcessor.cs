@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AuthenticationProcessor.Contracts;
 using AuthenticationProcessor.Interfaces;
 using AuthenticationProcessor.ProcessorComponents;
-using AuthenticationProcessor.Settings;
+using AuthenticationProcessor.UserData;
 using DataRepository.Interfaces;
 using DataRepository.Interfaces.Base;
+using Tools.EnumTool;
 
 namespace AuthenticationProcessor
 {

@@ -12,7 +12,8 @@
           "BCrypt.Net-Next": "3.2.1",
           "DataRepository": "1.0.0",
           "Microsoft.Extensions.Options": "3.0.0",
-          "System.IdentityModel.Tokens.Jwt": "5.5.0"
+          "System.IdentityModel.Tokens.Jwt": "5.5.0",
+          "Tools": "1.0.0"
         },
         "runtime": {
           "AuthenticationProcessor.dll": {}
@@ -1771,6 +1772,16 @@
         "runtime": {
           "DataRepository.dll": {}
         }
+      },
+      "Tools/1.0.0": {
+        "dependencies": {
+          "DataRepository": "1.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "3.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0"
+        },
+        "runtime": {
+          "Tools.dll": {}
+        }
       }
     }
   },
@@ -2796,6 +2807,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "DataRepository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Tools/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

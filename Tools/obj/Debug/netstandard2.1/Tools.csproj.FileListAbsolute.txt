@@ -1,0 +1,11 @@
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/bin/Debug/netstandard2.1/Tools.deps.json
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/bin/Debug/netstandard2.1/Tools.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/bin/Debug/netstandard2.1/Tools.pdb
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/bin/Debug/netstandard2.1/DataRepository.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/bin/Debug/netstandard2.1/DataRepository.pdb
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/Debug/netstandard2.1/Tools.csprojAssemblyReference.cache
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/Debug/netstandard2.1/Tools.AssemblyInfoInputs.cache
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/Debug/netstandard2.1/Tools.AssemblyInfo.cs
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/Debug/netstandard2.1/Tools.csproj.CopyComplete
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/Debug/netstandard2.1/Tools.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/Debug/netstandard2.1/Tools.pdb

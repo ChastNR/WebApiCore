@@ -25,17 +25,7 @@ namespace UniversalWebApi.Filters
                 Method = action
             };
 
-            _manager.Log(exceptionContract).GetAwaiter().GetResult();
-
-            //1) AddNewException(apiExceptionContract).GetAwaiter().GetResult();
-
-            //2) var addTask = AddNewException(apiExceptionContract);
-            //addTask.Wait();
-
-            //3) var addTask2 = Task.Run(async () => await AddNewException(apiExceptionContract));
-            //addTask2.Wait();
+            _manager.Log(exceptionContract).Wait();
         }
-
-        //private async Task AddNewException(ApiExceptionContract contract) => await _mongo.AddAsync(contract);
     }
 }

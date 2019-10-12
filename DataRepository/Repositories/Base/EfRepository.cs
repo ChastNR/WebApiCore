@@ -10,20 +10,22 @@ namespace DataRepository.Repositories.Base
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions options) : base(options)
+        {
+        }
     }
-    
-    public class  EfRepository<TContext> : IEfRepository where TContext : DbContext
+
+    public class EfRepository<TContext> : IEfRepository where TContext : DbContext
     {
         protected TContext Context;
-        
+
         public EfRepository(TContext context)
         {
             Context = context;
         }
 
-        public void Create<TEntity>(TEntity entity) 
-            where TEntity : class, IEntity 
+        public void Create<TEntity>(TEntity entity)
+            where TEntity : class, IEntity
             => Context.Set<TEntity>().Add(entity);
 
         public void Update<TEntity>(TEntity entity)
@@ -45,13 +47,14 @@ namespace DataRepository.Repositories.Base
             {
                 dbSet.Attach(entity);
             }
+
             dbSet.Remove(entity);
         }
 
         public void Save() => Context.SaveChanges();
-        
+
         public Task SaveAsync() => Context.SaveChangesAsync();
-        
+
         protected IQueryable<TEntity> GetQueryable<TEntity>(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
@@ -66,21 +69,25 @@ namespace DataRepository.Repositories.Base
             {
                 query = query.Where(filter);
             }
-            query = includeProperties.Split(new[] { ',' },
-                StringSplitOptions.RemoveEmptyEntries).
-                Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+
+            query = includeProperties.Split(new[] {','},
+                    StringSplitOptions.RemoveEmptyEntries)
+                .Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
             if (orderBy != null)
             {
                 query = orderBy(query);
             }
+
             if (skip.HasValue)
             {
                 query = query.Skip(skip.Value);
             }
+
             if (take.HasValue)
             {
                 query = query.Take(take.Value);
             }
+
             return query.AsQueryable();
         }
 
@@ -117,7 +124,7 @@ namespace DataRepository.Repositories.Base
             int? take = null)
             where TEntity : class, IEntity
             => await GetQueryable(filter, orderBy, includeProperties, skip, take).ToListAsync();
-        
+
         public TEntity GetOne<TEntity>(
             Expression<Func<TEntity, bool>> filter = null,
             string includeProperties = "")

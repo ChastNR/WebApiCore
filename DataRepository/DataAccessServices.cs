@@ -15,14 +15,14 @@ namespace DataRepository
             {
                 options.UseSqlServer(configuration.GetConnectionString("DbConnection"));
             });
-            services.AddScoped<IEfRepository, EfRepository<ApplicationDbContext>>();
-            
+            services.AddTransient<IEfRepository, EfRepository<ApplicationDbContext>>();
+
             //MongoDbRepositories
             services.AddTransient<IMongoRepository>(s =>
                 new MongoRepository(
                     configuration.GetSection("MongoDbSettings").GetSection("DbConnection").Value,
                     configuration.GetSection("MongoDbSettings").GetSection("DbName").Value));
-            
+
             //SqlRepositories
             services.AddTransient<ISqlRepository>(s =>
                 new SqlRepository(configuration.GetConnectionString("DbConnection")));
