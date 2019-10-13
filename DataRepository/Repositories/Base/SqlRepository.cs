@@ -35,6 +35,12 @@ namespace DataRepository.Repositories.Base
             await connection.ExecuteAsync(GenerateInsertQuery<T>(), t);
         }
 
+        public async Task<object> InsertAsyncWithReturnId<T>(T t) where T : class
+        {
+            using var connection = CreateConnection();
+            return await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<T>(), t);
+        }
+
         public async Task SaveRangeAsync<T>(IEnumerable<T> list) where T : class
         {
             using var connection = CreateConnection();
@@ -68,6 +74,17 @@ namespace DataRepository.Repositories.Base
             var properties = GenerateListOfProperties(GetProperties<T>());
             properties.ForEach(prop => insertQuery.Append($"{prop},"));
             insertQuery.Remove(insertQuery.Length - 1, 1).Append(") VALUES (");
+            properties.ForEach(prop => insertQuery.Append($"@{prop},"));
+            insertQuery.Remove(insertQuery.Length - 1, 1).Append(")");
+            return insertQuery.ToString();
+        }
+
+        protected string GenerateInsertQueryWithReturnId<T>() where T : class
+        {
+            var insertQuery = new StringBuilder($"INSERT INTO [{typeof(T).Name}] (");
+            var properties = GenerateListOfProperties(GetProperties<T>());
+            properties.ForEach(prop => insertQuery.Append($"{prop},"));
+            insertQuery.Remove(insertQuery.Length - 1, 1).Append(") OUTPUT Inserted.ID VALUES (");
             properties.ForEach(prop => insertQuery.Append($"@{prop},"));
             insertQuery.Remove(insertQuery.Length - 1, 1).Append(")");
             return insertQuery.ToString();

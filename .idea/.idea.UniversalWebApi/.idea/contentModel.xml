@@ -86,8 +86,9 @@
           <e p="EmailSender" t="Include">
             <e p="EmailSender.cs" t="Include" />
             <e p="EmailSettings.cs" t="Include" />
-            <e p="IEmailSender.cs" t="Include" />
           </e>
+          <e p="IMessageSender.cs" t="Include" />
+          <e p="MessageContract.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

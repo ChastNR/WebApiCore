@@ -12,13 +12,12 @@ namespace AuthenticationProcessor.ProcessorComponents
     public class JwtComponent
     {
         private AuthOptions AuthOptions { get; }
-
         public JwtComponent(IOptions<AuthOptions> authOptions)
         {
             AuthOptions = authOptions.Value;
         }
 
-        public string GetToken(string id)
+        public string GetToken(string userId)
         {
             var signingCredentials =
                 new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthOptions.SecurityKey)),
@@ -26,7 +25,7 @@ namespace AuthenticationProcessor.ProcessorComponents
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, id)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, userId)
             };
 
             var token = new JwtSecurityToken(

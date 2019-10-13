@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace AuthenticationProcessor.UserData
 {
-    public enum CountryCodes : byte
+    public enum CountryCodes
     {
         [Description("Andorra"), DefaultValue("376")]
         AD = 1,

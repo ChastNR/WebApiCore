@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataRepository.Interfaces.Base;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
 using UniversalWebApi.Filters;
 
@@ -10,7 +11,7 @@ namespace UniversalWebApi.Controllers.BaseControllers
     [ServiceFilter(typeof(ApiExceptionFilter))]
     public abstract class MongoDbController<T> : Controller where T : class, IMongoDoc
     {
-        protected IMongoRepository Db => (IMongoRepository)HttpContext.RequestServices.GetService(typeof(IMongoRepository));
+        protected IMongoRepository Db => HttpContext.RequestServices.GetService<IMongoRepository>();
 
         [HttpGet]
         public async Task<IEnumerable<T>> Get() => await Db.GetAsync<T>();

@@ -1,6 +1,3 @@
-using System;
-using AuthenticationProcessor.UserData;
-
 namespace AuthenticationProcessor.Settings
 {
     public class LoginDataContract

@@ -14,6 +14,6 @@ namespace Tools.Logger
         public DateTime Date { get; set; } = DateTime.Now;
 
         //Additional Data
-        public byte StatusCode { get; set; }
+        public int StatusCode { get; set; }
     }
 }

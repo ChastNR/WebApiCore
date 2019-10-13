@@ -5,22 +5,22 @@ using Microsoft.Extensions.Options;
 
 namespace Tools.Messages.EmailSender
 {
-    public class EmailSender : IEmailSender
+    public class EmailSender : IMessageSender
     {
         private readonly EmailSettings _emailSettings;
         public EmailSender(IOptions<EmailSettings> emailSettings) => _emailSettings = emailSettings.Value;
 
-        public async Task SendEmailAsync(string mailTo, string mailSubject, string mailBody)
+        public async Task SendMessageAsync(MessageContract contract)
             => await new SmtpClient(_emailSettings.PrimaryDomain, _emailSettings.PrimaryPort)
             {
                 Credentials = new NetworkCredential(_emailSettings.UsernameEmail, _emailSettings.UsernamePassword),
                 EnableSsl = true
             }.SendMailAsync(new MailMessage(
                 new MailAddress(_emailSettings.FromEmail, _emailSettings.DisplayName),
-                new MailAddress(mailTo))
+                new MailAddress(contract.To))
             {
-                Subject = mailSubject,
-                Body = mailBody
+                Subject = contract.Title,
+                Body = contract.Body
             });
     }
 }

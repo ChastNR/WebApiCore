@@ -6,6 +6,7 @@ namespace DataRepository.Interfaces
 {
     public interface IUserRepository : ISqlRepository
     {
-        Task<User> GetUserWithConditionAsync(string email, string phoneNumber);
+        Task<bool> AnotherUserWithSameProps(string email, string phoneNumber);
+        Task<User> GetUserByEmailOrPhoneNumber(string email, string phoneNumber);
     }
 }

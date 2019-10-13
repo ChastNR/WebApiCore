@@ -1,48 +1,45 @@
 ﻿using System.Threading.Tasks;
 using AuthenticationProcessor.Contracts;
 using AuthenticationProcessor.Interfaces;
-using AuthenticationProcessor.ProcessorComponents;
 using AuthenticationProcessor.UserData;
+using DataRepository.Contracts;
 using DataRepository.Interfaces;
-using DataRepository.Interfaces.Base;
-using Tools.EnumTool;
+using Microsoft.AspNetCore.Http;
 
 namespace AuthenticationProcessor
 {
     public class AuthProcessor : IAuthProcessor
     {
         private readonly IUserRepository _sqlRepository;
-        private readonly AuthLogger _logger;
+        private readonly IHttpContextAccessor _context;
 
-        public AuthProcessor(IUserRepository sqlRepository, IMongoRepository repo)
+        public AuthProcessor(IUserRepository sqlRepository, IHttpContextAccessor context)
         {
             _sqlRepository = sqlRepository;
-            _logger = new AuthLogger(repo);
+            _context = context;
         }
-
-//        public async Task Login(LoginDataContract data)
-//        {
-//            await null;
-//        }
 
         public async Task<bool> Register(RegistrationContract contract)
         {
-            if (await ProcessRegistrationData(contract.Email, contract.PhoneNumber))
+            if (await _sqlRepository.AnotherUserWithSameProps(contract.Email, contract.PhoneNumber)) return false;
+
+            var userAuthData = new UserAuthData
             {
-                _logger.Log();
-                return false;
-            }
-            
-            
-            
+                LastUsedIp = _context.HttpContext.Connection.RemoteIpAddress.ToString(),
+                UserAgent = _context.HttpContext.Request.Headers["User-Agent"],
+            };
+
+            var userInsertId = (int) await _sqlRepository.InsertAsyncWithReturnId(new User
+            {
+                Name = contract.Name,
+                Email = contract.Email
+            });
+
+            userAuthData.UserId = userInsertId;
+
+            await _sqlRepository.InsertAsync(userAuthData);
+
             return true;
         }
-
-        private async Task<bool> ProcessRegistrationData(string email, string phoneNumber)
-        {
-            var user = await _sqlRepository.GetUserWithConditionAsync(email, phoneNumber);
-            return user != null;
-        }
-
     }
 }

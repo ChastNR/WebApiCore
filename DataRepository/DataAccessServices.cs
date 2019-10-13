@@ -1,4 +1,6 @@
+using DataRepository.Interfaces;
 using DataRepository.Interfaces.Base;
+using DataRepository.Repositories;
 using DataRepository.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +28,8 @@ namespace DataRepository
             //SqlRepositories
             services.AddTransient<ISqlRepository>(s =>
                 new SqlRepository(configuration.GetConnectionString("DbConnection")));
+            services.AddTransient<IUserRepository>(s =>
+                new UserRepository(configuration.GetConnectionString("DbConnection")));
         }
     }
 }

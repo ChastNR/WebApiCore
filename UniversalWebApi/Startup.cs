@@ -21,9 +21,9 @@ namespace UniversalWebApi
             services.AddScoped<ApiExceptionFilter>();
             
             services.AddDataAccessServices(Configuration);
-            services.AddAuthProcessorServices(Configuration);
             services.AddToolsServices(Configuration);
-
+            services.AddAuthProcessorServices(Configuration);
+            
             services.AddControllers(options =>
             {
                 //options.Filters.Add(typeof(ApiAsyncActionFilter));
@@ -38,8 +38,6 @@ namespace UniversalWebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
