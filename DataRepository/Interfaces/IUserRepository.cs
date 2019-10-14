@@ -8,5 +8,6 @@ namespace DataRepository.Interfaces
     {
         Task<bool> AnotherUserWithSameProps(string email, string phoneNumber);
         Task<User> GetUserByEmailOrPhoneNumber(string email, string phoneNumber);
+        Task<int> InsertUserAsyncWithReturnId(User user);
     }
 }

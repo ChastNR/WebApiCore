@@ -26,7 +26,7 @@ namespace DataRepository.Repositories.Base
         {
             using var connection = CreateConnection();
             return await connection.QueryFirstOrDefaultAsync<T>($"SELECT * FROM [{typeof(T).Name}] WHERE Id=@Id",
-                new {Id = id});
+                new { Id = id });
         }
 
         public async Task InsertAsync<T>(T t) where T : class
@@ -35,10 +35,10 @@ namespace DataRepository.Repositories.Base
             await connection.ExecuteAsync(GenerateInsertQuery<T>(), t);
         }
 
-        public async Task<object> InsertAsyncWithReturnId<T>(T t) where T : class
+        public async Task<TOut> InsertAsyncWithReturnId<T, TOut>(T t) where T : class
         {
             using var connection = CreateConnection();
-            return await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<T>(), t);
+            return (TOut)await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<T>(), t);
         }
 
         public async Task SaveRangeAsync<T>(IEnumerable<T> list) where T : class
@@ -50,7 +50,7 @@ namespace DataRepository.Repositories.Base
         public async Task DeleteRowAsync<T>(object id) where T : class
         {
             using var connection = CreateConnection();
-            await connection.ExecuteAsync($"DELETE FROM [{typeof(T).Name}] WHERE Id=@Id", new {Id = id});
+            await connection.ExecuteAsync($"DELETE FROM [{typeof(T).Name}] WHERE Id=@Id", new { Id = id });
         }
 
         public async Task UpdateAsync<T>(T t) where T : class

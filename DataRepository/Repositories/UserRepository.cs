@@ -8,10 +8,7 @@ namespace DataRepository.Repositories
 {
     public class UserRepository : SqlRepository, IUserRepository
     {
-        public UserRepository(string connectionString) : base(connectionString)
-        {
-            ConnectionString = connectionString;
-        }
+        public UserRepository(string connectionString) : base(connectionString) => ConnectionString = connectionString;
 
         public async Task<bool> AnotherUserWithSameProps(string email, string phoneNumber)
             => await GetUserByEmailOrPhoneNumber(email, phoneNumber) != null;
@@ -21,7 +18,13 @@ namespace DataRepository.Repositories
             using var connection = CreateConnection();
             return await connection.QueryFirstOrDefaultAsync<User>(
                 $"SELECT * FROM [{typeof(User).Name}] WHERE Email=@Email OR PhoneNumber=@PhoneNumber",
-                new {Email = email, PhoneNumber = phoneNumber});
+                new { Email = email, PhoneNumber = phoneNumber });
+        }
+
+        public async Task<int> InsertUserAsyncWithReturnId(User user)
+        {
+            using var connection = CreateConnection();
+            return (int)await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<User>(), user);
         }
     }
 }

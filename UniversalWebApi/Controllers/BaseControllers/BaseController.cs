@@ -7,7 +7,7 @@ using UniversalWebApi.Filters;
 
 namespace UniversalWebApi.Controllers.BaseControllers
 {
-    //[ServiceFilter(typeof(ApiExceptionFilter))]
+    [ServiceFilter(typeof(ApiExceptionFilter))]
     public abstract class BaseController<T> : Controller where T : class
     {
         private ISqlRepository Db => HttpContext.RequestServices.GetService<ISqlRepository>();

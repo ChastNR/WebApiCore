@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using DataRepository.Contracts;
 using DataRepository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -10,5 +11,6 @@ namespace UniversalWebApi.Controllers
     public class UserController : BaseController<User>
     {
         private IUserRepository UserRepository => HttpContext.RequestServices.GetService<IUserRepository>();
+
     }
 }

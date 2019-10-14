@@ -29,7 +29,7 @@ namespace AuthenticationProcessor
                 UserAgent = _context.HttpContext.Request.Headers["User-Agent"],
             };
 
-            var userInsertId = (int) await _sqlRepository.InsertAsyncWithReturnId(new User
+            var userInsertId = await _sqlRepository.InsertUserAsyncWithReturnId(new User
             {
                 Name = contract.Name,
                 Email = contract.Email
