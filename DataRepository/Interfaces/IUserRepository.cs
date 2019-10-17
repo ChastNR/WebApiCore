@@ -7,7 +7,7 @@ namespace DataRepository.Interfaces
     public interface IUserRepository : ISqlRepository
     {
         Task<bool> AnotherUserWithSameProps(string email, string phoneNumber);
-        Task<User> GetUserByEmailOrPhoneNumber(string email, string phoneNumber);
+        Task<User> GetUserByEmailOrPhoneNumber(string login);
         Task<int> InsertUserAsyncWithReturnId(User user);
     }
 }

@@ -17,7 +17,7 @@ namespace AuthenticationProcessor.UserData
         public int IpChangeCounter { get; set; } = 0;
         public DateTime IpChangeDate { get; set; } = DateTime.Now;
 
-        [MaxLength(50)] public string UserAgent { get; set; }
+        [MaxLength(255)] public string UserAgent { get; set; }
         public CountryCodes CountryCode { get; set; }
     }
 }

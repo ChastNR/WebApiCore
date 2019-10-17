@@ -22,7 +22,6 @@
           </e>
         </e>
         <e p="ProcessorComponents" t="Include">
-          <e p="AuthLogger.cs" t="Include" />
           <e p="JwtComponent.cs" t="Include" />
         </e>
         <e p="Settings" t="Include">
@@ -41,6 +40,16 @@
         </e>
         <e p="DataAccessServices.cs" t="Include" />
         <e p="DataRepository.csproj" t="IncludeRecursive" />
+        <e p="GraphQl" t="Include">
+          <e p="AppSchema.cs" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="AppQuery.cs" t="Include" />
+            <e p="GraphQLQuery.cs" t="Include" />
+          </e>
+          <e p="Types" t="Include">
+            <e p="UserType.cs" t="Include" />
+          </e>
+        </e>
         <e p="Interfaces" t="Include">
           <e p="Base" t="Include">
             <e p="IEfRepository.cs" t="Include" />
@@ -120,6 +129,7 @@
       <e p="UniversalWebApi" t="IncludeRecursive">
         <e p="ApiDb.mdf" t="Include" />
         <e p="ApiDb_log.ldf" t="Include" />
+        <e p="app" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />

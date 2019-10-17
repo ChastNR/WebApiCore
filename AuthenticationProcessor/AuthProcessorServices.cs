@@ -9,8 +9,8 @@ namespace AuthenticationProcessor
     {
         public static void AddAuthProcessorServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<IAuthProcessor, AuthProcessor>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IAuthProcessor, AuthProcessor>();
         }
     }
 }

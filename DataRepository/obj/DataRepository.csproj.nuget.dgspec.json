@@ -40,6 +40,10 @@
               "target": "Package",
               "version": "[2.0.30, )"
             },
+            "GraphQL": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"
