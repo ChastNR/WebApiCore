@@ -53,9 +53,9 @@ namespace AuthenticationProcessor
             }
         }
 
-        public async Task<T> Login<T>(LoginContract contract) where T : Type
-        {
-            var user = _sqlRepository.GetUserByEmailOrPhoneNumber(contract.Login);
-        }
+        // public async Task<T> Login<T>(LoginContract contract) where T : Type
+        // {
+        //     var user = _sqlRepository.GetUserByEmailOrPhoneNumber(contract.Login);
+        // }
     }
 }
