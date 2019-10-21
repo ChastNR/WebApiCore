@@ -11,7 +11,7 @@ namespace UniversalWebApi.Controllers.BaseControllers
     [ServiceFilter(typeof(ApiExceptionFilter))]
     public abstract class MongoDbController<T> : Controller where T : class, IMongoDoc
     {
-        protected IMongoRepository Db => HttpContext.RequestServices.GetService<IMongoRepository>();
+        private IMongoRepository Db => HttpContext.RequestServices.GetService<IMongoRepository>();
 
         [HttpGet]
         public async Task<IEnumerable<T>> Get() => await Db.GetAsync<T>();

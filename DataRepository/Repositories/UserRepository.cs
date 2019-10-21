@@ -8,8 +8,6 @@ namespace DataRepository.Repositories
 {
     public class UserRepository : SqlRepository, IUserRepository
     {
-        public UserRepository(string connectionString) : base(connectionString) => ConnectionString = connectionString;
-
         public async Task<bool> AnotherUserWithSameProps(string email, string phoneNumber)
         {
             using var connection = CreateConnection();

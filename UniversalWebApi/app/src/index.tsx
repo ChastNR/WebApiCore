@@ -1,12 +1,13 @@
-import * as React from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-//mport { serviceWorker } from "./serviceWorker";
+import serviceWorker from "./serviceWorker";
 import { Provider } from "mobx-react";
+import { AppStore } from "./stores/AppStore";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <Provider>
+  <Provider appStore={new AppStore()}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
@@ -14,4 +15,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-//serviceWorker.register();
+serviceWorker();

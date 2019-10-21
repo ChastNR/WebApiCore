@@ -6,7 +6,6 @@ using AuthenticationProcessor.UserData;
 using DataRepository.Contracts;
 using DataRepository.Interfaces;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Tools.Logger;
 
 namespace AuthenticationProcessor

@@ -52,7 +52,6 @@
         </e>
         <e p="Interfaces" t="Include">
           <e p="Base" t="Include">
-            <e p="IEfRepository.cs" t="Include" />
             <e p="IEntity.cs" t="Include" />
             <e p="IMongoDoc.cs" t="Include" />
             <e p="IMongoRepository.cs" t="Include" />
@@ -69,7 +68,6 @@
         </e>
         <e p="Repositories" t="Include">
           <e p="Base" t="Include">
-            <e p="EfRepository.cs" t="Include" />
             <e p="MongoRepository.cs" t="Include" />
             <e p="SqlRepository.cs" t="Include" />
           </e>
@@ -127,9 +125,136 @@
         <e p="UnityApiController.csproj" t="IncludeRecursive" />
       </e>
       <e p="UniversalWebApi" t="IncludeRecursive">
-        <e p="ApiDb.mdf" t="Include" />
-        <e p="ApiDb_log.ldf" t="Include" />
-        <e p="app" t="Include" />
+        <e p="app" t="Include">
+          <e p=".gitignore" t="Include" />
+          <e p="node_modules/@babel/parser" t="IncludeRecursive" />
+          <e p="node_modules/@babel/Types" t="IncludeRecursive" />
+          <e p="node_modules/@jest/console" t="IncludeRecursive" />
+          <e p="node_modules/@jest/core" t="IncludeRecursive" />
+          <e p="node_modules/@jest/environment" t="IncludeRecursive" />
+          <e p="node_modules/@jest/fake-timers" t="IncludeRecursive" />
+          <e p="node_modules/@jest/reporters" t="IncludeRecursive" />
+          <e p="node_modules/@jest/source-map" t="IncludeRecursive" />
+          <e p="node_modules/@jest/test-result" t="IncludeRecursive" />
+          <e p="node_modules/@jest/test-sequencer" t="IncludeRecursive" />
+          <e p="node_modules/@jest/Types" t="IncludeRecursive" />
+          <e p="node_modules/@mrmlnc/readdir-enhanced" t="IncludeRecursive" />
+          <e p="node_modules/@nodelib/fs.stat" t="IncludeRecursive" />
+          <e p="node_modules/@types" t="IncludeRecursive">
+            <e p="babel__generator" t="IncludeRecursive" />
+            <e p="babel__template" t="IncludeRecursive" />
+            <e p="babel__traverse" t="IncludeRecursive" />
+            <e p="history" t="IncludeRecursive" />
+            <e p="istanbul-lib-coverage" t="IncludeRecursive" />
+            <e p="istanbul-lib-report" t="IncludeRecursive" />
+            <e p="jest" t="IncludeRecursive" />
+            <e p="jest-diff" t="IncludeRecursive" />
+            <e p="lodash" t="IncludeRecursive" />
+            <e p="node" t="IncludeRecursive" />
+            <e p="prop-types" t="IncludeRecursive" />
+            <e p="react" t="IncludeRecursive" />
+            <e p="react-dom" t="IncludeRecursive" />
+            <e p="react-native" t="IncludeRecursive" />
+            <e p="react-router" t="IncludeRecursive" />
+            <e p="react-router-dom" t="IncludeRecursive" />
+            <e p="styled-components" t="IncludeRecursive" />
+            <e p="yargs-parser" t="IncludeRecursive" />
+          </e>
+          <e p="node_modules/@typescript-eslint/experimental-utils" t="IncludeRecursive" />
+          <e p="node_modules/@typescript-eslint/parser" t="IncludeRecursive" />
+          <e p="node_modules/@typescript-eslint/typescript-estree" t="IncludeRecursive" />
+          <e p="node_modules/babel-jest" t="IncludeRecursive" />
+          <e p="node_modules/chalk" t="IncludeRecursive" />
+          <e p="node_modules/chokidar" t="IncludeRecursive" />
+          <e p="node_modules/csstype" t="IncludeRecursive" />
+          <e p="node_modules/diff-sequences" t="IncludeRecursive" />
+          <e p="node_modules/dotenv-expand" t="IncludeRecursive" />
+          <e p="node_modules/expect" t="IncludeRecursive" />
+          <e p="node_modules/fast-glob" t="IncludeRecursive" />
+          <e p="node_modules/jest" t="IncludeRecursive" />
+          <e p="node_modules/jest-changed-files" t="IncludeRecursive" />
+          <e p="node_modules/jest-cli" t="IncludeRecursive" />
+          <e p="node_modules/jest-config" t="IncludeRecursive" />
+          <e p="node_modules/jest-diff" t="IncludeRecursive" />
+          <e p="node_modules/jest-each" t="IncludeRecursive" />
+          <e p="node_modules/jest-environment-jsdom" t="IncludeRecursive" />
+          <e p="node_modules/jest-environment-node" t="IncludeRecursive" />
+          <e p="node_modules/jest-get-type" t="IncludeRecursive" />
+          <e p="node_modules/jest-haste-map" t="IncludeRecursive" />
+          <e p="node_modules/jest-jasmine2" t="IncludeRecursive" />
+          <e p="node_modules/jest-leak-detector" t="IncludeRecursive" />
+          <e p="node_modules/jest-message-util" t="IncludeRecursive" />
+          <e p="node_modules/jest-mock" t="IncludeRecursive" />
+          <e p="node_modules/jest-regex-util" t="IncludeRecursive" />
+          <e p="node_modules/jest-resolve" t="IncludeRecursive" />
+          <e p="node_modules/jest-resolve-dependencies" t="IncludeRecursive" />
+          <e p="node_modules/jest-runner" t="IncludeRecursive" />
+          <e p="node_modules/jest-runtime" t="IncludeRecursive" />
+          <e p="node_modules/jest-serializer" t="IncludeRecursive" />
+          <e p="node_modules/jest-snapshot" t="IncludeRecursive" />
+          <e p="node_modules/jest-util" t="IncludeRecursive" />
+          <e p="node_modules/jest-validate" t="IncludeRecursive" />
+          <e p="node_modules/jest-worker" t="IncludeRecursive" />
+          <e p="node_modules/lodash" t="IncludeRecursive" />
+          <e p="node_modules/mobx" t="IncludeRecursive" />
+          <e p="node_modules/mobx-react" t="IncludeRecursive" />
+          <e p="node_modules/mobx-react-lite" t="IncludeRecursive" />
+          <e p="node_modules/pretty-format" t="IncludeRecursive" />
+          <e p="node_modules/react" t="IncludeRecursive" />
+          <e p="node_modules/react-dom" t="IncludeRecursive" />
+          <e p="node_modules/react-router-dom" t="IncludeRecursive" />
+          <e p="node_modules/react-scripts" t="IncludeRecursive" />
+          <e p="node_modules/realpath-native" t="IncludeRecursive" />
+          <e p="node_modules/source-map" t="IncludeRecursive" />
+          <e p="node_modules/styled-components" t="IncludeRecursive" />
+          <e p="node_modules/tslib" t="IncludeRecursive" />
+          <e p="node_modules/typescript" t="IncludeRecursive" />
+          <e p="node_modules/upath" t="IncludeRecursive" />
+          <e p="node_modules/worker-farm" t="IncludeRecursive" />
+          <e p="package-lock.json" t="Include" />
+          <e p="package.json" t="Include" />
+          <e p="public" t="Include">
+            <e p="favicon.ico" t="Include" />
+            <e p="index.html" t="Include" />
+            <e p="logo192.png" t="Include" />
+            <e p="logo512.png" t="Include" />
+            <e p="manifest.json" t="Include" />
+            <e p="robots.txt" t="Include" />
+          </e>
+          <e p="README.md" t="Include" />
+          <e p="src" t="Include">
+            <e p="api" t="Include">
+              <e p="api.ts" t="Include" />
+            </e>
+            <e p="App.tsx" t="Include" />
+            <e p="Base" t="Include">
+              <e p="controls" t="Include">
+                <e p="SLink.tsx" t="Include" />
+              </e>
+            </e>
+            <e p="components" t="Include">
+              <e p="Layout" t="Include">
+                <e p="Footer.tsx" t="Include" />
+                <e p="Header.tsx" t="Include" />
+                <e p="Layout.tsx" t="Include" />
+                <e p="SideBar.tsx" t="Include" />
+              </e>
+            </e>
+            <e p="index.tsx" t="Include" />
+            <e p="Interfaces" t="Include">
+              <e p="IUser.ts" t="Include" />
+            </e>
+            <e p="logo.svg" t="Include" />
+            <e p="react-app-env.d.ts" t="Include" />
+            <e p="serviceWorker.ts" t="Include" />
+            <e p="stores" t="Include">
+              <e p="AppStore.ts" t="Include" />
+              <e p="UserStore.ts" t="Include" />
+            </e>
+          </e>
+          <e p="tsconfig.json" t="Include" />
+          <e p="yarn.lock" t="Include" />
+        </e>
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />

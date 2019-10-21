@@ -7,14 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using DataRepository.Interfaces.Base;
+using static DataRepository.DataAccessServices;
 
 namespace DataRepository.Repositories.Base
 {
     public class SqlRepository : ISqlRepository
     {
-        protected string ConnectionString;
-        public SqlRepository(string connectionString) => ConnectionString = connectionString;
-        protected IDbConnection CreateConnection() => new SqlConnection(ConnectionString);
+        protected static IDbConnection CreateConnection() => new SqlConnection(ConnectionString);
 
         public async Task<IEnumerable<T>> GetAllAsync<T>() where T : class
         {
