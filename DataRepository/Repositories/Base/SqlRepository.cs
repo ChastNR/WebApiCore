@@ -13,7 +13,7 @@ namespace DataRepository.Repositories.Base
 {
     public class SqlRepository : ISqlRepository
     {
-        protected static IDbConnection CreateConnection() => new SqlConnection(ConnectionString);
+        protected IDbConnection CreateConnection() => new SqlConnection(ConnectionString);
 
         public async Task<IEnumerable<T>> GetAllAsync<T>() where T : class
         {

@@ -1,49 +1,78 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import SLink from "../../base/controls/SLink";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IUser } from "../../contracts/IUser";
 
-const StyledSideNav = styled.div`
+interface ISideBarHidden {
+  sideBarHidden: boolean;
+}
+
+const Wrapper = styled.div`
+  position: absolute;
+  width: 100%;
   height: 100%;
-  width: ${props => (props.hidden ? "0" : "150px")};
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  border-right: 1px solid black;
-  transition: 0.5s;
-
-  display: ${props => (props.hidden ? "none" : "flex")};
-  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.35s;
 `;
 
-const StyledButton = styled.button``;
+const Menu = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: grey;
+  width: 200px;
+  height: 100%;
+  transform: ${(props: ISideBarHidden) =>
+    props.sideBarHidden ? "translate3d(-200px, 0, 0)" : "translate3d(0, 0, 0)"};
+  transition: transform 0.35s;
+`;
 
-const SideBar: React.FC = () => {
+const StyledOpenButton = styled(FontAwesomeIcon)`
+  display: ${(props: ISideBarHidden) =>
+    props.sideBarHidden ? "block" : "none"};
+  font-size: 1.5em;
+  color: blue;
+  padding: 0.5em;
+  border: 1px solid blue;
+  border-radius: 0.1em;
+`;
+
+export const SideBar: React.FC<{ user: IUser }> = ({ user }) => {
   const [hidden, open] = useState(true);
   const openBar = () => open(hidden => (hidden ? false : true));
 
   return (
-    <div>
-      <StyledSideNav hidden={hidden} onMouseOut={openBar}>
-        <div>
-          <SLink to="/main" text="Main" />
-        </div>
-        <div>
-          <SLink to="/main" text="Services" />
-        </div>
-        <div>
-          <SLink to="/main" text="Clients" />
-        </div>
-        <div>
-          <SLink to="/main" text="Contact" />
-        </div>
-        <div>
-          <SLink to="/main" text="About" />
-        </div>
-      </StyledSideNav>
-      <StyledButton onClick={openBar} onMouseOver={openBar} />
-    </div>
+    <Wrapper>
+      <StyledOpenButton
+        icon={faBars}
+        onClick={openBar}
+        sideBarHidden={hidden}
+      />
+      <Menu sideBarHidden={hidden}>
+        <ul style={{ textAlign: "left" }}>
+          <li>
+            <StyledOpenButton
+              icon={faBars}
+              onClick={openBar}
+              sideBarHidden={!hidden}
+            />
+          </li>
+          <li>
+            <a href="#">Menu-1</a>
+          </li>
+          <li>
+            <a href="#">Menu-2</a>
+          </li>
+          <li>
+            <a href="#">Menu-6</a>
+          </li>
+          <li>{user.id}</li>
+          <li>{user.name}</li>
+          <li>{user.email}</li>
+          <li>{user.phoneNumber}</li>
+        </ul>
+      </Menu>
+    </Wrapper>
   );
 };
-
-export default SideBar;
