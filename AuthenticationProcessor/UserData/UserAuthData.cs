@@ -7,7 +7,7 @@ namespace AuthenticationProcessor.UserData
     {
         public int Id { get; set; }
 
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
 
         //public Guid UserId { get; set; }
         public int NumberOfFailLoginAttempts { get; set; } = 0;

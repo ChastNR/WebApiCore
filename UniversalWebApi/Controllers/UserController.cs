@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using DataRepository.Contracts;
 using DataRepository.Interfaces;
@@ -12,5 +13,10 @@ namespace UniversalWebApi.Controllers
     {
         private IUserRepository UserRepository => HttpContext.RequestServices.GetService<IUserRepository>();
 
+        [HttpPost("ReturnId")]
+        public async Task<Guid> InsertReturnId([FromBody] User user)
+        {
+            return await UserRepository.InsertUserAsyncWithReturnId(user);
+        }
     }
 }

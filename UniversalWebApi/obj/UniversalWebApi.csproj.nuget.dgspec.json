@@ -54,10 +54,6 @@
             "Microsoft.Extensions.Options": {
               "target": "Package",
               "version": "[3.0.0, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[5.5.0, )"
             }
           },
           "imports": [
@@ -273,6 +269,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.AspNetCore.SpaServices": {
               "target": "Package",
               "version": "[3.0.0, )"

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using DataRepository.Contracts;
 using DataRepository.Interfaces.Base;
@@ -8,6 +9,6 @@ namespace DataRepository.Interfaces
     {
         Task<bool> AnotherUserWithSameProps(string email, string phoneNumber);
         Task<User> GetUserByEmailOrPhoneNumber(string login);
-        Task<int> InsertUserAsyncWithReturnId(User user);
+        Task<Guid> InsertUserAsyncWithReturnId(User user);
     }
 }

@@ -44,10 +44,6 @@
         "Microsoft.Extensions.Options": {
           "target": "Package",
           "version": "[3.0.0, )"
-        },
-        "System.IdentityModel.Tokens.Jwt": {
-          "target": "Package",
-          "version": "[5.5.0, )"
         }
       },
       "imports": [

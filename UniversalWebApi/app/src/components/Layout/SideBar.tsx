@@ -1,8 +1,7 @@
-import React, { useState } from "react";
 import styled from "styled-components";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IUser } from "../../contracts/IUser";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 interface ISideBarHidden {
   sideBarHidden: boolean;
@@ -38,7 +37,7 @@ const StyledOpenButton = styled(FontAwesomeIcon)`
   border-radius: 0.1em;
 `;
 
-export const SideBar: React.FC<{ user: IUser }> = ({ user }) => {
+export const SideBar: React.FC = () => {
   const [hidden, open] = useState(true);
   const openBar = () => open(hidden => (hidden ? false : true));
 
@@ -67,10 +66,6 @@ export const SideBar: React.FC<{ user: IUser }> = ({ user }) => {
           <li>
             <a href="#">Menu-6</a>
           </li>
-          <li>{user.id}</li>
-          <li>{user.name}</li>
-          <li>{user.email}</li>
-          <li>{user.phoneNumber}</li>
         </ul>
       </Menu>
     </Wrapper>

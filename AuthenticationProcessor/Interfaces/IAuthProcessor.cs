@@ -6,5 +6,6 @@ namespace AuthenticationProcessor.Interfaces
     public interface IAuthProcessor
     {
         Task<bool> Register(RegistrationContract contract);
+        Task Login(LoginContract contract);
     }
 }

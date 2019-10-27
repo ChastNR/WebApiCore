@@ -1,6 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import { Layout } from "./Layout";
 
 export const Header: React.FC = () => {
-  return <></>;
+  const header = () => {
+    return <div>blabla</div>;
+  };
+
+  return <Layout>{header}</Layout>;
 };

@@ -3,13 +3,12 @@ import { get } from "../api/api";
 import { IUser } from "../contracts/IUser";
 
 export interface IUserStore {
-  user: IUser;
   userState: IUser;
   getUser: () => void;
 }
 
 export class UserStore implements IUserStore {
-  @observable user: IUser = {
+  @observable private user: IUser = {
     id: "",
     name: "",
     email: "",
@@ -17,7 +16,7 @@ export class UserStore implements IUserStore {
   };
 
   constructor() {
-    this.getUser();
+    //this.getUser();
   }
 
   @computed

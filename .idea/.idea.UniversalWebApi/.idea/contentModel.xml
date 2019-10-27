@@ -21,9 +21,6 @@
             </e>
           </e>
         </e>
-        <e p="ProcessorComponents" t="Include">
-          <e p="JwtComponent.cs" t="Include" />
-        </e>
         <e p="Settings" t="Include">
           <e p="AuthOptions.cs" t="Include" />
           <e p="LoginDataContract.cs" t="Include" />
@@ -129,6 +126,10 @@
           <e p=".gitignore" t="Include" />
           <e p="node_modules/@babel/parser" t="IncludeRecursive" />
           <e p="node_modules/@babel/Types" t="IncludeRecursive" />
+          <e p="node_modules/@fortawesome/fontawesome-common-types" t="IncludeRecursive" />
+          <e p="node_modules/@fortawesome/fontawesome-svg-core" t="IncludeRecursive" />
+          <e p="node_modules/@fortawesome/free-solid-svg-icons" t="IncludeRecursive" />
+          <e p="node_modules/@fortawesome/react-fontawesome" t="IncludeRecursive" />
           <e p="node_modules/@jest/console" t="IncludeRecursive" />
           <e p="node_modules/@jest/core" t="IncludeRecursive" />
           <e p="node_modules/@jest/environment" t="IncludeRecursive" />
@@ -240,16 +241,16 @@
                 <e p="SideBar.tsx" t="Include" />
               </e>
             </e>
-            <e p="index.tsx" t="Include" />
-            <e p="Interfaces" t="Include">
+            <e p="Contracts" t="Include">
               <e p="IUser.ts" t="Include" />
             </e>
+            <e p="index.tsx" t="Include" />
             <e p="logo.svg" t="Include" />
             <e p="react-app-env.d.ts" t="Include" />
             <e p="serviceWorker.ts" t="Include" />
             <e p="stores" t="Include">
-              <e p="AppStore.ts" t="Include" />
-              <e p="UserStore.ts" t="Include" />
+              <e p="AppStore.tsx" t="Include" />
+              <e p="UserStore.tsx" t="Include" />
             </e>
           </e>
           <e p="tsconfig.json" t="Include" />

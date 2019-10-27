@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Dapper;
 using DataRepository.Contracts;
@@ -24,10 +25,10 @@ namespace DataRepository.Repositories
                 new { Email = login, PhoneNumber = login });
         }
 
-        public async Task<int> InsertUserAsyncWithReturnId(User user)
+        public async Task<Guid> InsertUserAsyncWithReturnId(User user)
         {
             using var connection = CreateConnection();
-            return (int)await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<User>(), user);
+            return (Guid)await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<User>(), user);
         }
     }
 }

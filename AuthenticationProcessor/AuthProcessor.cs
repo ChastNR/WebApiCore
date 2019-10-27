@@ -24,7 +24,10 @@ namespace AuthenticationProcessor
 
         public async Task<bool> Register(RegistrationContract contract)
         {
-            if (await _sqlRepository.AnotherUserWithSameProps(contract.Email, contract.PhoneNumber)) return false;
+            if (await _sqlRepository.AnotherUserWithSameProps(contract.Email, contract.PhoneNumber))
+            {
+                return false;
+            }
 
             try
             {
@@ -36,7 +39,9 @@ namespace AuthenticationProcessor
                 var userInsertId = await _sqlRepository.InsertUserAsyncWithReturnId(new User
                 {
                     Name = contract.Name,
-                    Email = contract.Email
+                    Email = contract.Email,
+                    PhoneNumber = contract.PhoneNumber,
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(contract.Password)
                 });
 
                 userAuthData.UserId = userInsertId;
@@ -52,9 +57,24 @@ namespace AuthenticationProcessor
             }
         }
 
-        // public async Task<T> Login<T>(LoginContract contract) where T : Type
-        // {
-        //     var user = _sqlRepository.GetUserByEmailOrPhoneNumber(contract.Login);
-        // }
+        public async Task Login(LoginContract contract)
+        {
+            if (string.IsNullOrEmpty(contract.Login) || string.IsNullOrEmpty(contract.Password))
+            {
+                contract.Valid = false;
+            }
+
+            var user = await _sqlRepository.GetUserByEmailOrPhoneNumber(contract.Login);
+
+            bool validPassword = BCrypt.Net.BCrypt.Verify(user.PasswordHash, contract.Password);
+
+            if (!validPassword)
+            {
+                contract.Valid = false;
+            }
+
+            contract.Valid = true;
+            contract.UserId = user.Id;
+        }
     }
 }

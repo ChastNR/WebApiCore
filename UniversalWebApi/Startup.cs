@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,12 @@ using AuthenticationProcessor;
 using DataRepository;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using UniversalWebApi.Filters;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using AuthenticationProcessor.Settings;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
 
 namespace UniversalWebApi
 {
@@ -26,35 +33,40 @@ namespace UniversalWebApi
             services.AddAuthProcessorServices(Configuration);
 
             #region CookieAuth
-            // services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            //     .AddCookie(options =>
-            //     {
-            //         options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
-            //     });
+
+            //            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //                .AddCookie(options =>
+            //                {
+            //                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+            //                });
+
+            services.AddAuthentication();
+
             #endregion
 
             #region JwtAuth
-            // services.Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));
-            // var authConfig = Configuration.GetSection("AuthOptions").Get<AuthOptions>();
-            // var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authConfig.SecurityKey));
-            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //     .AddJwtBearer(options =>
-            //     {
-            //         options.RequireHttpsMetadata = false;
-            //         options.SaveToken = true;
-            //         options.TokenValidationParameters = new TokenValidationParameters
-            //         {
-            //             //what to validate
-            //             ValidateIssuer = true,
-            //             ValidateAudience = true,
-            //             ValidateIssuerSigningKey = true,
-            //             //setup validate data
-            //             ValidIssuer = authConfig.Issuer,
-            //             ValidAudience = authConfig.Audience,
-            //             IssuerSigningKey = symmetricSecurityKey,
-            //             ClockSkew = TimeSpan.Zero
-            //         };
-            //     });
+
+            services.Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));
+            var authConfig = Configuration.GetSection("AuthOptions").Get<AuthOptions>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        //what to validate
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        //setup validate data
+                        ValidIssuer = authConfig.Issuer,
+                        ValidAudience = authConfig.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authConfig.SecurityKey)),
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
+
             #endregion
 
             services.AddControllers(options =>
@@ -77,11 +89,11 @@ namespace UniversalWebApi
             app.UseRouting();
 
             //app.UseCookiePolicy();
-            //app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-            
+
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "app";
