@@ -4,6 +4,7 @@ import { IUser } from "../contracts/IUser";
 
 export interface IUserStore {
   userState: IUser;
+  authState: boolean;
   getUser: () => void;
 }
 
@@ -15,8 +16,15 @@ export class UserStore implements IUserStore {
     phoneNumber: ""
   };
 
+  @observable private isAuthenticated: boolean = false;
+
   constructor() {
     //this.getUser();
+  }
+
+  @computed
+  get authState() {
+    return this.isAuthenticated;
   }
 
   @computed

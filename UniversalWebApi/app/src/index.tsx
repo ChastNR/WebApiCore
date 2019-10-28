@@ -10,9 +10,7 @@ const appStore = new AppStore();
 
 ReactDOM.render(
   <Provider appStore={appStore}>
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <BrowserRouter>{Router(appStore)}</BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
