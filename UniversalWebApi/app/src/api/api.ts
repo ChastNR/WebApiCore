@@ -23,24 +23,25 @@ enum RequestType {
   Delete = "DELETE"
 }
 
-export interface IToken {
-  token: string | null;
-  expirationTime: number;
-}
+// export interface IToken {
+//   token: string | null;
+//   expirationTime: number;
+// }
 
-export const authCheck = (): boolean => {
-  let token: IToken = {
-    token: localStorage.getItem("token"),
-    expirationTime: Number(localStorage.getItem("expTime"))
-  };
-  let authenticated = token.expirationTime <= Date.now() && token.token == null;
+// export const authCheck = (): boolean => {
+//   let token: IToken = {
+//     token: localStorage.getItem("token"),
+//     expirationTime: Number(localStorage.getItem("expTime"))
+//   };
+//   let authenticated: boolean =
+//     token.expirationTime <= Date.now() && token.token == null;
 
-  if (!authenticated) {
-    localStorage.removeItem("token");
-  }
+//   if (!authenticated) {
+//     localStorage.removeItem("token");
+//   }
 
-  return authenticated;
-};
+//   return authenticated;
+// };
 
 export const get = async <T>(
   path: string,

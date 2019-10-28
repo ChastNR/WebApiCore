@@ -1,5 +1,6 @@
 import React from "react";
 import { signIn, SignInContract } from "../../api/api";
+import { Layout } from "../../components/layout/Layout";
 
 export const signInForm: React.FC = () => {
   const handleSubmit = async (event: any) => {

@@ -5,7 +5,13 @@ import { IUser } from "../contracts/IUser";
 export interface IUserStore {
   userState: IUser;
   authState: boolean;
+  authStateCheck: () => void;
   getUser: () => void;
+}
+
+export interface IToken {
+  token: string | null;
+  expirationTime: number;
 }
 
 export class UserStore implements IUserStore {
@@ -16,16 +22,28 @@ export class UserStore implements IUserStore {
     phoneNumber: ""
   };
 
-  @observable private isAuthenticated: boolean = false;
-
-  constructor() {
-    //this.getUser();
-  }
+  @observable private isAuthenticated: boolean = true;
 
   @computed
   get authState() {
     return this.isAuthenticated;
   }
+
+  @action("authStateCheck")
+  authStateCheck = () => {
+    let token: IToken = {
+      token: localStorage.getItem("token"),
+      expirationTime: Number(localStorage.getItem("expTime"))
+    };
+    let authenticated: boolean =
+      token.expirationTime <= Date.now() && token.token == null;
+
+    if (!authenticated) {
+      localStorage.removeItem("token");
+    }
+
+    this.isAuthenticated = authenticated;
+  };
 
   @computed
   get userState() {

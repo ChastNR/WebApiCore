@@ -7,10 +7,17 @@ const StyledContainer = styled.div`
   width: 100vw;
 `;
 
-export const Layout: React.FC = (props: any) => {
+interface ILayout {
+  text?: string;
+  children?: any;
+}
+
+export const Layout: React.FC<ILayout> = props => {
+  const text = props.text;
   return (
     <StyledContainer>
       <SideBar />
+      {text}
       {props.children}
       <Footer />
     </StyledContainer>

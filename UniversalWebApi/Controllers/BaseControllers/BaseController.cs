@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataRepository.Interfaces.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using UniversalWebApi.Filters;
@@ -8,9 +9,10 @@ using UniversalWebApi.Filters;
 namespace UniversalWebApi.Controllers.BaseControllers
 {
     [ServiceFilter(typeof(ApiExceptionFilter))]
+    [Authorize]
     public abstract class BaseController<T> : Controller where T : class
     {
-        private ISqlRepository Db => HttpContext.RequestServices.GetService<ISqlRepository>();
+        private ISqlRepository Db => HttpContext.RequestServices.GetRequiredService<ISqlRepository>();
 
         [HttpGet]
         public async Task<IEnumerable<T>> Get() => await Db.GetAllAsync<T>();

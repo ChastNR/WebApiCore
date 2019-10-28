@@ -27,14 +27,14 @@ namespace UniversalWebApi.Controllers.BaseControllers
         }
 
         [HttpPost("signin")]
-        public async Task<IActionResult> SignIn(LoginContract contract)
+        public async Task<IActionResult> SignIn([FromBody] LoginContract contract)
         {
-            await _processor.Login(contract);
-            return contract.Valid ? (IActionResult)Ok(GetToken(contract.UserId.ToString())) : BadRequest();
+            var result = await _processor.Login(contract);
+            return !string.IsNullOrEmpty(result) ? (IActionResult)Ok(GetToken(result)) : BadRequest();
         }
 
         [HttpPost("signup")]
-        public async Task<IActionResult> SignUp(RegistrationContract contract)
+        public async Task<IActionResult> SignUp([FromBody] RegistrationContract contract)
         {
             var result = await _processor.Register(contract);
             return result ? (IActionResult)Ok() : BadRequest();

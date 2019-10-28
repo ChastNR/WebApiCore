@@ -7,6 +7,7 @@ using DataRepository.Contracts;
 using DataRepository.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Tools.Logger;
+using static BCrypt.Net.BCrypt;
 
 namespace AuthenticationProcessor
 {
@@ -36,17 +37,20 @@ namespace AuthenticationProcessor
                     LastUsedIp = _context.HttpContext.Connection.RemoteIpAddress.ToString(),
                     UserAgent = _context.HttpContext.Request.Headers["User-Agent"],
                 };
-                var userInsertId = await _sqlRepository.InsertUserAsyncWithReturnId(new User
+
+                var user = new User
                 {
                     Name = contract.Name,
                     Email = contract.Email,
                     PhoneNumber = contract.PhoneNumber,
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(contract.Password)
-                });
+                    PasswordHash = HashPassword(contract.Password)
+                };
+
+                var userInsertId = await _sqlRepository.InsertUserAsyncWithReturnId(user);
 
                 userAuthData.UserId = userInsertId;
 
-                await _sqlRepository.InsertAsync(userAuthData);
+                //await _sqlRepository.InsertAsync(userAuthData);
 
                 return true;
             }
@@ -57,24 +61,23 @@ namespace AuthenticationProcessor
             }
         }
 
-        public async Task Login(LoginContract contract)
+        public async Task<string> Login(LoginContract contract)
         {
-            if (string.IsNullOrEmpty(contract.Login) || string.IsNullOrEmpty(contract.Password))
+            if (string.IsNullOrEmpty(contract.Login) && string.IsNullOrEmpty(contract.Password))
             {
-                contract.Valid = false;
+                throw new UnauthorizedAccessException();
             }
 
             var user = await _sqlRepository.GetUserByEmailOrPhoneNumber(contract.Login);
 
-            bool validPassword = BCrypt.Net.BCrypt.Verify(user.PasswordHash, contract.Password);
+            bool validPassword = Verify(contract.Password, user.PasswordHash);
 
             if (!validPassword)
             {
-                contract.Valid = false;
+                throw new UnauthorizedAccessException();
             }
 
-            contract.Valid = true;
-            contract.UserId = user.Id;
+            return user.Id.ToString();
         }
     }
 }

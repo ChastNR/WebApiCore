@@ -49,7 +49,7 @@
         </e>
         <e p="Interfaces" t="Include">
           <e p="Base" t="Include">
-            <e p="IEntity.cs" t="Include" />
+            <e p="EntityInterfaces.cs" t="Include" />
             <e p="IMongoDoc.cs" t="Include" />
             <e p="IMongoRepository.cs" t="Include" />
             <e p="ISqlRepository.cs" t="Include" />
@@ -227,9 +227,10 @@
             <e p="api" t="Include">
               <e p="api.ts" t="Include" />
             </e>
-            <e p="App.tsx" t="Include" />
             <e p="Base" t="Include">
               <e p="controls" t="Include">
+                <e p="SignInForm.tsx" t="Include" />
+                <e p="SignUpForm.tsx" t="Include" />
                 <e p="SLink.tsx" t="Include" />
               </e>
             </e>
@@ -247,6 +248,7 @@
             <e p="index.tsx" t="Include" />
             <e p="logo.svg" t="Include" />
             <e p="react-app-env.d.ts" t="Include" />
+            <e p="Router.tsx" t="Include" />
             <e p="serviceWorker.ts" t="Include" />
             <e p="stores" t="Include">
               <e p="AppStore.tsx" t="Include" />
