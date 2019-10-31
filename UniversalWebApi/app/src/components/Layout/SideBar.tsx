@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 interface ISideBarHidden {
   sideBarHidden: boolean;
@@ -27,7 +25,7 @@ const Menu = styled.div`
   transition: transform 0.35s;
 `;
 
-const StyledOpenButton = styled(FontAwesomeIcon)`
+const StyledOpenButton = styled.button`
   display: ${(props: ISideBarHidden) =>
     props.sideBarHidden ? "block" : "none"};
   font-size: 1.5em;
@@ -43,19 +41,11 @@ export const SideBar: React.FC = () => {
 
   return (
     <Wrapper>
-      <StyledOpenButton
-        icon={faBars}
-        onClick={openBar}
-        sideBarHidden={hidden}
-      />
+      <StyledOpenButton onClick={openBar} sideBarHidden={hidden} />
       <Menu sideBarHidden={hidden}>
         <ul style={{ textAlign: "left" }}>
           <li>
-            <StyledOpenButton
-              icon={faBars}
-              onClick={openBar}
-              sideBarHidden={!hidden}
-            />
+            <StyledOpenButton onClick={openBar} sideBarHidden={!hidden} />
           </li>
           <li>
             <a href="#">Menu-1</a>

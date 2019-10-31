@@ -126,10 +126,6 @@
           <e p=".gitignore" t="Include" />
           <e p="node_modules/@babel/parser" t="IncludeRecursive" />
           <e p="node_modules/@babel/Types" t="IncludeRecursive" />
-          <e p="node_modules/@fortawesome/fontawesome-common-types" t="IncludeRecursive" />
-          <e p="node_modules/@fortawesome/fontawesome-svg-core" t="IncludeRecursive" />
-          <e p="node_modules/@fortawesome/free-solid-svg-icons" t="IncludeRecursive" />
-          <e p="node_modules/@fortawesome/react-fontawesome" t="IncludeRecursive" />
           <e p="node_modules/@jest/console" t="IncludeRecursive" />
           <e p="node_modules/@jest/core" t="IncludeRecursive" />
           <e p="node_modules/@jest/environment" t="IncludeRecursive" />
@@ -262,8 +258,8 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
+          <e p="AuthController.cs" t="Include" />
           <e p="BaseControllers" t="Include">
-            <e p="AuthController.cs" t="Include" />
             <e p="BaseController.cs" t="Include" />
             <e p="MongoDbController.cs" t="Include" />
           </e>

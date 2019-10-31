@@ -1,102 +1,85 @@
-const http = <T>(request: RequestInfo): Promise<T> => {
-  return new Promise((resolve, reject) => {
-    let res: Response;
-    fetch(request)
-      .then(response => {
-        if (response.ok) {
-          res = response;
-          return response.json();
-        } else {
-          localStorage.removeItem("token");
-          window.location.href = "/signin";
-        }
-      })
-      .then((data: T) => (res.ok ? resolve(data) : reject(data)))
-      .catch(err => reject(err));
-  });
-};
-
-enum RequestType {
+enum HttpMethod {
   Get = "GET",
   Post = "POST",
   Put = "PUT",
   Delete = "DELETE"
 }
 
-// export interface IToken {
-//   token: string | null;
-//   expirationTime: number;
-// }
-
-// export const authCheck = (): boolean => {
-//   let token: IToken = {
-//     token: localStorage.getItem("token"),
-//     expirationTime: Number(localStorage.getItem("expTime"))
-//   };
-//   let authenticated: boolean =
-//     token.expirationTime <= Date.now() && token.token == null;
-
-//   if (!authenticated) {
-//     localStorage.removeItem("token");
-//   }
-
-//   return authenticated;
-// };
+const apiDefaultHeaders: HeadersInit = {
+  Accept: "application/json",
+  "Content-Type": "application/json",
+  pragma: "no-cache",
+  "cache-control": "no-cache"
+};
 
 export const get = async <T>(
   path: string,
   args: RequestInit = {
-    method: RequestType.Get,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`
-    }
+    method: HttpMethod.Get,
+    headers: apiDefaultHeaders
   }
 ): Promise<T> => {
-  return await http<T>(new Request(path, args));
+  const response = await fetch(path, args);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return (await response.json()) as T;
 };
 
 export const post = async <T>(
   path: string,
-  body: any,
+  body?: any,
   args: RequestInit = {
-    method: RequestType.Post,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`
-    },
-    body: JSON.stringify(body)
+    method: HttpMethod.Post,
+    headers: apiDefaultHeaders,
+    body: body ? JSON.stringify(body) : undefined
   }
 ): Promise<T> => {
-  return await http<T>(new Request(path, args));
+  const response = await fetch(path, args);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return (await response.json()) as T;
 };
 
 export const put = async <T>(
   path: string,
-  body: any,
+  body?: any,
   args: RequestInit = {
-    method: RequestType.Put,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`
-    },
-    body: JSON.stringify(body)
+    method: HttpMethod.Put,
+    headers: apiDefaultHeaders,
+    body: body ? JSON.stringify(body) : undefined
   }
 ): Promise<T> => {
-  return await http<T>(new Request(path, args));
+  const response = await fetch(path, args);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return (await response.json()) as T;
 };
 
 export const del = async <T>(
   path: string,
+  body?: any,
   args: RequestInit = {
-    method: RequestType.Delete,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`
-    }
+    method: HttpMethod.Delete,
+    headers: apiDefaultHeaders,
+    body: body ? JSON.stringify(body) : undefined
   }
 ): Promise<T> => {
-  return await http<T>(new Request(path, args));
+  const response = await fetch(path, args);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return (await response.json()) as T;
 };
 
 export interface SignInContract {
@@ -104,17 +87,14 @@ export interface SignInContract {
   password: string;
 }
 
-export const signIn = async (body: SignInContract): Promise<boolean> => {
-  return await fetch("/api/auth/signin", {
-    method: RequestType.Post,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  })
-    .then(response => (response.ok ? response.json() : false))
-    .then((data: string) => {
-      localStorage.setItem("token", data);
-      return true;
-    });
+export const signIn = async (body?: SignInContract): Promise<boolean> => {
+  const response = await post<string>("/api/auth/signin", {
+    method: HttpMethod.Delete,
+    headers: apiDefaultHeaders,
+    body: body ? JSON.stringify(body) : undefined
+  });
+  localStorage.setItem("token", response);
+  return true;
 };
 
 export interface SignUpContract {
@@ -125,12 +105,11 @@ export interface SignUpContract {
   passwordCompare: string;
 }
 
-export const signUp = async (body: SignUpContract): Promise<boolean> => {
-  return await fetch("/api/auth/signup", {
-    method: RequestType.Post,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  }).then(response => {
-    return response.ok;
+export const signUp = async (body?: SignUpContract): Promise<void> => {
+  await post<string>("/api/auth/signup", {
+    method: HttpMethod.Delete,
+    headers: apiDefaultHeaders,
+    body: body ? JSON.stringify(body) : undefined
   });
+  window.location.href = "/signin";
 };

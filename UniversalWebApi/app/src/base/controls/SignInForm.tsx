@@ -13,7 +13,8 @@ export const signInForm: React.FC = () => {
       password: event.target.password.value
     };
 
-    await signIn(contract);
+    let response = await signIn(contract);
+    alert("yeah");
   };
 
   return (
