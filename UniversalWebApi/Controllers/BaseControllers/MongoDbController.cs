@@ -14,18 +14,18 @@ namespace UniversalWebApi.Controllers.BaseControllers
         private IMongoRepository Db => HttpContext.RequestServices.GetRequiredService<IMongoRepository>();
 
         [HttpGet]
-        public async Task<IEnumerable<T>> Get() => await Db.GetAsync<T>();
+        public Task<IEnumerable<T>> Get() => Db.GetAsync<T>();
 
         [HttpGet("{id}")]
-        public async Task<T> Get(ObjectId id) => await Db.GetAsync<T>(id);
+        public Task<T> Get(ObjectId id) => Db.GetAsync<T>(id);
 
         [HttpPost]
-        public async Task Post([FromBody] T entity) => await Db.AddAsync(entity);
+        public Task Post([FromBody] T entity) => Db.AddAsync(entity);
 
         [HttpPut]
-        public async Task Put([FromBody] T entity) => await Db.UpdateAsync(entity);
+        public Task Put([FromBody] T entity) => Db.UpdateAsync(entity);
 
         [HttpDelete("{id}")]
-        public async Task Delete(ObjectId id) => await Db.RemoveAsync<T>(id);
+        public Task Delete(ObjectId id) => Db.RemoveAsync<T>(id);
     }
 }

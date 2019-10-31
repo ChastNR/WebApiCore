@@ -14,7 +14,7 @@
         "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/chastnr/.config/NuGet/NuGet.Config"
+          "/Users/chastnr/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -65,7 +65,13 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -79,7 +85,7 @@
         "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/chastnr/.config/NuGet/NuGet.Config"
+          "/Users/chastnr/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -143,7 +149,13 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -157,7 +169,7 @@
         "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/chastnr/.config/NuGet/NuGet.Config"
+          "/Users/chastnr/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -205,7 +217,13 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -15,18 +15,18 @@ namespace UniversalWebApi.Controllers.BaseControllers
         private ISqlRepository Db => HttpContext.RequestServices.GetRequiredService<ISqlRepository>();
 
         [HttpGet]
-        public async Task<IEnumerable<T>> Get() => await Db.GetAllAsync<T>();
+        public Task<IEnumerable<T>> Get() => Db.GetAllAsync<T>();
 
         [HttpGet("{id:int}")]
-        public async Task<T> Get(int id) => await Db.GetAsync<T>(id);
+        public Task<T> Get(int id) => Db.GetAsync<T>(id);
 
         [HttpPost]
-        public async Task Post([FromBody] T entity) => await Db.InsertAsync(entity);
+        public Task Post([FromBody] T entity) => Db.InsertAsync(entity);
 
         [HttpPut]
-        public async Task Put([FromBody] T entity) => await Db.UpdateAsync(entity);
+        public Task Put([FromBody] T entity) => Db.UpdateAsync(entity);
 
         [HttpDelete("{id:int}")]
-        public async Task Delete(int id) => await Db.DeleteRowAsync<T>(id);
+        public Task Delete(int id) => Db.DeleteRowAsync<T>(id);
     }
 }

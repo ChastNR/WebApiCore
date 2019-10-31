@@ -34,10 +34,10 @@ namespace DataRepository.Repositories.Base
             await connection.ExecuteAsync(GenerateInsertQuery<T>(), t);
         }
 
-        public async Task<TOut> InsertAsyncWithReturnId<T, TOut>(T t) where T : class
+        public async Task<int> InsertAsyncWithReturnId<T>(T t) where T : class
         {
             using var connection = CreateConnection();
-            return (TOut)await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<T>(), t);
+            return (int)await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<T>(), t);
         }
 
         public async Task SaveRangeAsync<T>(IEnumerable<T> list) where T : class

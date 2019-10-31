@@ -8,7 +8,7 @@ namespace DataRepository.Interfaces.Base
         Task<IEnumerable<T>> GetAllAsync<T>() where T : class;
         Task<T> GetAsync<T>(object id) where T : class;
         Task InsertAsync<T>(T t) where T : class;
-        Task<TOut> InsertAsyncWithReturnId<T, TOut>(T t) where T : class;
+        Task<int> InsertAsyncWithReturnId<T>(T t) where T : class;
         Task SaveRangeAsync<T>(IEnumerable<T> list) where T : class;
         Task UpdateAsync<T>(T t) where T : class;
         Task DeleteRowAsync<T>(object id) where T : class;
