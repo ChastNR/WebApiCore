@@ -14,7 +14,7 @@
         "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/chastnr/.nuget/NuGet/NuGet.Config"
+          "/Users/chastnr/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -65,13 +65,7 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "NETStandard.Library": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     },
@@ -85,7 +79,7 @@
         "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/chastnr/.nuget/NuGet/NuGet.Config"
+          "/Users/chastnr/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -110,10 +104,6 @@
             "Dapper": {
               "target": "Package",
               "version": "[2.0.30, )"
-            },
-            "GraphQL": {
-              "target": "Package",
-              "version": "[2.4.0, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
@@ -149,13 +139,7 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "NETStandard.Library": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     },
@@ -169,7 +153,7 @@
         "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/chastnr/.nuget/NuGet/NuGet.Config"
+          "/Users/chastnr/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -217,13 +201,7 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "NETStandard.Library": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

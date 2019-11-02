@@ -9,7 +9,7 @@ namespace DataRepository
 {
     public static class DataAccessServices
     {
-        public static string ConnectionString { get; set; }
+        public static string ConnectionString { get; private set; }
         public static void AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
         {
             ConnectionString = configuration.GetConnectionString("DbConnection");
@@ -19,7 +19,7 @@ namespace DataRepository
                 new MongoRepository(
                     configuration.GetSection("MongoDbSettings").GetSection("DbConnection").Value,
                     configuration.GetSection("MongoDbSettings").GetSection("DbName").Value));
-
+            
             //SqlRepositories
             services.AddTransient<ISqlRepository, SqlRepository>();
             services.AddTransient<IUserRepository, UserRepository>();

@@ -393,14 +393,9 @@ C:/Users/ChastNR/Documents/GitHub/WebApiCore/UniversalWebApi/obj/Debug/netcoreap
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/app/package.json
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/app/public/manifest.json
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/app/tsconfig.json
-/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/GraphQL.dll
-/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/GraphQL-Parser.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.NodeServices.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.SpaServices.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.SpaServices.Extensions.dll
-/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/System.Reactive.Core.dll
-/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/System.Reactive.Interfaces.dll
-/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/System.Reactive.Linq.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/obj/Debug/netcoreapp3.0/UniversalWebApi.MvcApplicationPartsAssemblyInfo.cs
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Protocols.dll

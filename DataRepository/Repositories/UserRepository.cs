@@ -13,7 +13,7 @@ namespace DataRepository.Repositories
         {
             using var connection = CreateConnection();
             return await connection.QueryFirstOrDefaultAsync<User>(
-                $"SELECT * FROM [{typeof(User).Name}] WHERE Email=@Email OR PhoneNumber=@PhoneNumber",
+                "SELECT * FROM [User] WHERE Email=@Email OR PhoneNumber=@PhoneNumber",
                 new { Email = email, PhoneNumber = phoneNumber }) != null;
         }
 
@@ -21,14 +21,14 @@ namespace DataRepository.Repositories
         {
             using var connection = CreateConnection();
             return await connection.QueryFirstOrDefaultAsync<User>(
-                $"SELECT * FROM [{typeof(User).Name}] WHERE Email=@Email OR PhoneNumber=@PhoneNumber",
+                "SELECT * FROM [User] WHERE Email=@Email OR PhoneNumber=@PhoneNumber",
                 new { Email = login, PhoneNumber = login });
         }
 
         public async Task<Guid> InsertUserAsyncWithReturnId(User user)
         {
             using var connection = CreateConnection();
-            return (Guid)await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<User>(), user);
+            return (Guid) await connection.ExecuteScalarAsync(GenerateInsertQueryWithReturnId<User>(), user);
         }
     }
 }

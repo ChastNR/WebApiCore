@@ -1,20 +1,18 @@
 using System;
+using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Tools;
 using AuthenticationProcessor;
 using DataRepository;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using UniversalWebApi.Filters;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using AuthenticationProcessor.Settings;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-
 
 namespace UniversalWebApi
 {
@@ -25,13 +23,10 @@ namespace UniversalWebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ApiAsyncActionFilter>();
-            services.AddScoped<ApiExceptionFilter>();
-
             services.AddDataAccessServices(Configuration);
             services.AddToolsServices(Configuration);
             services.AddAuthProcessorServices(Configuration);
-
+            
             #region CookieAuth
 
             //            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -71,12 +66,11 @@ namespace UniversalWebApi
 
             services.AddControllers(options =>
             {
-                //options.Filters.Add(typeof(ApiAsyncActionFilter));
-                //options.InputFormatters.Insert(0, new BinaryInputFormatter());
-                //options.OutputFormatters.Insert(0, new BinaryOutputFormatter());
+                options.Filters.Add<ApiExceptionFilterAttribute>();
+                options.Filters.Add<ApiAsyncActionFilterAttribute>();
             });
 
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "app/build"; });
+            services.AddSpaStaticFiles(configuration => configuration.RootPath = "app/build" );
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -13,7 +13,6 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace UniversalWebApi.Controllers
 {
-    //[ServiceFilter(typeof(ApiExceptionFilter))]
     [Route("api/[controller]")]
     public class AuthController : Controller
     {
@@ -22,8 +21,8 @@ namespace UniversalWebApi.Controllers
 
         public AuthController(IOptions<AuthOptions> authOptions, IAuthProcessor processor)
         {
-            AuthOptions = authOptions.Value;
-            _processor = processor;
+            AuthOptions = authOptions.Value ?? throw new ArgumentNullException(nameof(authOptions));
+            _processor = processor ?? throw new ArgumentNullException(nameof(processor));
         }
 
         [HttpPost("signin")]

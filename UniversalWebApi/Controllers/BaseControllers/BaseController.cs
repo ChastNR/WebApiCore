@@ -4,29 +4,27 @@ using DataRepository.Interfaces.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using UniversalWebApi.Filters;
 
 namespace UniversalWebApi.Controllers.BaseControllers
 {
-    [ServiceFilter(typeof(ApiExceptionFilter))]
     [Authorize]
     public abstract class BaseController<T> : Controller where T : class
     {
         private ISqlRepository Db => HttpContext.RequestServices.GetRequiredService<ISqlRepository>();
 
         [HttpGet]
-        public Task<IEnumerable<T>> Get() => Db.GetAllAsync<T>();
+        public async Task<IEnumerable<T>> Get() => await Db.GetAllAsync<T>();
 
         [HttpGet("{id:int}")]
-        public Task<T> Get(int id) => Db.GetAsync<T>(id);
+        public async Task<T> Get(int id) => await Db.GetAsync<T>(id);
 
         [HttpPost]
-        public Task Post([FromBody] T entity) => Db.InsertAsync(entity);
+        public async Task Post([FromBody] T entity) => await Db.InsertAsync(entity);
 
         [HttpPut]
-        public Task Put([FromBody] T entity) => Db.UpdateAsync(entity);
+        public async Task Put([FromBody] T entity) => await Db.UpdateAsync(entity);
 
         [HttpDelete("{id:int}")]
-        public Task Delete(int id) => Db.DeleteRowAsync<T>(id);
+        public async Task Delete(int id) => await Db.DeleteRowAsync<T>(id);
     }
 }
