@@ -3,8 +3,8 @@ import { get } from "../api/api";
 import { IUser } from "../contracts/IUser";
 
 export interface IUserStore {
-  userState: IUser;
-  authState: boolean;
+  user: IUser;
+  isAuthenticated: boolean;
   authStateCheck: () => void;
   getUser: () => void;
 }
@@ -15,19 +15,14 @@ export interface IToken {
 }
 
 export class UserStore implements IUserStore {
-  @observable private user: IUser = {
+  @observable user: IUser = {
     id: "",
     name: "",
     email: "",
     phoneNumber: ""
   };
 
-  @observable private isAuthenticated: boolean = true;
-
-  @computed
-  get authState() {
-    return this.isAuthenticated;
-  }
+  @observable isAuthenticated: boolean = true;
 
   @action("authStateCheck")
   authStateCheck = () => {
@@ -44,11 +39,6 @@ export class UserStore implements IUserStore {
 
     this.isAuthenticated = authenticated;
   };
-
-  @computed
-  get userState() {
-    return this.user;
-  }
 
   @action("getUser")
   getUser = async () => {

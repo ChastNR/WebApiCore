@@ -1,16 +1,12 @@
-using AuthenticationProcessor.Interfaces;
-using AuthenticationProcessor.Settings;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AuthenticationProcessor.Interfaces;
 
 namespace AuthenticationProcessor
 {
     public static class AuthProcessorServices
     {
-        public static void AddAuthProcessorServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddAuthProcessorServices(this IServiceCollection services)
         {
-            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IAuthProcessor, AuthProcessor>();
         }
     }

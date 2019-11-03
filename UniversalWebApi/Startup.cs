@@ -1,18 +1,20 @@
-using System;
 using System.Text;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
+
 using Tools;
 using AuthenticationProcessor;
 using DataRepository;
 using UniversalWebApi.Filters;
 using AuthenticationProcessor.Settings;
+using Tools.Messages.EmailSender;
 
 namespace UniversalWebApi
 {
@@ -24,25 +26,12 @@ namespace UniversalWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDataAccessServices(Configuration);
-            services.AddToolsServices(Configuration);
-            services.AddAuthProcessorServices(Configuration);
-            
-            #region CookieAuth
+            services.AddToolsServices();
+            services.AddAuthProcessorServices();
 
-            //            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            //                .AddCookie(options =>
-            //                {
-            //                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
-            //                });
-
-            services.AddAuthentication();
-
-            #endregion
-
-            #region JwtAuth
-
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));
-            var authConfig = Configuration.GetSection("AuthOptions").Get<AuthOptions>();
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -50,27 +39,22 @@ namespace UniversalWebApi
                     options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        //what to validate
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
                         ValidateIssuerSigningKey = true,
-                        //setup validate data
-                        ValidIssuer = authConfig.Issuer,
-                        ValidAudience = authConfig.Audience,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authConfig.SecurityKey)),
-                        ClockSkew = TimeSpan.Zero
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                            Configuration.GetSection("AuthOptions").Get<AuthOptions>().SecurityKey))
                     };
                 });
 
-            #endregion
+            services.AddCors();
 
             services.AddControllers(options =>
             {
                 options.Filters.Add<ApiExceptionFilterAttribute>();
-                options.Filters.Add<ApiAsyncActionFilterAttribute>();
             });
 
-            services.AddSpaStaticFiles(configuration => configuration.RootPath = "app/build" );
+            services.AddSpaStaticFiles(configuration => configuration.RootPath = "app/build");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -82,7 +66,11 @@ namespace UniversalWebApi
 
             app.UseRouting();
 
-            //app.UseCookiePolicy();
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             app.UseAuthentication();
             app.UseAuthorization();
 

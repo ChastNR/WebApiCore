@@ -87,14 +87,19 @@ export interface SignInContract {
   password: string;
 }
 
-export const signIn = async (body?: SignInContract): Promise<boolean> => {
-  const response = await post<string>("/api/auth/signin", {
+export interface SignInResponse {
+  token: string;
+  userId: string;
+}
+
+export const signIn = async (
+  body?: SignInContract
+): Promise<SignInResponse> => {
+  return await post<SignInResponse>("/api/auth/signin", {
     method: HttpMethod.Delete,
     headers: apiDefaultHeaders,
     body: body ? JSON.stringify(body) : undefined
   });
-  localStorage.setItem("token", response);
-  return true;
 };
 
 export interface SignUpContract {
@@ -105,11 +110,12 @@ export interface SignUpContract {
   passwordCompare: string;
 }
 
-export const signUp = async (body?: SignUpContract): Promise<void> => {
-  await post<string>("/api/auth/signup", {
-    method: HttpMethod.Delete,
+export const signUp = async (body?: SignUpContract): Promise<boolean> => {
+  return await fetch("/api/auth/signup", {
+    method: HttpMethod.Post,
     headers: apiDefaultHeaders,
     body: body ? JSON.stringify(body) : undefined
+  }).then(response => {
+    return response.ok;
   });
-  window.location.href = "/signin";
 };

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace UnityApiController
@@ -12,56 +13,58 @@ namespace UnityApiController
         public ApiController() { }
         public ApiController(string uri) => _baseAddress = new Uri(uri);
 
-        public IEnumerable<T> Get<T>() where T : class
+        public async Task<IEnumerable<T>> Get<T>() where T : class
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = _baseAddress;
-                var response = client.GetAsync($"api/{typeof(T).Name}").Result;
-                var result = JsonConvert.DeserializeObject<IEnumerable<T>>(response.Content.ReadAsStringAsync().Result);
+                var response = await client.GetAsync($"api/{typeof(T).Name}");
+                var content = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<IEnumerable<T>>(content);
                 return result;
             }
         }
 
-        public T Get<T>(object id) where T : class
+        public async Task<T> Get<T>(object id) where T : class
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = _baseAddress;
-                var response = client.GetAsync($"api/{typeof(T).Name}/{id}").Result;
-                var result = JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+                var response = await client.GetAsync($"api/{typeof(T).Name}/{id}");
+                var content = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<T>(content);
                 return result;
             }
         }
 
-        public bool Post<T>(T t) where T : class
+        public async Task<bool> Post<T>(T t) where T : class
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = _baseAddress;
                 var content = new StringContent(JsonConvert.SerializeObject(t), Encoding.UTF8, "application/json");
-                var result = client.PostAsync($"api/{typeof(T).Name}", content).Result;
+                var result = await client.PostAsync($"api/{typeof(T).Name}", content);
                 return result.IsSuccessStatusCode;
             }
         }
 
-        public bool Put<T>(T t) where T : class
+        public async Task<bool> Put<T>(T t) where T : class
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = _baseAddress;
                 var content = new StringContent(JsonConvert.SerializeObject(t), Encoding.UTF8, "application/json");
-                var result = client.PutAsync($"api/{typeof(T).Name}", content).Result;
+                var result = await client.PutAsync($"api/{typeof(T).Name}", content);
                 return result.IsSuccessStatusCode;
             }
         }
 
-        public bool Delete<T>(object id) where T : class
+        public async Task<bool> Delete<T>(object id) where T : class
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = _baseAddress;
-                var result = client.DeleteAsync($"api/{typeof(T).Name}/{id}").Result;
+                var result = await client.DeleteAsync($"api/{typeof(T).Name}/{id}");
                 return result.IsSuccessStatusCode;
             }
         }

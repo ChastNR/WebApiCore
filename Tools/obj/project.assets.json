@@ -6822,8 +6822,6 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
       "DataRepository >= 1.0.0",
-      "Microsoft.Extensions.Configuration.Abstractions >= 3.0.0",
-      "Microsoft.Extensions.DependencyInjection.Abstractions >= 3.0.0",
       "Microsoft.Extensions.Options >= 3.0.0"
     ]
   },
@@ -6866,14 +6864,6 @@
     "frameworks": {
       "netstandard2.1": {
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": {
-            "target": "Package",
-            "version": "[3.0.0, )"
-          },
-          "Microsoft.Extensions.DependencyInjection.Abstractions": {
-            "target": "Package",
-            "version": "[3.0.0, )"
-          },
           "Microsoft.Extensions.Options": {
             "target": "Package",
             "version": "[3.0.0, )"

@@ -10,8 +10,6 @@
       "Tools/1.0.0": {
         "dependencies": {
           "DataRepository": "1.0.0",
-          "Microsoft.Extensions.Configuration.Abstractions": "3.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0",
           "Microsoft.Extensions.Options": "3.0.0"
         },
         "runtime": {

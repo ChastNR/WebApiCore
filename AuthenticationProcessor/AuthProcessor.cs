@@ -2,10 +2,8 @@
 using System.Threading.Tasks;
 using AuthenticationProcessor.Contracts;
 using AuthenticationProcessor.Interfaces;
-using AuthenticationProcessor.UserData;
 using DataRepository.Contracts;
 using DataRepository.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Tools.Logger;
 using static BCrypt.Net.BCrypt;
 
@@ -14,12 +12,10 @@ namespace AuthenticationProcessor
     public class AuthProcessor : IAuthProcessor
     {
         private readonly IUserRepository _sqlRepository;
-        private readonly IHttpContextAccessor _context;
         private readonly IExceptionManager _manager;
-        public AuthProcessor(IUserRepository sqlRepository, IHttpContextAccessor context, IExceptionManager manager)
+        public AuthProcessor(IUserRepository sqlRepository, IExceptionManager manager)
         {
             _sqlRepository = sqlRepository;
-            _context = context;
             _manager = manager;
         }
 
@@ -32,12 +28,6 @@ namespace AuthenticationProcessor
 
             try
             {
-                var userAuthData = new UserAuthData
-                {
-                    LastUsedIp = _context.HttpContext.Connection.RemoteIpAddress.ToString(),
-                    UserAgent = _context.HttpContext.Request.Headers["User-Agent"],
-                };
-
                 var user = new User
                 {
                     Name = contract.Name,
@@ -47,10 +37,6 @@ namespace AuthenticationProcessor
                 };
 
                 var userInsertId = await _sqlRepository.InsertUserAsyncWithReturnId(user);
-
-                userAuthData.UserId = userInsertId;
-
-                //await _sqlRepository.InsertAsync(userAuthData);
 
                 return true;
             }

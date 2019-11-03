@@ -10,6 +10,7 @@
         <e p="Contracts" t="Include">
           <e p="LoginContract.cs" t="Include" />
           <e p="RegistrationContract.cs" t="Include" />
+          <e p="SignInResponse.cs" t="Include" />
         </e>
         <e p="Interfaces" t="Include">
           <e p="IAuthProcessor.cs" t="Include" />

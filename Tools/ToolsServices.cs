@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Tools.EncryptTool;
 using Tools.Logger;
@@ -10,13 +9,12 @@ namespace Tools
 {
     public static class ToolsServices
     {
-        public static void AddToolsServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddToolsServices(this IServiceCollection services)
         {
             services.AddTransient<IExceptionManager, ExceptionManager>();
             services.AddTransient<ISerializeHelper, SerializeHelper>();
             services.AddTransient<IEncryptionHelper, EncryptionHelper>();
             services.AddTransient<IMessageSender, EmailSender>();
-            services.Configure<EmailSettings>(c => configuration.GetSection("EmailSettings"));
         }
     }
 }

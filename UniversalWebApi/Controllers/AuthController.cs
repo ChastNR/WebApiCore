@@ -1,15 +1,18 @@
 using System;
-using System.Collections.Generic;
+using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+
 using AuthenticationProcessor.Contracts;
 using AuthenticationProcessor.Interfaces;
 using AuthenticationProcessor.Settings;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
+
 
 namespace UniversalWebApi.Controllers
 {
@@ -32,12 +35,16 @@ namespace UniversalWebApi.Controllers
 
             if (string.IsNullOrEmpty(userId))
             {
-                return BadRequest();
+                return BadRequest("Please, check your login or password");
             }
 
             var token = GetToken(userId);
 
-            return Ok(token);
+            return Ok(new SignInReponse
+            {
+                Token = token,
+                UserId = userId
+            });
         }
 
         [HttpPost("signup")]
@@ -60,24 +67,23 @@ namespace UniversalWebApi.Controllers
 
         private string GetToken(string userId)
         {
-            var signingCredentials =
-                new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthOptions.SecurityKey)),
-                    SecurityAlgorithms.HmacSha256Signature);
+            var tokenHandler = new JwtSecurityTokenHandler();
 
-            var claims = new List<Claim>
+            var key = Encoding.UTF8.GetBytes(AuthOptions.SecurityKey);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userId)
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, userId)
+                }),
+                Expires = DateTime.UtcNow.AddHours(6),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var token = new JwtSecurityToken(
-                AuthOptions.Issuer,
-                AuthOptions.Audience,
-                expires: DateTime.Now.AddMinutes(AuthOptions.LifeTime),
-                signingCredentials: signingCredentials,
-                claims: claims
-            );
+            var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return tokenHandler.WriteToken(token);
         }
     }
 }

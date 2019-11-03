@@ -114,14 +114,6 @@
       "frameworks": {
         "netstandard2.1": {
           "dependencies": {
-            "Microsoft.Extensions.Configuration.Abstractions": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "Microsoft.Extensions.DependencyInjection.Abstractions": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
             "Microsoft.Extensions.Options": {
               "target": "Package",
               "version": "[3.0.0, )"

@@ -19,7 +19,10 @@ export const signUpForm: React.FC = () => {
       passwordCompare: event.target.passwordCompare.value
     };
 
-    //let result = await signUp(contract);
+    let result = await signUp(contract);
+    if (result === true) {
+      window.location.href = "/signin";
+    }
   };
 
   return (
