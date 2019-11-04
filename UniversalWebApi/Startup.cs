@@ -9,12 +9,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using Tools;
-using AuthenticationProcessor;
-using DataRepository;
 using UniversalWebApi.Filters;
-using AuthenticationProcessor.Settings;
+using UniversalWebApi.BackgroundServices;
+
+using Tools;
 using Tools.Messages.EmailSender;
+
+using AuthenticationProcessor;
+using AuthenticationProcessor.Settings;
+
+using DataRepository;
 
 namespace UniversalWebApi
 {
@@ -28,6 +32,7 @@ namespace UniversalWebApi
             services.AddDataAccessServices(Configuration);
             services.AddToolsServices();
             services.AddAuthProcessorServices();
+            services.AddHostedServices();
 
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));

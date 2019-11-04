@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using DataRepository.Interfaces.Base;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using Tools.Logger;
 using UniversalWebApi.Filters.Contracts;
@@ -41,8 +42,8 @@ namespace UniversalWebApi.Filters
             }
             catch (Exception exception)
             {
-                var logger = context.HttpContext.RequestServices.GetRequiredService<IExceptionManager>();
-                await logger.Log(exception);
+                var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<ApiAsyncActionFilterAttribute>>();
+                logger.Log(LogLevel.Error, exception.Message);
             }
         }
     }

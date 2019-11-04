@@ -299,6 +299,10 @@
         </e>
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
+        <e p="BackgroundServices" t="Include">
+          <e p="HostedServices.cs" t="Include" />
+          <e p="LoggerMessages.cs" t="Include" />
+        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="AuthController.cs" t="Include" />
