@@ -2,10 +2,12 @@ import React from "react";
 import { signIn, SignInContract } from "../../api/api";
 import { inject, observer } from "mobx-react";
 import { IUserStore } from "../../stores/UserStore";
+import { IAppStoreInject } from "../../stores/AppStore";
 
-export const signInForm = inject("appStore")(
-  observer((props: any) => {
-    const userStore = props.appStore.UserStore as IUserStore;
+export const signInForm: React.FC<IAppStoreInject> = inject("appStore")(
+  observer(props => {
+    const appStore = props!.AppStore;
+    //const userStore = appStore.UserStore;
 
     const handleSubmit = async (event: any) => {
       if (!event.target.checkValidity()) {
@@ -20,7 +22,7 @@ export const signInForm = inject("appStore")(
       let response = await signIn(contract);
 
       localStorage.setItem("token", response.token);
-      userStore.user.id = response.userId;
+      //userStore.user.id = response.userId;
     };
 
     return (

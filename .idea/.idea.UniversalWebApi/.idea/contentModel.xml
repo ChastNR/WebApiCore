@@ -37,6 +37,16 @@
         </e>
         <e p="DataAccessServices.cs" t="Include" />
         <e p="DataRepository.csproj" t="IncludeRecursive" />
+        <e p="GraphQL" t="Include">
+          <e p="AppSchema.cs" t="Include" />
+          <e p="GraphQLQuery.cs" t="Include" />
+          <e p="Query" t="Include">
+            <e p="UserQuery.cs" t="Include" />
+          </e>
+          <e p="Types" t="Include">
+            <e p="UserType.cs" t="Include" />
+          </e>
+        </e>
         <e p="Interfaces" t="Include">
           <e p="Base" t="Include">
             <e p="EntityInterfaces.cs" t="Include" />
@@ -291,6 +301,7 @@
             <e p="serviceWorker.ts" t="Include" />
             <e p="stores" t="Include">
               <e p="AppStore.tsx" t="Include" />
+              <e p="StoreData.tsx" t="Include" />
               <e p="UserStore.tsx" t="Include" />
             </e>
           </e>
@@ -310,6 +321,7 @@
             <e p="BaseController.cs" t="Include" />
             <e p="MongoDbController.cs" t="Include" />
           </e>
+          <e p="GraphQlController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
         </e>
         <e p="Filters" t="Include">
@@ -338,9 +350,7 @@
       </e>
       <e p="UniversalWebApi.sln" t="IncludeFlat" />
     </e>
-    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_UniversalWebApi.556252658.00" t="ExcludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_UniversalWebApi.556252658.00" t="ExcludeRecursive" />
   </component>
 </project>

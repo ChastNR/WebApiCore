@@ -19,6 +19,10 @@ using AuthenticationProcessor;
 using AuthenticationProcessor.Settings;
 
 using DataRepository;
+using DataRepository.GraphQL;
+using GraphQL.Server;
+using GraphQL.Server.Ui.Playground;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace UniversalWebApi
 {
@@ -51,9 +55,12 @@ namespace UniversalWebApi
                             Configuration.GetSection("AuthOptions").Get<AuthOptions>().SecurityKey))
                     };
                 });
-
-            services.AddCors();
-
+            
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+            
             services.AddControllers(options =>
             {
                 options.Filters.Add<ApiExceptionFilterAttribute>();
@@ -71,14 +78,11 @@ namespace UniversalWebApi
 
             app.UseRouting();
 
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.AddDataConfigBuilder();
+            
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             app.UseSpa(spa =>

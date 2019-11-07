@@ -5,7 +5,7 @@ create table [User]
 	Email nvarchar(100) not null,
 	PhoneNumber nvarchar(25),
 	Age int,
-	PasswordHash nvarchar(50) not null,
+	PasswordHash nvarchar(75) not null,
 	CreationDate datetime2
 )
 go

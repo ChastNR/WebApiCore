@@ -37,7 +37,7 @@ const StyledOpenButton = styled.button`
 
 export const SideBar: React.FC = () => {
   const [hidden, open] = useState(true);
-  const openBar = () => open(hidden => (hidden ? false : true));
+  const openBar = () => open(hidden => (!hidden));
 
   return (
     <Wrapper>

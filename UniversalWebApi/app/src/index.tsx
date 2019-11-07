@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router } from "./Router";
-import serviceWorker from "./serviceWorker";
-import { Provider } from "mobx-react";
 import { BrowserRouter } from "react-router-dom";
-import { AppStore } from "./stores/AppStore";
+import { Provider } from "mobx-react";
+import { Router } from "./Router";
+import { AppStore, IAppStore } from "./stores/AppStore";
+import serviceWorker from "./serviceWorker";
 
-const appStore = new AppStore();
+const appStore: IAppStore = new AppStore();
 
 ReactDOM.render(
   <Provider appStore={appStore}>

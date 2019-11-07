@@ -42,7 +42,7 @@ namespace AuthenticationProcessor
             }
             catch (Exception e)
             {
-                await _manager.Log(e);
+                //await _manager.Log(e);
                 return false;
             }
         }

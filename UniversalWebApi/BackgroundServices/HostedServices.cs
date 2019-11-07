@@ -11,7 +11,7 @@ namespace UniversalWebApi.BackgroundServices
     {
         public static void AddHostedServices(this IServiceCollection services)
         {
-            services.AddHostedService<ActionTelemetryCollector>();
+            //services.AddHostedService<ActionTelemetryCollector>();
         }
     }
     

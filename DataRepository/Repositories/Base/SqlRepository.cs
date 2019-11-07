@@ -21,6 +21,12 @@ namespace DataRepository.Repositories.Base
             return await connection.QueryAsync<T>($"SELECT * FROM [{typeof(T).Name}]");
         }
 
+        public async Task<IEnumerable<T>> GetAllAsyncByCondition<T>(string condition) where T : class
+        {
+            using var connection = CreateConnection();
+            return await connection.QueryAsync<T>($"SELECT * FROM [{typeof(T).Name}] WHERE {condition}");
+        }
+
         public async Task<T> GetAsync<T>(object id) where T : class
         {
             using var connection = CreateConnection();
@@ -28,6 +34,12 @@ namespace DataRepository.Repositories.Base
                 new { Id = id });
         }
 
+        public async Task<T> GetAsyncByCondition<T>(string condition) where T : class
+        {
+            using var connection = CreateConnection();
+            return await connection.QueryFirstOrDefaultAsync<T>($"SELECT * FROM [{typeof(T).Name}] WHERE {condition}");
+        }
+        
         public async Task InsertAsync<T>(T t) where T : class
         {
             using var connection = CreateConnection();

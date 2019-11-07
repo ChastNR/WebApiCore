@@ -6,7 +6,9 @@ namespace DataRepository.Interfaces.Base
     public interface ISqlRepository
     {
         Task<IEnumerable<T>> GetAllAsync<T>() where T : class;
+        Task<IEnumerable<T>> GetAllAsyncByCondition<T>(string condition) where T : class;
         Task<T> GetAsync<T>(object id) where T : class;
+        Task<T> GetAsyncByCondition<T>(string condition) where T : class;
         Task InsertAsync<T>(T t) where T : class;
         Task<int> InsertAsyncWithReturnId<T>(T t) where T : class;
         Task SaveRangeAsync<T>(IEnumerable<T> list) where T : class;

@@ -3,7 +3,6 @@ using DataRepository.Interfaces.Base;
 
 namespace DataRepository.Contracts
 {
-    [Serializable]
     public class User : IUserEntity
     {
         public Guid Id { get; set; }
