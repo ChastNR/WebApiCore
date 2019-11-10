@@ -5,18 +5,10 @@ enum HttpMethod {
   Delete = "DELETE"
 }
 
-const apiDefaultHeaders: HeadersInit = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-  pragma: "no-cache",
-  "cache-control": "no-cache"
-};
-
 export const get = async <T>(
   path: string,
   args: RequestInit = {
-    method: HttpMethod.Get,
-    headers: apiDefaultHeaders
+    method: HttpMethod.Get
   }
 ): Promise<T> => {
   const response = await fetch(path, args);
@@ -25,67 +17,14 @@ export const get = async <T>(
     throw new Error(response.statusText);
   }
 
-  return (await response.json()) as T;
+  const data: T = await response.json();
+  return data;
 };
 
-export const post = async <T>(
-  path: string,
-  body?: any,
-  args: RequestInit = {
+export const post = async <T>(path: string, body?: any): Promise<T> => {
+  const response = await fetch(path, {
     method: HttpMethod.Post,
-    headers: apiDefaultHeaders,
-    body: body ? JSON.stringify(body) : undefined
-  }
-): Promise<T> => {
-  const response = await fetch(path, args);
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return (await response.json()) as T;
-};
-
-export const put = async <T>(
-  path: string,
-  body?: any,
-  args: RequestInit = {
-    method: HttpMethod.Put,
-    headers: apiDefaultHeaders,
-    body: body ? JSON.stringify(body) : undefined
-  }
-): Promise<T> => {
-  const response = await fetch(path, args);
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return (await response.json()) as T;
-};
-
-export const del = async <T>(
-  path: string,
-  body?: any,
-  args: RequestInit = {
-    method: HttpMethod.Delete,
-    headers: apiDefaultHeaders,
-    body: body ? JSON.stringify(body) : undefined
-  }
-): Promise<T> => {
-  const response = await fetch(path, args);
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return (await response.json()) as T;
-};
-
-export const qlGet = async (typeName: string, body?: any) => {
-  const response = await fetch("/graphql", {
-    method: HttpMethod.Post,
-    headers: apiDefaultHeaders,
+    headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined
   });
 
@@ -93,8 +32,49 @@ export const qlGet = async (typeName: string, body?: any) => {
     throw new Error(response.statusText);
   }
 
-  let jsonResponse = await response.json();
+  const data: T = await response.json();
+  return data;
+};
 
+export const put = async <T>(
+  path: string,
+  body?: any,
+  args: RequestInit = {
+    method: HttpMethod.Put,
+    headers: { "Content-Type": "application/json" },
+    body: body ? JSON.stringify(body) : undefined
+  }
+): Promise<T> => {
+  const response = await fetch(path, args);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  const data: T = await response.json();
+  return data;
+};
+
+export const del = async (path: string, id?: number | string): Promise<boolean> => {
+  const response = await fetch(`${path}/${id}`, {
+    method: HttpMethod.Delete
+  });
+
+  return response.ok;
+};
+
+export const qlGet = async (typeName: string, body?: any) => {
+  const response = await fetch("/graphql", {
+    method: HttpMethod.Post,
+    headers: { "Content-Type": "application/json" },
+    body: body ? JSON.stringify(body) : undefined
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  const jsonResponse = await response.json();
   return jsonResponse.data[typeName];
 };
 
@@ -105,18 +85,11 @@ export interface SignInContract {
 
 export interface SignInResponse {
   token: string;
+  expirationTime: Date;
   userId: string;
 }
 
-export const signIn = async (
-  body?: SignInContract
-): Promise<SignInResponse> => {
-  return await post<SignInResponse>("/api/auth/signin", {
-    method: HttpMethod.Delete,
-    headers: apiDefaultHeaders,
-    body: body ? JSON.stringify(body) : undefined
-  });
-};
+export const signIn = async (body: SignInContract) => await post<SignInResponse>("/api/auth/signin", body);
 
 export interface SignUpContract {
   name: string;
@@ -126,12 +99,11 @@ export interface SignUpContract {
   passwordCompare: string;
 }
 
-export const signUp = async (body?: SignUpContract): Promise<boolean> => {
-  return await fetch("/api/auth/signup", {
+export const signUp = async (body?: SignUpContract) =>
+  await fetch("/api/auth/signup", {
     method: HttpMethod.Post,
-    headers: apiDefaultHeaders,
+    headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined
   }).then(response => {
     return response.ok;
   });
-};

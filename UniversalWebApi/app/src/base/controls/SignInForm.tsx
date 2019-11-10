@@ -1,46 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { signIn, SignInContract } from "../../api/api";
 import { inject, observer } from "mobx-react";
-import { IAppStore } from "../../stores/AppStore";
+import { App_Store, IAppStoreInject } from "../../stores/AppStore";
+import history from "../../history";
+import { Loading } from "./Loading";
 
-const signInForm: React.FC<IAppStore> = inject("appStore")(
-  observer(props => {
-    const userStore = props.UserStore;
+const signInForm: React.FC<IAppStoreInject> = props => {
+  const userStore = props.appStore.UserStore;
 
-    const handleSubmit = async (event: any) => {
-      if (!event.target.checkValidity()) {
-        event.target.reportValidity();
-      }
+  const [contentLoading, changeCondition] = useState(false);
 
-      let contract: SignInContract = {
-        login: event.target.login.value,
-        password: event.target.password.value
-      };
+  const change = (load: boolean) => {
+    changeCondition(load);
+  };
 
-      let response = await signIn(contract);
+  const handleSubmit = async (event: any) => {
+    change(true);
 
-      localStorage.setItem("token", response.token);
-      userStore.user.id = response.userId;
+    event.preventDefault();
+
+    if (!event.target.checkValidity()) {
+      event.target.reportValidity();
+    }
+
+    let contract: SignInContract = {
+      login: event.target.login.value,
+      password: event.target.password.value
     };
 
-    return (
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Email or phone number:</label>
-            <input type="text" name="login" required />
-          </div>
-          <div>
-            <label>Password:</label>
-            <input type="text" name="password" required />
-          </div>
-          <div>
-            <button type="submit">Sign in</button>
-          </div>
-        </form>
-      </div>
-    );
-  })
-);
+    let response = await signIn(contract);
 
-export default signInForm;
+    if (response !== undefined) {
+      localStorage.setItem("token", response.token);
+      userStore.user.id = response.userId;
+      history.push("/");
+    }
+  };
+
+  return (
+    <div>
+      {contentLoading && <Loading />}
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Email or phone number:</label>
+          <input type="text" name="login" required />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input type="text" name="password" required />
+        </div>
+        <div>
+          <button type="submit">Sign in</button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default inject(App_Store)(observer(signInForm));

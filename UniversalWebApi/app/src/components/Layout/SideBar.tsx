@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { IUser } from "../../contracts/IUser";
+import { Link } from "react-router-dom";
 
 interface ISideBarHidden {
   sideBarHidden: boolean;
+}
+
+interface ISideBarProps {
+  user?: IUser;
 }
 
 const Wrapper = styled.div`
@@ -20,14 +26,12 @@ const Menu = styled.div`
   background: grey;
   width: 200px;
   height: 100%;
-  transform: ${(props: ISideBarHidden) =>
-    props.sideBarHidden ? "translate3d(-200px, 0, 0)" : "translate3d(0, 0, 0)"};
+  transform: ${(props: ISideBarHidden) => (props.sideBarHidden ? "translate3d(-200px, 0, 0)" : "translate3d(0, 0, 0)")};
   transition: transform 0.35s;
 `;
 
 const StyledOpenButton = styled.button`
-  display: ${(props: ISideBarHidden) =>
-    props.sideBarHidden ? "block" : "none"};
+  display: ${(props: ISideBarHidden) => (props.sideBarHidden ? "block" : "none")};
   font-size: 1.5em;
   color: blue;
   padding: 0.5em;
@@ -35,7 +39,7 @@ const StyledOpenButton = styled.button`
   border-radius: 0.1em;
 `;
 
-export const SideBar: React.FC = () => {
+export const SideBar: React.FC<ISideBarProps> = props => {
   const [hidden, open] = useState(true);
   const openBar = () => open(hidden => !hidden);
 
@@ -48,6 +52,9 @@ export const SideBar: React.FC = () => {
             <StyledOpenButton onClick={openBar} sideBarHidden={!hidden} />
           </li>
           <li>
+            <Link to="/signin">Sign in</Link>
+          </li>
+          <li>
             <a href="#">Menu-1</a>
           </li>
           <li>
@@ -56,6 +63,7 @@ export const SideBar: React.FC = () => {
           <li>
             <a href="#">Menu-6</a>
           </li>
+          <li>{props.user && props.user.id}</li>
         </ul>
       </Menu>
     </Wrapper>

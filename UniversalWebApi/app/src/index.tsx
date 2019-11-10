@@ -1,18 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { Provider } from "mobx-react";
-import { Router } from "./Router";
-import { AppStore } from "./stores/AppStore";
+import history from "./history";
 import serviceWorker from "./serviceWorker";
+
+import { App } from "./App";
+import { AppStore } from "./stores/AppStore";
 
 ReactDOM.render(
   <Provider appStore={AppStore}>
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <Router history={history}>
+      <App />
+    </Router>
   </Provider>,
-  document.body
+  document.getElementById("root")
 );
 
 serviceWorker();

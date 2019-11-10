@@ -1,6 +1,6 @@
 import React from "react";
 import { observer, inject } from "mobx-react";
-import { IAppStore, App_Store, IAppStoreInject } from "../stores/AppStore";
+import { App_Store, IAppStoreInject } from "../stores/AppStore";
 import { IUserStore } from "../stores/UserStore";
 
 @inject(App_Store)

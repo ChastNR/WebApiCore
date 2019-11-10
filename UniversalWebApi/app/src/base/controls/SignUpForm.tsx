@@ -3,6 +3,8 @@ import { signUp, SignUpContract } from "../../api/api";
 
 const signUpForm: React.FC = () => {
   const handleSubmit = async (event: any) => {
+    event.preventDefault();
+
     if (
       !event.target.checkValidity() ||
       event.target.password.value !== event.target.passwordCompare.value
@@ -19,7 +21,7 @@ const signUpForm: React.FC = () => {
     };
 
     let result = await signUp(contract);
-    if (result === true) {
+    if (result) {
       window.location.href = "/signin";
     }
   };

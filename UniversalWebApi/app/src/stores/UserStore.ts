@@ -11,11 +11,6 @@ export interface IUserStore {
   getUsers: () => Promise<void>;
 }
 
-export interface IToken {
-  token: string | null;
-  expirationTime: number;
-}
-
 export class UserStore implements IUserStore {
   @observable public user: IUser = {
     id: "",
@@ -26,7 +21,7 @@ export class UserStore implements IUserStore {
 
   @observable public users: IUser[] = [];
 
-  @observable public isAuthenticated: boolean = true;
+  @observable public isAuthenticated: boolean = false;
 
   @action("getUsers")
   getUsers = async () => {
@@ -37,18 +32,8 @@ export class UserStore implements IUserStore {
 
   @action("authStateCheck")
   authStateCheck = () => {
-    let token: IToken = {
-      token: localStorage.getItem("token"),
-      expirationTime: Number(localStorage.getItem("expTime"))
-    };
-    let authenticated: boolean =
-      token.expirationTime <= Date.now() && token.token == null;
-
-    if (!authenticated) {
-      localStorage.removeItem("token");
-    }
-
-    this.isAuthenticated = authenticated;
+    let token = localStorage.getItem("token");
+    this.isAuthenticated = token !== undefined;
   };
 
   @action("getUser")
