@@ -1,13 +1,11 @@
 import React from "react";
 import { signIn, SignInContract } from "../../api/api";
 import { inject, observer } from "mobx-react";
-import { IUserStore } from "../../stores/UserStore";
-import { IAppStoreInject } from "../../stores/AppStore";
+import { IAppStore } from "../../stores/AppStore";
 
-export const signInForm: React.FC<IAppStoreInject> = inject("appStore")(
+const signInForm: React.FC<IAppStore> = inject("appStore")(
   observer(props => {
-    const appStore = props!.AppStore;
-    //const userStore = appStore.UserStore;
+    const userStore = props.UserStore;
 
     const handleSubmit = async (event: any) => {
       if (!event.target.checkValidity()) {
@@ -22,7 +20,7 @@ export const signInForm: React.FC<IAppStoreInject> = inject("appStore")(
       let response = await signIn(contract);
 
       localStorage.setItem("token", response.token);
-      //userStore.user.id = response.userId;
+      userStore.user.id = response.userId;
     };
 
     return (
@@ -44,3 +42,5 @@ export const signInForm: React.FC<IAppStoreInject> = inject("appStore")(
     );
   })
 );
+
+export default signInForm;

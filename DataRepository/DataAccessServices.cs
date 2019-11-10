@@ -1,14 +1,16 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+using GraphQL;
+using GraphQL.Server;
+using GraphQL.Server.Ui.Playground;
+
 using DataRepository.GraphQL;
 using DataRepository.Interfaces;
 using DataRepository.Interfaces.Base;
 using DataRepository.Repositories;
 using DataRepository.Repositories.Base;
-using GraphQL;
-using GraphQL.Server;
-using GraphQL.Server.Ui.Playground;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace DataRepository
 {

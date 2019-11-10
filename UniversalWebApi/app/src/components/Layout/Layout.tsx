@@ -8,16 +8,13 @@ const StyledContainer = styled.div`
 `;
 
 interface ILayout {
-  text?: string;
   children?: any;
 }
 
 export const Layout: React.FC<ILayout> = props => {
-  const text = props.text;
   return (
     <StyledContainer>
       <SideBar />
-      {text}
       {props.children}
       <Footer />
     </StyledContainer>

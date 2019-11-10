@@ -1,12 +1,14 @@
 import { action, observable, computed } from "mobx";
-import { get } from "../api/api";
+import { get, qlGet } from "../api/api";
 import { IUser } from "../contracts/IUser";
 
 export interface IUserStore {
   user: IUser;
+  users: IUser[];
   isAuthenticated: boolean;
   authStateCheck: () => void;
-  getUser: () => void;
+  getUser: () => Promise<void>;
+  getUsers: () => Promise<void>;
 }
 
 export interface IToken {
@@ -15,14 +17,23 @@ export interface IToken {
 }
 
 export class UserStore implements IUserStore {
-  @observable user: IUser = {
+  @observable public user: IUser = {
     id: "",
     name: "",
     email: "",
     phoneNumber: ""
   };
 
-  @observable isAuthenticated: boolean = true;
+  @observable public users: IUser[] = [];
+
+  @observable public isAuthenticated: boolean = true;
+
+  @action("getUsers")
+  getUsers = async () => {
+    this.users = await qlGet({
+      query: "{users {id, name, email, phoneNumber}}"
+    }).then((users: IUser[]) => users);
+  };
 
   @action("authStateCheck")
   authStateCheck = () => {
@@ -42,6 +53,6 @@ export class UserStore implements IUserStore {
 
   @action("getUser")
   getUser = async () => {
-    this.user = await get<IUser>("api/user/1");
+    this.user = await get<IUser>(`api/user/${this.user.id}`);
   };
 }

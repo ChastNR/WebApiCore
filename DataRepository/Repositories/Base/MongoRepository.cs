@@ -1,17 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DataRepository.Interfaces.Base;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using DataRepository.Interfaces.Base;
 
 namespace DataRepository.Repositories.Base
 {
-    public class MongoDbSettings
-    {
-        public string DbConnection { get; set; }
-        public int DbName { get; set; }
-    }
-
     public class MongoRepository : IMongoRepository
     {
         private readonly IMongoDatabase _db;

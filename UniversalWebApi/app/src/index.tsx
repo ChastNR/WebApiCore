@@ -3,10 +3,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "mobx-react";
 import { Router } from "./Router";
-import { AppStore, IAppStore } from "./stores/AppStore";
+import { appStore } from "./stores/AppStore";
 import serviceWorker from "./serviceWorker";
-
-const appStore: IAppStore = new AppStore();
 
 ReactDOM.render(
   <Provider appStore={appStore}>
@@ -14,7 +12,7 @@ ReactDOM.render(
       <Router />
     </BrowserRouter>
   </Provider>,
-  document.getElementById("root")
+  document.body
 );
 
 serviceWorker();

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using GraphQL;
 using GraphQL.Types;
 using DataRepository.GraphQL;
-using DataRepository.GraphQL.Query;
 
 namespace UniversalWebApi.Controllers
 {

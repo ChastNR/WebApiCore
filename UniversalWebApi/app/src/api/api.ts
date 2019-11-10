@@ -82,6 +82,22 @@ export const del = async <T>(
   return (await response.json()) as T;
 };
 
+export const qlGet = async (body?: any): Promise<any> => {
+  const response = await fetch("/graphql", {
+    method: HttpMethod.Post,
+    headers: apiDefaultHeaders,
+    body: body ? JSON.stringify(body) : undefined
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json().then(data => {
+    return data;
+  });
+};
+
 export interface SignInContract {
   login: string;
   password: string;

@@ -8,7 +8,7 @@ namespace DataRepository.GraphQL
     {
         public AppSchema(IDependencyResolver resolver) : base(resolver)
         {
-            Query = resolver.Resolve<UserQuery>();
+            Query = resolver.Resolve<AppQuery>();
         }
     }
 }

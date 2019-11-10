@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import React, { useState } from "react";
+import styled from "styled-components";
 
 interface ISideBarHidden {
   sideBarHidden: boolean;
@@ -37,7 +37,7 @@ const StyledOpenButton = styled.button`
 
 export const SideBar: React.FC = () => {
   const [hidden, open] = useState(true);
-  const openBar = () => open(hidden => (!hidden));
+  const openBar = () => open(hidden => !hidden);
 
   return (
     <Wrapper>

@@ -11,6 +11,6 @@ namespace DataRepository.Contracts
         public string PhoneNumber { get; set; }
         public string PasswordHash { get; set; }
         public int Age { get; set; }
-        public DateTime CreationDate { get; set; } = DateTime.Now;
+        public DateTime CreationDate { get; } = DateTime.Now;
     }
 }

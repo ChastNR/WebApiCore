@@ -4,6 +4,7 @@ using DataRepository.Interfaces.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace UniversalWebApi.Controllers.BaseControllers
 {

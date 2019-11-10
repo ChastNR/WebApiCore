@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DataRepository.Contracts;
-using DataRepository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using DataRepository.Contracts;
+using DataRepository.Interfaces;
 
 namespace UniversalWebApi.Controllers
 {

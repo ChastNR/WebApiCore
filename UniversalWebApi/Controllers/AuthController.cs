@@ -5,14 +5,12 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Options;
 
 using AuthenticationProcessor.Contracts;
 using AuthenticationProcessor.Interfaces;
 using AuthenticationProcessor.Settings;
-using Microsoft.Extensions.Options;
-
 
 namespace UniversalWebApi.Controllers
 {

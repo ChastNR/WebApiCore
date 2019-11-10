@@ -1,8 +1,7 @@
 import React from "react";
 import { signUp, SignUpContract } from "../../api/api";
-import { Layout } from "../../components/layout/Layout";
 
-export const signUpForm: React.FC = () => {
+const signUpForm: React.FC = () => {
   const handleSubmit = async (event: any) => {
     if (
       !event.target.checkValidity() ||
@@ -55,3 +54,5 @@ export const signUpForm: React.FC = () => {
     </div>
   );
 };
+
+export default signUpForm;
