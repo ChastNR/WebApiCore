@@ -1,4 +1,4 @@
-import { action, observable, computed } from "mobx";
+import { action, observable } from "mobx";
 import { get, qlGet } from "../api/api";
 import { IUser } from "../contracts/IUser";
 
@@ -30,9 +30,9 @@ export class UserStore implements IUserStore {
 
   @action("getUsers")
   getUsers = async () => {
-    this.users = await qlGet({
-      query: "{users {id, name, email, phoneNumber}}"
-    }).then((users: IUser[]) => users);
+    this.users = await qlGet("users", {
+      query: "{ users {id, name, email, phoneNumber}}"
+    });
   };
 
   @action("authStateCheck")

@@ -1,19 +1,17 @@
 import React from "react";
 import { observer, inject } from "mobx-react";
-import { IAppStore, App_Store, User_Store } from "../stores/AppStore";
-import { IUser } from "../contracts/IUser";
-import { Layout } from "./layout/Layout";
+import { IAppStore, App_Store, IAppStoreInject } from "../stores/AppStore";
 import { IUserStore } from "../stores/UserStore";
 
 @inject(App_Store)
 @observer
-export class Gql extends React.Component<IAppStore, {}> {
-  private readonly UserStore: IUserStore = this.props[User_Store];
+export class Gql extends React.Component<IAppStoreInject> {
+  private readonly UserStore: IUserStore = this.props.appStore.UserStore;
 
   render() {
     return (
       <div>
-        <button onClick={() => this.UserStore.getUsers}>Get users</button>
+        <button onClick={this.UserStore.getUsers}>Get users</button>
         <div>
           {this.UserStore.users && (
             <div>
@@ -21,6 +19,9 @@ export class Gql extends React.Component<IAppStore, {}> {
                 <div key={user.id}>
                   <div>{user.id}</div>
                   <div>{user.name}</div>
+                  <div>{user.email}</div>
+                  <div>{user.phoneNumber}</div>
+                  <br />
                 </div>
               ))}
             </div>
@@ -31,25 +32,26 @@ export class Gql extends React.Component<IAppStore, {}> {
   }
 }
 
-const gqlTest2 = (appStore: IAppStore) => {
-  const userStore = appStore[User_Store];
+const gqlTest2 = (props: IAppStoreInject) => {
+  const userStore = props.appStore.UserStore;
 
   const listOfUsers = () => {
     if (userStore.users.length) {
       return (
         <div>
           {userStore.users.map(user => (
-            <div>
-              {user.id}
-              {user.name}
-              {user.email}
-              {user.phoneNumber}
+            <div key={user.id}>
+              <div>{user.id}</div>
+              <div>{user.name}</div>
+              <div>{user.email}</div>
+              <div>{user.phoneNumber}</div>
+              <br />
             </div>
           ))}
         </div>
       );
     } else {
-      return <button onClick={() => userStore.getUsers}>Get users</button>;
+      return <button onClick={userStore.getUsers}>Get users</button>;
     }
   };
 
