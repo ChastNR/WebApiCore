@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { signIn, SignInContract } from "../../api/api";
 import { inject, observer } from "mobx-react";
 import { App_Store, IAppStoreInject } from "../../stores/AppStore";
@@ -7,17 +7,12 @@ import { Loading } from "./Loading";
 
 const signInForm: React.FC<IAppStoreInject> = props => {
   const userStore = props.appStore.UserStore;
-
-  const [contentLoading, changeCondition] = useState(false);
-
-  const change = (load: boolean) => {
-    changeCondition(load);
-  };
+  const showLoader = props.appStore.ShowLoader;
 
   const handleSubmit = async (event: any) => {
-    change(true);
-
     event.preventDefault();
+
+    showLoader.setLoaderState(true);
 
     if (!event.target.checkValidity()) {
       event.target.reportValidity();
@@ -31,15 +26,18 @@ const signInForm: React.FC<IAppStoreInject> = props => {
     let response = await signIn(contract);
 
     if (response !== undefined) {
+      showLoader.setLoaderState(false);
       localStorage.setItem("token", response.token);
       userStore.user.id = response.userId;
       history.push("/");
+    } else {
+      showLoader.setLoaderState(false);
     }
   };
 
   return (
     <div>
-      {contentLoading && <Loading />}
+      {showLoader.showLoader && <Loading />}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email or phone number:</label>

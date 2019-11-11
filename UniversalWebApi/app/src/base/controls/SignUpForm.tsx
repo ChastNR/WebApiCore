@@ -1,14 +1,18 @@
 import React from "react";
 import { signUp, SignUpContract } from "../../api/api";
+import { IAppStoreInject, App_Store } from "../../stores/AppStore";
+import history from "../../history";
+import { inject, observer } from "mobx-react";
+import { Loading } from "./Loading";
 
-const signUpForm: React.FC = () => {
+const signUpForm: React.FC<IAppStoreInject> = props => {
+  const showLoader = props.appStore.ShowLoader;
+
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+    showLoader.setLoaderState(true);
 
-    if (
-      !event.target.checkValidity() ||
-      event.target.password.value !== event.target.passwordCompare.value
-    ) {
+    if (!event.target.checkValidity() || event.target.password.value !== event.target.passwordCompare.value) {
       event.target.reportValidity();
     }
 
@@ -21,13 +25,16 @@ const signUpForm: React.FC = () => {
     };
 
     let result = await signUp(contract);
+
     if (result) {
-      window.location.href = "/signin";
+      showLoader.setLoaderState(false);
+      history.push("signin");
     }
   };
 
   return (
     <div>
+      {showLoader.showLoader && <Loading />}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
@@ -57,4 +64,4 @@ const signUpForm: React.FC = () => {
   );
 };
 
-export default signUpForm;
+export default inject(App_Store)(observer(signUpForm));
