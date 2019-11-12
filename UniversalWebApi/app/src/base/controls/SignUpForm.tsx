@@ -1,9 +1,10 @@
 import React from "react";
-import { signUp, SignUpContract } from "../../api/api";
+import { api } from "../../api/api";
 import { IAppStoreInject, App_Store } from "../../stores/AppStore";
 import history from "../../history";
 import { inject, observer } from "mobx-react";
 import { Loading } from "./Loading";
+import { SignUpContract } from "../../contracts/SignUpContract";
 
 const signUpForm: React.FC<IAppStoreInject> = props => {
   const showLoader = props.appStore.ShowLoader;
@@ -12,7 +13,10 @@ const signUpForm: React.FC<IAppStoreInject> = props => {
     event.preventDefault();
     showLoader.setLoaderState(true);
 
-    if (!event.target.checkValidity() || event.target.password.value !== event.target.passwordCompare.value) {
+    if (
+      !event.target.checkValidity() ||
+      event.target.password.value !== event.target.passwordCompare.value
+    ) {
       event.target.reportValidity();
     }
 
@@ -24,7 +28,7 @@ const signUpForm: React.FC<IAppStoreInject> = props => {
       passwordCompare: event.target.passwordCompare.value
     };
 
-    let result = await signUp(contract);
+    let result = await api.post<boolean>("/api/auth/signup", contract);
 
     if (result) {
       showLoader.setLoaderState(false);
@@ -34,7 +38,6 @@ const signUpForm: React.FC<IAppStoreInject> = props => {
 
   return (
     <div>
-      {showLoader.showLoader && <Loading />}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>

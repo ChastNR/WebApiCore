@@ -1,4 +1,6 @@
-import { Component } from "react";
+import { SignInContract } from "../contracts/SignInContract";
+import { SignInResponse } from "../contracts/SignInResponse";
+import { SignUpContract } from "../contracts/SignUpContract";
 
 enum HttpMethod {
   Get = "GET",
@@ -7,130 +9,126 @@ enum HttpMethod {
   Delete = "DELETE"
 }
 
+const defaultAuthHeaders:
+  | Headers
+  | string[][]
+  | Record<string, string>
+  | undefined = {
+  "Content-Type": "application/json",
+  Authorization: `Bearer ${localStorage.getItem("token")}`
+};
+
+const defaultHeaders: Record<string, string> = {
+  "Content-Type": "application/json"
+};
+
+const deleteToken = () => {
+  localStorage.removeItem("token");
+};
+
 export interface IApi {
   get: <T>(path: string, args?: RequestInit) => Promise<T>;
   post: <T>(path: string, body?: any) => Promise<T>;
   put: <T>(path: string, body?: any, args?: RequestInit) => Promise<T>;
-  del: (path: string, id?: string | number | undefined) => Promise<boolean>;
-
+  del: (path: string, id?: string | number) => Promise<boolean>;
   qlGet: (typeName: string, body?: any) => Promise<any>;
-}
-
-export class Api extends Component {
-  public get = async <T>(
-    path: string,
-    args: RequestInit = {
-      method: HttpMethod.Get
-    }
-  ): Promise<T> => {
-    const response = await fetch(path, args);
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const data: T = await response.json();
-    return data;
-  };
+  signIn: (body: SignInContract) => Promise<SignInResponse>;
+  signUp: (body: SignUpContract) => Promise<boolean>;
 }
 
 export const api: IApi = {
-  get: async <T>(
-    path: string,
-    args: RequestInit = {
-      method: HttpMethod.Get
-    }
-  ): Promise<T> => {
-    const response = await fetch(path, args);
+  get: async <T>(path: string) => {
+    const response = await fetch(path, {
+      method: HttpMethod.Get,
+      headers: defaultAuthHeaders
+    });
 
     if (!response.ok) {
+      deleteToken();
       throw new Error(response.statusText);
     }
 
     const data: T = await response.json();
     return data;
   },
-  post: async <T>(path: string, body?: any): Promise<T> => {
+  post: async <T>(path: string, body?: any) => {
     const response = await fetch(path, {
       method: HttpMethod.Post,
-      headers: { "Content-Type": "application/json" },
+      headers: defaultAuthHeaders,
       body: body ? JSON.stringify(body) : undefined
     });
 
     if (!response.ok) {
+      deleteToken();
       throw new Error(response.statusText);
     }
 
     const data: T = await response.json();
     return data;
   },
-  put: async <T>(
-    path: string,
-    body?: any,
-    args: RequestInit = {
+  put: async <T>(path: string, body?: any) => {
+    const response = await fetch(path, {
       method: HttpMethod.Put,
-      headers: { "Content-Type": "application/json" },
+      headers: defaultAuthHeaders,
       body: body ? JSON.stringify(body) : undefined
-    }
-  ): Promise<T> => {
-    const response = await fetch(path, args);
+    });
 
     if (!response.ok) {
+      deleteToken();
       throw new Error(response.statusText);
     }
 
     const data: T = await response.json();
     return data;
   },
-  del: async (path: string, id?: number | string): Promise<boolean> => {
+  del: async (path: string, id?: number | string) => {
     const response = await fetch(`${path}/${id}`, {
-      method: HttpMethod.Delete
+      method: HttpMethod.Delete,
+      headers: defaultAuthHeaders
     });
 
-    return response.ok;
+    if (!response.ok) {
+      deleteToken();
+      throw new Error(response.statusText);
+    }
+
+    return true;
   },
   qlGet: async (typeName: string, body?: any) => {
     const response = await fetch("/graphql", {
       method: HttpMethod.Post,
-      headers: { "Content-Type": "application/json" },
+      headers: defaultAuthHeaders,
       body: body ? JSON.stringify(body) : undefined
     });
 
     if (!response.ok) {
+      deleteToken();
       throw new Error(response.statusText);
     }
 
     const jsonResponse = await response.json();
     return jsonResponse.data[typeName];
+  },
+  signIn: async (body: SignInContract) => {
+    const response = await fetch("/api/auth/signin", {
+      method: HttpMethod.Post,
+      headers: defaultHeaders,
+      body: body ? JSON.stringify(body) : undefined
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    const data: SignInResponse = await response.json();
+    return data;
+  },
+  signUp: async (body: SignUpContract) => {
+    const response = await fetch("/api/auth/signup", {
+      method: HttpMethod.Post,
+      headers: defaultHeaders,
+      body: body ? JSON.stringify(body) : undefined
+    });
+    return response.ok;
   }
 };
-
-export interface SignInContract {
-  login: string;
-  password: string;
-}
-
-export interface SignInResponse {
-  token: string;
-  expirationTime: Date;
-  userId: string;
-}
-
-export const signIn = async (body: SignInContract) => await post<SignInResponse>("/api/auth/signin", body);
-
-export interface SignUpContract {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  password: string;
-  passwordCompare: string;
-}
-
-export const signUp = async (body?: SignUpContract) =>
-  await fetch("/api/auth/signup", {
-    method: HttpMethod.Post,
-    headers: { "Content-Type": "application/json" },
-    body: body ? JSON.stringify(body) : undefined
-  }).then(response => {
-    return response.ok;
-  });

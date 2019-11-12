@@ -1,5 +1,5 @@
 import { action, observable } from "mobx";
-import { get, qlGet } from "../api/api";
+import { api } from "../api/api";
 import { IUser } from "../contracts/IUser";
 
 export interface IUserStore {
@@ -25,7 +25,7 @@ export class UserStore implements IUserStore {
 
   @action("getUsers")
   getUsers = async () => {
-    this.users = await qlGet("users", {
+    this.users = await api.qlGet("users", {
       query: "{ users {id, name, email, phoneNumber}}"
     });
   };
@@ -38,6 +38,6 @@ export class UserStore implements IUserStore {
 
   @action("getUser")
   getUser = async () => {
-    this.user = await get<IUser>(`api/user/${this.user.id}`);
+    this.user = await api.get<IUser>(`api/user/${this.user.id}`);
   };
 }

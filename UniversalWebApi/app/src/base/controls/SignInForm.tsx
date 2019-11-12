@@ -1,9 +1,11 @@
 import React from "react";
-import { signIn, SignInContract } from "../../api/api";
+import { api } from "../../api/api";
 import { inject, observer } from "mobx-react";
 import { App_Store, IAppStoreInject } from "../../stores/AppStore";
 import history from "../../history";
 import { Loading } from "./Loading";
+import { SignInResponse } from "../../contracts/SignInResponse";
+import { SignInContract } from "../../contracts/SignInContract";
 
 const signInForm: React.FC<IAppStoreInject> = props => {
   const userStore = props.appStore.UserStore;
@@ -23,7 +25,7 @@ const signInForm: React.FC<IAppStoreInject> = props => {
       password: event.target.password.value
     };
 
-    let response = await signIn(contract);
+    let response = await api.post<SignInResponse>("/api/auth/signin", contract);
 
     if (response !== undefined) {
       showLoader.setLoaderState(false);
@@ -37,7 +39,6 @@ const signInForm: React.FC<IAppStoreInject> = props => {
 
   return (
     <div>
-      {showLoader.showLoader && <Loading />}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email or phone number:</label>
