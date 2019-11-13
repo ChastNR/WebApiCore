@@ -2,11 +2,25 @@ import React from "react";
 import { observer, inject } from "mobx-react";
 import { App_Store, IAppStoreInject } from "../stores/AppStore";
 import { IUserStore } from "../stores/UserStore";
+import { IUser } from "../contracts/IUser";
+import { Redirect } from "react-router";
 
 @inject(App_Store)
 @observer
 export class Gql extends React.Component<IAppStoreInject> {
   private readonly UserStore: IUserStore = this.props.appStore.UserStore;
+
+  renderUser = (user: IUser) => {
+    return (
+      <div key={user.id}>
+        <div style={{ color: "red" }}>{user.id}</div>
+        <div>{user.name}</div>
+        <div>{user.email}</div>
+        <div>{user.phoneNumber}</div>
+        <br />
+      </div>
+    );
+  };
 
   render() {
     return (
@@ -14,17 +28,7 @@ export class Gql extends React.Component<IAppStoreInject> {
         <button onClick={this.UserStore.getUsers}>Get users</button>
         <div>
           {this.UserStore.users && (
-            <div>
-              {this.UserStore.users.map(user => (
-                <div key={user.id}>
-                  <div>{user.id}</div>
-                  <div>{user.name}</div>
-                  <div>{user.email}</div>
-                  <div>{user.phoneNumber}</div>
-                  <br />
-                </div>
-              ))}
-            </div>
+            <div>{this.UserStore.users.map(user => this.renderUser(user))}</div>
           )}
         </div>
       </div>
