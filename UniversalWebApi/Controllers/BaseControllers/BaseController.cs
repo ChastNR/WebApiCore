@@ -1,38 +1,19 @@
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
-using DataRepository.Interfaces.Base;
-
 
 namespace UniversalWebApi.Controllers.BaseControllers
 {
-    [Authorize]
-    public abstract class BaseController<TController, T> : Controller where T : class
+    public abstract class BaseController<TController, TService> : Controller
     {
-        private ILogger<TController> Logger => HttpContext.RequestServices.GetRequiredService<ILogger<TController>>();
-        private ISqlRepository Db => HttpContext.RequestServices.GetRequiredService<ISqlRepository>();
+        protected readonly ILogger<TController> _logger;
+        protected readonly TService _service;
 
-        
-
-        [HttpGet]
-        public async Task<IEnumerable<T>> Get() => await Db.GetAllAsync<T>();
-
-        [HttpGet("{id:int}")]
-        public async Task<T> Get(int id) => await Db.GetAsync<T>(id);
-
-        [HttpPost]
-        public async Task Post([FromBody] T entity) => await Db.InsertAsync(entity);
-
-        [HttpPut]
-        public async Task Put([FromBody] T entity) => await Db.UpdateAsync(entity);
-
-        [HttpDelete("{id:int}")]
-        public async Task Delete(int id) => await Db.DeleteRowAsync<T>(id);
+        protected BaseController(ILogger<TController> logger, TService service)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _service = service ?? throw new ArgumentNullException(nameof(service));
+        }
     }
 }

@@ -11,25 +11,26 @@ using Microsoft.Extensions.Options;
 using AuthenticationProcessor.Contracts;
 using AuthenticationProcessor.Interfaces;
 using AuthenticationProcessor.Settings;
+using UniversalWebApi.Controllers.BaseControllers;
+using Microsoft.Extensions.Logging;
 
 namespace UniversalWebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class AuthController : Controller
+    public class AuthController : BaseController<AuthController, IAuthProcessor>
     {
         private AuthOptions AuthOptions { get; }
-        private readonly IAuthProcessor _processor;
 
-        public AuthController(IOptions<AuthOptions> authOptions, IAuthProcessor processor)
+        public AuthController(ILogger<AuthController> logger, IAuthProcessor processor, IOptions<AuthOptions> authOptions)
+            : base(logger, processor)
         {
             AuthOptions = authOptions.Value ?? throw new ArgumentNullException(nameof(authOptions));
-            _processor = processor ?? throw new ArgumentNullException(nameof(processor));
         }
 
         [HttpPost("signin")]
         public async Task<IActionResult> SignIn([FromBody] LoginContract contract)
         {
-            var userId = await _processor.Login(contract);
+            var userId = await _service.Login(contract);
 
             if (string.IsNullOrEmpty(userId))
             {
@@ -53,7 +54,7 @@ namespace UniversalWebApi.Controllers
                 return BadRequest("Please check your data");
             }
 
-            var result = await _processor.Register(contract);
+            var result = await _service.Register(contract);
 
             if (result != true)
             {

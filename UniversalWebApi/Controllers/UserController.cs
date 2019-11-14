@@ -1,34 +1,40 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
 using DataRepository.Contracts;
 using DataRepository.Interfaces;
+
+using UniversalWebApi.Controllers.BaseControllers;
 
 namespace UniversalWebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class UserController : Controller
+    public class UserController : BaseController<UserController, IUserRepository>
     {
-        private IUserRepository UserDb => HttpContext.RequestServices.GetRequiredService<IUserRepository>();
+        public UserController(ILogger<UserController> logger, IUserRepository service) : base(logger, service)
+        {
+        }
 
         [HttpGet]
-        public async Task<IEnumerable<User>> Get() => await UserDb.GetAllAsync<User>();
+        public Task<IEnumerable<User>> Get() => _service.GetAllAsync<User>();
 
         [HttpGet("{id:Guid}")]
-        public async Task<User> Get(Guid id) => await UserDb.GetAsync<User>(id);
+        public Task<User> Get(Guid id) => _service.GetAsync<User>(id);
 
         [HttpPost]
-        public async Task Post([FromBody] User user) => await UserDb.InsertAsync(user);
+        public Task Post([FromBody] User user) => _service.InsertAsync(user);
 
         [HttpPost("ReturnId")]
-        public async Task<Guid> InsertReturnId([FromBody] User user) => await UserDb.InsertUserAsyncWithReturnId(user);
+        public Task<Guid> InsertReturnId([FromBody] User user) => _service.InsertUserAsyncWithReturnId(user);
 
         [HttpPut]
-        public async Task Put([FromBody] User user) => await UserDb.UpdateAsync(user);
+        public Task Put([FromBody] User user) => _service.UpdateAsync(user);
 
         [HttpDelete("{id:Guid}")]
-        public async Task Delete(Guid id) => await UserDb.DeleteRowAsync<User>(id);
+        public Task Delete(Guid id) => _service.DeleteRowAsync<User>(id);
     }
 }

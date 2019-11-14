@@ -40,9 +40,8 @@ namespace AuthenticationProcessor
 
                 return true;
             }
-            catch (Exception e)
+            catch
             {
-                //await _manager.Log(e);
                 return false;
             }
         }

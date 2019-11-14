@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.DependencyInjection;
+
 using MongoDB.Bson;
+
 using Tools.Logger;
 
 namespace UniversalWebApi.Filters
 {
     public class ApiExceptionFilterAttribute : Attribute, IAsyncExceptionFilter
     {
+        private readonly IExceptionManager _manager;
+
+        public ApiExceptionFilterAttribute(IExceptionManager manager)
+        {
+            _manager = manager;
+        }
+
         public async Task OnExceptionAsync(ExceptionContext context)
         {
-            var logger = context.HttpContext.RequestServices.GetRequiredService<IExceptionManager>();
-
             var exception = new ExceptionContract
             {
                 Method = context.HttpContext.Request.Method,
@@ -25,7 +32,7 @@ namespace UniversalWebApi.Filters
                 Result = context.Result.ToJson()
             };
 
-            await logger.Log(exception);
+            await _manager.Log(exception);
         }
     }
 }

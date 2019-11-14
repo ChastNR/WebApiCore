@@ -5,21 +5,21 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 using UniversalWebApi.Filters;
 using UniversalWebApi.BackgroundServices;
+
+using DataRepository;
 
 using Tools;
 using Tools.Messages.EmailSender;
 
 using AuthenticationProcessor;
 using AuthenticationProcessor.Settings;
-
-using DataRepository;
 
 namespace UniversalWebApi
 {
@@ -37,7 +37,7 @@ namespace UniversalWebApi
 
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));
-            
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -52,12 +52,12 @@ namespace UniversalWebApi
                             Configuration.GetSection("AuthOptions").Get<AuthOptions>().SecurityKey))
                     };
                 });
-            
+
             services.Configure<KestrelServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
             });
-            
+
             services.AddControllers(options =>
             {
                 options.Filters.Add<ApiExceptionFilterAttribute>();
@@ -79,7 +79,7 @@ namespace UniversalWebApi
             app.UseAuthorization();
 
             app.AddDataConfigBuilder();
-            
+
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             app.UseSpa(spa =>
