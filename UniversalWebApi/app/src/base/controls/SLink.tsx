@@ -20,8 +20,6 @@ const StyledLink = styled(Link)`
   transition: 0.5s;
 `;
 
-const SLink = (props: ILinkProps) => (
+export const SLink = (props: ILinkProps) => (
   <StyledLink to={props.to}>{props.text}</StyledLink>
 );
-
-export default SLink;
