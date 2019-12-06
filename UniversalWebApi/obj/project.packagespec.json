@@ -7,13 +7,13 @@
     "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/obj/",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
-      "netcoreapp3.0"
+      "netcoreapp3.1"
     ],
     "sources": {
       "https://api.nuget.org/v3/index.json": {}
     },
     "frameworks": {
-      "netcoreapp3.0": {
+      "netcoreapp3.1": {
         "projectReferences": {
           "/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/AuthenticationProcessor.csproj": {
             "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/AuthenticationProcessor/AuthenticationProcessor.csproj"
@@ -34,27 +34,27 @@
     }
   },
   "frameworks": {
-    "netcoreapp3.0": {
+    "netcoreapp3.1": {
       "dependencies": {
         "Microsoft.AspNetCore.Authentication.JwtBearer": {
           "target": "Package",
-          "version": "[3.0.0, )"
+          "version": "[3.1.0, )"
         },
         "Microsoft.AspNetCore.SpaServices": {
           "target": "Package",
-          "version": "[3.0.0, )"
+          "version": "[3.1.0, )"
         },
         "Microsoft.AspNetCore.SpaServices.Extensions": {
           "target": "Package",
-          "version": "[3.0.0, )"
+          "version": "[3.1.0, )"
         },
         "Microsoft.Extensions.Logging.Debug": {
           "target": "Package",
-          "version": "[3.0.0, )"
+          "version": "[3.1.0, )"
         },
         "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
           "target": "Package",
-          "version": "[3.0.0, )"
+          "version": "[3.1.0, )"
         }
       },
       "imports": [

@@ -37,7 +37,7 @@ export interface IApi {
 }
 
 export const api: IApi = {
-  get: async <T>(path: string) => {
+  get: async <T>(path: string): Promise<T> => {
     const response = await fetch(path, {
       method: HttpMethod.Get,
       headers: defaultAuthHeaders
@@ -48,8 +48,7 @@ export const api: IApi = {
       throw new Error(response.statusText);
     }
 
-    const data: T = await response.json();
-    return data;
+    return response.json();
   },
   post: async <T>(path: string, body?: any) => {
     const response = await fetch(path, {
