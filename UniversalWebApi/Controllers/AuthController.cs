@@ -16,7 +16,6 @@ using Microsoft.Extensions.Logging;
 
 namespace UniversalWebApi.Controllers
 {
-    [Route("api/[controller]")]
     public class AuthController : BaseController<AuthController, IAuthProcessor>
     {
         private AuthOptions AuthOptions { get; }

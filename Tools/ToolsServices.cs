@@ -11,10 +11,11 @@ namespace Tools
     {
         public static void AddToolsServices(this IServiceCollection services)
         {
-            services.AddTransient<IExceptionManager, ExceptionManager>();
-            services.AddTransient<ISerializeHelper, SerializeHelper>();
-            services.AddTransient<IEncryptionHelper, EncryptionHelper>();
-            services.AddTransient<IMessageSender, EmailSender>();
+            services
+                .AddTransient<IExceptionManager, ExceptionManager>()
+                .AddTransient<ISerializeHelper, SerializeHelper>()
+                .AddTransient<IEncryptionHelper, EncryptionHelper>()
+                .AddTransient<IMessageSender, EmailSender>();
         }
     }
 }

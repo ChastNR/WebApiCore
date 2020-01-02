@@ -16,33 +16,29 @@ namespace DataRepository
 {
     public static class DataAccessServices
     {
-        public static string ConnectionString { get; private set; }
         public static void AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
         {
-            ConnectionString = configuration.GetConnectionString("DbConnection");
-            
             //MongoDbRepositories
             services.AddTransient<IMongoRepository>(s =>
                 new MongoRepository(
-                    configuration.GetSection("MongoDbSettings").GetSection("DbConnection").Value,
-                    configuration.GetSection("MongoDbSettings").GetSection("DbName").Value));
-            
+                    configuration.GetConnectionString("Mongo"),
+                    configuration.GetConnectionString("MongoDbName")
+            ))
             //SqlRepositories
-            services.AddTransient<ISqlRepository, SqlRepository>();
-            services.AddTransient<IUserRepository, UserRepository>();
-            
+            .AddTransient<ISqlRepository>(s => new SqlRepository(configuration.GetConnectionString("Sql")))
+            .AddTransient<IUserRepository, UserRepository>()
             //GraphQL
-            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
-            services.AddScoped<AppSchema>();
-            services.AddGraphQL(o => { o.ExposeExceptions = true; })
+            .AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService))
+            .AddScoped<AppSchema>()
+            .AddGraphQL(o => o.ExposeExceptions = true)
                 .AddGraphTypes(ServiceLifetime.Scoped);
         }
 
         public static void AddDataConfigBuilder(this IApplicationBuilder app)
         {
             //GraphQL
-            app.UseGraphQL<AppSchema>();
-            app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
+            app.UseGraphQL<AppSchema>()
+               .UseGraphQLPlayground(new GraphQLPlaygroundOptions());
         }
     }
 }

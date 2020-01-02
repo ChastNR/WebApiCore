@@ -10,8 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
+using UniversalWebApi.HealthCheckers;
 using UniversalWebApi.Filters;
-using UniversalWebApi.BackgroundServices;
+using UniversalWebApi.Attributes;
 
 using DataRepository;
 
@@ -33,10 +34,10 @@ namespace UniversalWebApi
             services.AddDataAccessServices(Configuration);
             services.AddToolsServices();
             services.AddAuthProcessorServices();
-            services.AddHostedServices();
+            services.AddHealthCheckServices();
 
-            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
-            services.Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"))
+                    .Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -58,9 +59,16 @@ namespace UniversalWebApi
                 options.AllowSynchronousIO = true;
             });
 
+            services.AddCors(options => options
+                .AddPolicy("CorsPolicy", builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()));
+
             services.AddControllers(options =>
             {
                 options.Filters.Add<ApiExceptionFilterAttribute>();
+                options.Filters.Add<ApiBackgroundActionFilter>();
             });
 
             services.AddSpaStaticFiles(configuration => configuration.RootPath = "app/build");
@@ -76,11 +84,16 @@ namespace UniversalWebApi
             app.UseRouting();
 
             app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.AddDataConfigBuilder();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints => 
+            {
+                endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
+            });
 
             app.UseSpa(spa =>
             {

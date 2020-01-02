@@ -12,7 +12,6 @@ using UniversalWebApi.Controllers.BaseControllers;
 
 namespace UniversalWebApi.Controllers
 {
-    [Route("api/[controller]")]
     public class UserController : BaseController<UserController, IUserRepository>
     {
         public UserController(ILogger<UserController> logger, IUserRepository service) : base(logger, service)

@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
+
 using Dapper;
+
 using DataRepository.Contracts;
 using DataRepository.Interfaces;
 using DataRepository.Repositories.Base;
@@ -9,6 +11,10 @@ namespace DataRepository.Repositories
 {
     public class UserRepository : SqlRepository, IUserRepository
     {
+        public UserRepository(string connectionString) : base(connectionString)
+        {
+        }
+
         public async Task<bool> AnotherUserWithSameProps(string email, string phoneNumber)
         {
             using var connection = CreateConnection();

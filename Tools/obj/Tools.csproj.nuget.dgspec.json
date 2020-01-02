@@ -62,15 +62,15 @@
             },
             "MongoDB.Bson": {
               "target": "Package",
-              "version": "[2.9.3, )"
+              "version": "[2.10.0, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.9.3, )"
+              "version": "[2.10.0, )"
             },
             "MongoDB.Driver.Core": {
               "target": "Package",
-              "version": "[2.9.3, )"
+              "version": "[2.10.0, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -90,7 +90,13 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -144,7 +150,13 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
         }
       }
     }

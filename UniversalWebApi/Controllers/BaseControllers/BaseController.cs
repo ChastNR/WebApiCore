@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 
 namespace UniversalWebApi.Controllers.BaseControllers
 {
+    
+    [Route("api/[controller]")]
     public abstract class BaseController<TController, TService> : Controller where TService: class
     {
         protected readonly ILogger<TController> _logger;

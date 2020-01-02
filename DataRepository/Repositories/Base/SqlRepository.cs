@@ -5,15 +5,23 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+
 using Dapper;
+
 using DataRepository.Interfaces.Base;
-using static DataRepository.DataAccessServices;
 
 namespace DataRepository.Repositories.Base
 {
     public class SqlRepository : ISqlRepository
     {
-        protected IDbConnection CreateConnection() => new SqlConnection(ConnectionString);
+        private readonly string _connectionString;
+
+        public SqlRepository(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+
+        protected IDbConnection CreateConnection() => new SqlConnection(_connectionString);
 
         public async Task<IEnumerable<T>> GetAllAsync<T>() where T : class
         {
@@ -39,7 +47,7 @@ namespace DataRepository.Repositories.Base
             using var connection = CreateConnection();
             return await connection.QueryFirstOrDefaultAsync<T>($"SELECT * FROM [{typeof(T).Name}] WHERE {condition}");
         }
-        
+
         public async Task InsertAsync<T>(T t) where T : class
         {
             using var connection = CreateConnection();
