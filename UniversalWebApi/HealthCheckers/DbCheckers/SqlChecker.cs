@@ -1,4 +1,4 @@
-using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,18 +9,34 @@ namespace UniversalWebApi.HealthCheckers.DbCheckers
 {
     public class SqlChecker : IHealthCheck
     {
+        private readonly string _testQuery;
+
+        public SqlChecker()
+        {
+            _testQuery = "SELECT db_name()";
+        }
+        
         public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
-            bool sqlHealth;
-
-            using(var connection = new SqlConnection("Sql"))
+            using (var connection = new SqlConnection("Sql"))
             {
-                sqlHealth = connection.State == ConnectionState.Open;
+                try
+                {
+                    await connection.OpenAsync(cancellationToken);
+                    
+                    var command = connection.CreateCommand();
+                    
+                    command.CommandText = _testQuery;
+
+                    await command.ExecuteNonQueryAsync(cancellationToken);
+                }
+                catch (DbException ex)
+                {
+                    return new HealthCheckResult(context.Registration.FailureStatus, exception: ex);
+                }
             }
 
-            return sqlHealth
-                ? HealthCheckResult.Healthy("Sql check: OK")
-                : HealthCheckResult.Unhealthy("Sql check: Error");
+            return HealthCheckResult.Healthy();
         }
     }
 }

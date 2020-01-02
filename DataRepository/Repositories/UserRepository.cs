@@ -6,15 +6,16 @@ using Dapper;
 using DataRepository.Contracts;
 using DataRepository.Interfaces;
 using DataRepository.Repositories.Base;
+using Microsoft.Extensions.Configuration;
 
 namespace DataRepository.Repositories
 {
     public class UserRepository : SqlRepository, IUserRepository
     {
-        public UserRepository(string connectionString) : base(connectionString)
+        public UserRepository(IConfiguration configuration) : base(configuration)
         {
         }
-
+        
         public async Task<bool> AnotherUserWithSameProps(string email, string phoneNumber)
         {
             using var connection = CreateConnection();

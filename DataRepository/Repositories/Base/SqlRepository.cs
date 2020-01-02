@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 using Dapper;
 
 using DataRepository.Interfaces.Base;
+using Microsoft.Extensions.Configuration;
 
 namespace DataRepository.Repositories.Base
 {
     public class SqlRepository : ISqlRepository
     {
-        private readonly string _connectionString;
-
-        public SqlRepository(string connectionString)
+        private readonly IConfiguration _configuration;
+        
+        public SqlRepository(IConfiguration configuration)
         {
-            _connectionString = connectionString;
+            _configuration = configuration;
         }
 
-        protected IDbConnection CreateConnection() => new SqlConnection(_connectionString);
+        protected IDbConnection CreateConnection() => new SqlConnection(_configuration.GetConnectionString("Sql"));
 
         public async Task<IEnumerable<T>> GetAllAsync<T>() where T : class
         {

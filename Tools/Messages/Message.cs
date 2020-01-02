@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace Tools.Messages
 {
-    public class MessageContract : IMongoDoc
+    public class Message : IMongoDoc
     {
         public ObjectId Id { get; set; }
         public string From { get; set; }

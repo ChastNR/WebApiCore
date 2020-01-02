@@ -93,7 +93,8 @@
             <e p="EmailSettings.cs" t="Include" />
           </e>
           <e p="IMessageSender.cs" t="Include" />
-          <e p="MessageContract.cs" t="Include" />
+          <e p="Message.cs" t="Include" />
+          <e p="ServiceMessage.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -337,7 +338,10 @@
         <e p="Attributes" t="Include">
           <e p="ApiExceptionFilterAttribute.cs" t="Include" />
         </e>
-        <e p="BackgroundServices" t="Include" />
+        <e p="BackgroundServices" t="Include">
+          <e p="ApiHealthBackgroundService.cs" t="Include" />
+          <e p="ApiHealthHostedService.cs" t="Include" />
+        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="AuthController.cs" t="Include" />
@@ -354,8 +358,11 @@
         </e>
         <e p="HealthCheckers" t="Include">
           <e p="DbCheckers" t="Include">
+            <e p="MongoChecker.cs" t="Include" />
             <e p="SqlChecker.cs" t="Include" />
           </e>
+          <e p="HealthCheck.cs" t="Include" />
+          <e p="HealthCheckResponse.cs" t="Include" />
           <e p="HealthCheckServices.cs" t="Include" />
         </e>
         <e p="Models" t="Include">

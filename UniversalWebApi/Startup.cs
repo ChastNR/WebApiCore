@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
 using UniversalWebApi.HealthCheckers;
+using UniversalWebApi.BackgroundServices;
 using UniversalWebApi.Filters;
 using UniversalWebApi.Attributes;
 
@@ -29,17 +30,24 @@ namespace UniversalWebApi
         private IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration) => Configuration = configuration;
 
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection _)
         {
-            services.AddDataAccessServices(Configuration);
-            services.AddToolsServices();
-            services.AddAuthProcessorServices();
-            services.AddHealthCheckServices();
-
-            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"))
-                    .Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            _.AddDataAccessServices(Configuration)
+                .AddToolsServices()
+                .AddAuthProcessorServices()
+                .AddHealthCheckServices()
+                .AddHostedService<ApiHealthHostedService>()
+                .AddHttpClient()
+                .Configure<EmailSettings>(Configuration.GetSection("EmailSettings"))
+                .Configure<AuthOptions>(Configuration.GetSection("AuthOptions"))
+                .Configure<KestrelServerOptions>(options => options.AllowSynchronousIO = true)
+                .AddCors(options => options
+                    .AddPolicy("CorsPolicy", builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                    ))
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
                     options.RequireHttpsMetadata = false;
@@ -54,48 +62,32 @@ namespace UniversalWebApi
                     };
                 });
 
-            services.Configure<KestrelServerOptions>(options =>
-            {
-                options.AllowSynchronousIO = true;
-            });
-
-            services.AddCors(options => options
-                .AddPolicy("CorsPolicy", builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()));
-
-            services.AddControllers(options =>
+            _.AddControllers(options =>
             {
                 options.Filters.Add<ApiExceptionFilterAttribute>();
                 options.Filters.Add<ApiBackgroundActionFilter>();
             });
-
-            services.AddSpaStaticFiles(configuration => configuration.RootPath = "app/build");
+            
+            _.AddSpaStaticFiles(configuration => configuration.RootPath = "app/build");
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder _, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                _.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
-            app.UseAuthentication();
-
-            app.UseAuthorization();
-
-            app.AddDataConfigBuilder();
-
-            app.UseEndpoints(endpoints => 
+            _.UseRouting()
+                .UseAuthorization()
+                .UseAuthentication()
+                .AddDataConfigBuilder()
+                .AddHealthCheckBuilder()
+                .UseEndpoints(endpoints => 
             {
                 endpoints.MapControllers();
-                endpoints.MapHealthChecks("/health");
-            });
-
-            app.UseSpa(spa =>
+            })
+                .UseSpa(spa =>
             {
                 spa.Options.SourcePath = "app";
 

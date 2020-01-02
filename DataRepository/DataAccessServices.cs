@@ -16,7 +16,7 @@ namespace DataRepository
 {
     public static class DataAccessServices
     {
-        public static void AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
         {
             //MongoDbRepositories
             services.AddTransient<IMongoRepository>(s =>
@@ -25,20 +25,24 @@ namespace DataRepository
                     configuration.GetConnectionString("MongoDbName")
             ))
             //SqlRepositories
-            .AddTransient<ISqlRepository>(s => new SqlRepository(configuration.GetConnectionString("Sql")))
+            .AddTransient<ISqlRepository, SqlRepository>()
             .AddTransient<IUserRepository, UserRepository>()
             //GraphQL
             .AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService))
             .AddScoped<AppSchema>()
             .AddGraphQL(o => o.ExposeExceptions = true)
                 .AddGraphTypes(ServiceLifetime.Scoped);
+
+            return services;
         }
 
-        public static void AddDataConfigBuilder(this IApplicationBuilder app)
+        public static IApplicationBuilder AddDataConfigBuilder(this IApplicationBuilder app)
         {
             //GraphQL
             app.UseGraphQL<AppSchema>()
                .UseGraphQLPlayground(new GraphQLPlaygroundOptions());
+
+            return app;
         }
     }
 }

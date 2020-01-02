@@ -5,9 +5,11 @@ namespace AuthenticationProcessor
 {
     public static class AuthProcessorServices
     {
-        public static void AddAuthProcessorServices(this IServiceCollection services)
+        public static IServiceCollection AddAuthProcessorServices(this IServiceCollection services)
         {
             services.AddTransient<IAuthProcessor, AuthProcessor>();
+
+            return services;
         }
     }
 }

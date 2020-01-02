@@ -9,13 +9,15 @@ namespace Tools
 {
     public static class ToolsServices
     {
-        public static void AddToolsServices(this IServiceCollection services)
+        public static IServiceCollection AddToolsServices(this IServiceCollection services)
         {
             services
                 .AddTransient<IExceptionManager, ExceptionManager>()
                 .AddTransient<ISerializeHelper, SerializeHelper>()
                 .AddTransient<IEncryptionHelper, EncryptionHelper>()
                 .AddTransient<IMessageSender, EmailSender>();
+
+            return services;
         }
     }
 }

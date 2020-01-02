@@ -4,6 +4,8 @@ namespace Tools.Messages
 {
     public interface IMessageSender
     {
-        Task SendMessageAsync(MessageContract contract);
+        Task SendMessageAsync(Message message);
+
+        Task SendServiceMessageAsync(ServiceMessage message);
     }
 }
