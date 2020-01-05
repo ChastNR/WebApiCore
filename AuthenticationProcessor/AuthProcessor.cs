@@ -4,7 +4,7 @@ using AuthenticationProcessor.Contracts;
 using AuthenticationProcessor.Interfaces;
 using DataRepository.Contracts;
 using DataRepository.Interfaces;
-using Tools.Logger;
+using Tools.ExceptionManager;
 using static BCrypt.Net.BCrypt;
 
 namespace AuthenticationProcessor

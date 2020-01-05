@@ -1,35 +1,17 @@
 ﻿<Properties StartupConfiguration="{99568F6A-B1C1-472C-9224-BA7BA9A019BC}|Default">
   <MonoDevelop.Ide.ItemProperties.UnityApiController FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="UniversalWebApi/Filters/ApiBackgroundActionFilter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UniversalWebApi/HealthCheckers/DbCheckers/MongoChecker.cs">
     <Files>
-      <File FileName="UniversalWebApi/Filters/ApiBackgroundActionFilter.cs" Line="20" Column="10" />
-      <File FileName="UniversalWebApi/HealthCheckers/HealthCheckServices.cs" Line="1" Column="1" />
-      <File FileName="DataRepository/DataAccessServices.cs" Line="44" Column="2" />
-      <File FileName="UniversalWebApi/Startup.cs" Line="53" Column="21" />
-      <File FileName="UniversalWebApi/HealthCheckers/DbCheckers/SqlChecker.cs" Line="27" Column="1" />
-      <File FileName="Tools/ToolsServices.cs" Line="21" Column="2" />
-      <File FileName="AuthenticationProcessor/AuthProcessor.cs" Line="1" Column="1" />
-      <File FileName="AuthenticationProcessor/AuthProcessorServices.cs" Line="1" Column="1" />
+      <File FileName="UniversalWebApi/HealthCheckers/HealthCheckServices.cs" Line="11" Column="41" />
+      <File FileName="UniversalWebApi/HealthCheckers/DbCheckers/MongoChecker.cs" Line="23" Column="2" />
+      <File FileName="UniversalWebApi/HealthCheckers/DbCheckers/SqlChecker.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="UniversalWebApi" expanded="True">
-            <Node name="AuthenticationProcessor" expanded="True" />
-            <Node name="DataRepository" expanded="True">
-              <Node name="Contracts" expanded="True" />
-              <Node name="Interfaces" expanded="True">
-                <Node name="Base" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="Tools" expanded="True" />
             <Node name="UniversalWebApi" expanded="True">
-              <Node name="Filters" expanded="True">
-                <Node name="ApiBackgroundActionFilter.cs" selected="True" />
-              </Node>
-              <Node name="HealthCheckers" expanded="True">
-                <Node name="DbCheckers" expanded="True" />
-              </Node>
+              <Node name="Dependencies" selected="True" />
             </Node>
           </Node>
         </State>

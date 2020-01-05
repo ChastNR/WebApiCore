@@ -7745,7 +7745,7 @@
       "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/chastnr/.nuget/NuGet/NuGet.Config"
+        "/Users/chastnr/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
