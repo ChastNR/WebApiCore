@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc.Filters;
-using Tools.ExceptionManager;
+using Tools.Logger;
 
 namespace UniversalWebApi.Attributes
 {

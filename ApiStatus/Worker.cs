@@ -36,7 +36,7 @@ namespace ApiStatus
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var result = await _client.GetAsync("https://www.google.com");
+                var result = await _client.GetAsync("http://localhost:5000");
 
                 if (result.IsSuccessStatusCode)
                 {

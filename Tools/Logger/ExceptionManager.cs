@@ -1,5 +1,5 @@
-using System;
 using System.Threading.Tasks;
+
 using DataRepository.Interfaces.Base;
 
 namespace Tools.Logger

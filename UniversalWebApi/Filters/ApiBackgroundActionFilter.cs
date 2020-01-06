@@ -1,10 +1,12 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
-using DataRepository.Interfaces.Base;
+
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
+
 using MongoDB.Bson;
+
+using DataRepository.Interfaces.Base;
 
 namespace UniversalWebApi.Filters
 {
