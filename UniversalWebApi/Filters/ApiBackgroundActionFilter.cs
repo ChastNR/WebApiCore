@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 using MongoDB.Bson;
 
-using DataRepository.Interfaces.Base;
+using DataAccess.Interfaces.Base;
 
 namespace UniversalWebApi.Filters
 {
@@ -37,7 +37,7 @@ namespace UniversalWebApi.Filters
             }
             catch (Exception ex)
             {
-                _logger.Log(LogLevel.Error, ex.Message);
+                _logger.LogError(ex.Message);
             }
             finally
             {

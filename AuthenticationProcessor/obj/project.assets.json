@@ -2265,7 +2265,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "DataRepository/1.0.0": {
+      "DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -2282,17 +2282,17 @@
           "System.Text.Json": "4.7.0"
         },
         "compile": {
-          "bin/placeholder/DataRepository.dll": {}
+          "bin/placeholder/DataAccess.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DataRepository.dll": {}
+          "bin/placeholder/DataAccess.dll": {}
         }
       },
       "Tools/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "DataRepository": "1.0.0",
+          "DataAccess": "1.0.0",
           "Microsoft.Extensions.Options": "3.1.0"
         },
         "compile": {
@@ -7777,10 +7777,10 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
-    "DataRepository/1.0.0": {
+    "DataAccess/1.0.0": {
       "type": "project",
-      "path": "../DataRepository/DataRepository.csproj",
-      "msbuildProject": "../DataRepository/DataRepository.csproj"
+      "path": "../DataAccess/DataAccess.csproj",
+      "msbuildProject": "../DataAccess/DataAccess.csproj"
     },
     "Tools/1.0.0": {
       "type": "project",
@@ -7791,7 +7791,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
       "BCrypt.Net-Next >= 3.2.1",
-      "DataRepository >= 1.0.0",
+      "DataAccess >= 1.0.0",
       "Tools >= 1.0.0"
     ]
   },
@@ -7819,8 +7819,8 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
-              "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj"
+            "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj": {
+              "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj"
             },
             "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj": {
               "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj"

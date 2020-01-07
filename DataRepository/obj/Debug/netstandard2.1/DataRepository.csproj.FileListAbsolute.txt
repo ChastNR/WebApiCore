@@ -1,8 +1,0 @@
-/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/bin/Debug/netstandard2.1/DataRepository.deps.json
-/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/bin/Debug/netstandard2.1/DataRepository.dll
-/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/bin/Debug/netstandard2.1/DataRepository.pdb
-/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/obj/Debug/netstandard2.1/DataRepository.csprojAssemblyReference.cache
-/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/obj/Debug/netstandard2.1/DataRepository.AssemblyInfoInputs.cache
-/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/obj/Debug/netstandard2.1/DataRepository.AssemblyInfo.cs
-/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/obj/Debug/netstandard2.1/DataRepository.dll
-/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/obj/Debug/netstandard2.1/DataRepository.pdb

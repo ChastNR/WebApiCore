@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.1/": {
       "Tools/1.0.0": {
         "dependencies": {
-          "DataRepository": "1.0.0",
+          "DataAccess": "1.0.0",
           "Microsoft.Extensions.Options": "3.1.0"
         },
         "runtime": {
@@ -1669,7 +1669,7 @@
           }
         }
       },
-      "DataRepository/1.0.0": {
+      "DataAccess/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.30",
           "GraphQL": "2.4.0",
@@ -1684,7 +1684,7 @@
           "System.Text.Json": "4.7.0"
         },
         "runtime": {
-          "DataRepository.dll": {}
+          "DataAccess.dll": {}
         }
       }
     }
@@ -2675,7 +2675,7 @@
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
-    "DataRepository/1.0.0": {
+    "DataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -25,8 +25,8 @@
         "frameworks": {
           "netstandard2.1": {
             "projectReferences": {
-              "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
-                "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj"
+              "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj": {
+                "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj"
               },
               "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj": {
                 "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/Tools/Tools.csproj"
@@ -67,14 +67,14 @@
         }
       }
     },
-    "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
+    "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj",
-        "projectName": "DataRepository",
-        "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj",
+        "projectUniqueName": "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj",
+        "projectName": "DataAccess",
+        "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj",
         "packagesPath": "/Users/chastnr/.nuget/packages/",
-        "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/obj/",
+        "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/chastnr/.config/NuGet/NuGet.Config"
@@ -184,8 +184,8 @@
         "frameworks": {
           "netstandard2.1": {
             "projectReferences": {
-              "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
-                "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj"
+              "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj": {
+                "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj"
               }
             }
           }

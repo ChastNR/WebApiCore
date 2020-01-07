@@ -13,12 +13,9 @@ using Microsoft.IdentityModel.Tokens;
 using UniversalWebApi.HealthCheckers;
 using UniversalWebApi.BackgroundServices;
 using UniversalWebApi.Filters;
-using UniversalWebApi.Attributes;
-
-using DataRepository;
+using DataAccess;
 
 using Tools;
-using Tools.Messages.EmailSender;
 
 using AuthenticationProcessor;
 using AuthenticationProcessor.Settings;
@@ -32,14 +29,12 @@ namespace UniversalWebApi
 
         public void ConfigureServices(IServiceCollection _)
         {
-            _.AddDataAccessServices(Configuration)
-                .AddToolsServices()
-                .AddAuthProcessorServices()
+            _.AddDataAccessServices()
+                .AddToolsServices(Configuration)
+                .AddAuthProcessorServices(Configuration)
                 .AddHealthCheckServices()
                 .AddHostedService<ApiHealthHostedService>()
                 .AddHttpClient()
-                .Configure<EmailSettings>(Configuration.GetSection("EmailSettings"))
-                .Configure<AuthOptions>(Configuration.GetSection("AuthOptions"))
                 .Configure<KestrelServerOptions>(options => options.AllowSynchronousIO = true)
                 .AddCors(options => options
                     .AddPolicy("CorsPolicy", builder => builder
@@ -81,7 +76,7 @@ namespace UniversalWebApi
             _.UseRouting()
                 .UseAuthorization()
                 .UseAuthentication()
-                .AddDataConfigBuilder()
+                .AddDataAccessBuilder()
                 .AddHealthCheckBuilder()
                 .UseEndpoints(endpoints => 
             {

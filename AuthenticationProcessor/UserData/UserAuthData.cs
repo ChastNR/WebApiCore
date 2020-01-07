@@ -8,16 +8,19 @@ namespace AuthenticationProcessor.UserData
         public int Id { get; set; }
 
         public Guid UserId { get; set; }
+        
+        public int NumberOfFailedLoginAttempts { get; set; } = 0;
 
-        //public Guid UserId { get; set; }
-        public int NumberOfFailLoginAttempts { get; set; } = 0;
-
-        [MaxLength(15)] public string LastUsedIp { get; set; }
+        [MaxLength(15)]
+        public string LastUsedIp { get; set; }
 
         public int IpChangeCounter { get; set; } = 0;
+        
         public DateTime IpChangeDate { get; set; } = DateTime.Now;
 
-        [MaxLength(255)] public string UserAgent { get; set; }
+        [MaxLength(255)]
+        public string UserAgent { get; set; }
+        
         public CountryCodes CountryCode { get; set; }
     }
 }

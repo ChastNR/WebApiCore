@@ -8,19 +8,35 @@ namespace Tools.EnumTool
 {
     public static class EnumHelper
     {
-        public static string GetDescription(this Enum value) => value
-            .GetType()
-            .GetMember(value.ToString())
-            .FirstOrDefault()
-            ?.GetCustomAttribute<DescriptionAttribute>()
-            ?.Description;
+        /// <summary>
+        /// Get enum description attribute value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Description attribute value</returns>
+        public static string GetDescription(this Enum value)
+        {
+            return value
+                .GetType()
+                .GetMember(value.ToString())
+                .FirstOrDefault()
+                ?.GetCustomAttribute<DescriptionAttribute>()
+                ?.Description;
+        }
 
-        public static string GetDefaultValue(this Enum value) => (string) value
-            .GetType()
-            .GetMember(value.ToString())
-            .FirstOrDefault()
-            ?.GetCustomAttribute<DefaultValueAttribute>()
-            ?.Value;
+        /// <summary>
+        /// Get enum default value attribute value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Default value attribute value</returns>
+        public static string GetDefaultValue(this Enum value)
+        {
+            return (string) value
+                .GetType()
+                .GetMember(value.ToString())
+                .FirstOrDefault()
+                ?.GetCustomAttribute<DefaultValueAttribute>()
+                ?.Value;
+        }
 
         public static NameValueCollection ToList<T>() where T : struct
         {

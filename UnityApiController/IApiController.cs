@@ -5,10 +5,14 @@ namespace UnityApiController
 {
     public interface IApiController
     {
-        Task <IEnumerable<T>> Get<T>() where T : class;
-        Task<T> Get<T>(object id) where T : class;
-        Task<bool> Post<T>(T t) where T : class;
-        Task<bool> Put<T>(T t) where T : class;
-        Task<bool> Delete<T>(object id) where T : class;
+        Task <IEnumerable<T>> GetAsync<T>(string path) where T : class;
+        
+        Task<T> GetAsync<T>(string path, object id) where T : class;
+        
+        Task<bool> PostAsync<T>(string path, T t) where T : class;
+        
+        Task<bool> PutAsync<T>(string path, T t) where T : class;
+        
+        Task<bool> DeleteAsync<T>(string path, object id) where T : class;
     }
 }

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalWebApi", "UniversalWebApi\UniversalWebApi.csproj", "{99568F6A-B1C1-472C-9224-BA7BA9A019BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRepository", "DataRepository\DataRepository.csproj", "{F8D6A430-D851-43EE-B567-5662B491701C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F8D6A430-D851-43EE-B567-5662B491701C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityApiController", "UnityApiController\UnityApiController.csproj", "{555F694B-0F46-4435-A1C3-CAC368C5D356}"
 EndProject

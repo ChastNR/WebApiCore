@@ -26,8 +26,8 @@
         <e p="AuthProcessorServices.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Contracts" t="Include">
-          <e p="LoginContract.cs" t="Include" />
-          <e p="RegistrationContract.cs" t="Include" />
+          <e p="LoginModel.cs" t="Include" />
+          <e p="RegistrationModel.cs" t="Include" />
           <e p="SignInResponse.cs" t="Include" />
         </e>
         <e p="Interfaces" t="Include">
@@ -48,14 +48,14 @@
           <e p="UserAuthData.cs" t="Include" />
         </e>
       </e>
-      <e p="DataRepository" t="IncludeRecursive">
+      <e p="DataAccess" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Contracts" t="Include">
           <e p="Role.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
+        <e p="DataAccess.csproj" t="IncludeRecursive" />
         <e p="DataAccessServices.cs" t="Include" />
-        <e p="DataRepository.csproj" t="IncludeRecursive" />
         <e p="GraphQL" t="Include">
           <e p="AppSchema.cs" t="Include" />
           <e p="GraphQLQuery.cs" t="Include" />
@@ -68,7 +68,6 @@
         </e>
         <e p="Interfaces" t="Include">
           <e p="Base" t="Include">
-            <e p="EntityInterfaces.cs" t="Include" />
             <e p="IMongoDoc.cs" t="Include" />
             <e p="IMongoRepository.cs" t="Include" />
             <e p="ISqlRepository.cs" t="Include" />
@@ -78,7 +77,7 @@
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.1" t="Include">
-              <e p="DataRepository.AssemblyInfo.cs" t="Include" />
+              <e p="DataAccess.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -106,13 +105,19 @@
           <e p="IExceptionManager.cs" t="Include" />
         </e>
         <e p="Messages" t="Include">
+          <e p="Contracts" t="Include">
+            <e p="Message.cs" t="Include" />
+            <e p="ServiceMessage.cs" t="Include" />
+          </e>
           <e p="EmailSender" t="Include">
+            <e p="EmailOptions.cs" t="Include" />
             <e p="EmailSender.cs" t="Include" />
-            <e p="EmailSettings.cs" t="Include" />
           </e>
           <e p="IMessageSender.cs" t="Include" />
-          <e p="Message.cs" t="Include" />
-          <e p="ServiceMessage.cs" t="Include" />
+          <e p="SmsSender" t="Include">
+            <e p="SmsOptions.cs" t="Include" />
+            <e p="SmsSender.cs" t="Include" />
+          </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -339,25 +344,21 @@
         </e>
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
-        <e p="Attributes" t="Include">
-          <e p="ApiExceptionFilterAttribute.cs" t="Include" />
-        </e>
         <e p="BackgroundServices" t="Include">
           <e p="ApiHealthHostedService.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
+          <e p="ApiBaseController.cs" t="Include" />
           <e p="AuthController.cs" t="Include" />
-          <e p="BaseControllers" t="Include">
-            <e p="BaseController.cs" t="Include" />
-            <e p="MongoDbController.cs" t="Include" />
-            <e p="SqlController.cs" t="Include" />
-          </e>
           <e p="GraphQlController.cs" t="Include" />
+          <e p="MongoDbController.cs" t="Include" />
+          <e p="SqlController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
         </e>
         <e p="Filters" t="Include">
           <e p="ApiBackgroundActionFilter.cs" t="Include" />
+          <e p="ApiExceptionFilterAttribute.cs" t="Include" />
         </e>
         <e p="HealthCheckers" t="Include">
           <e p="DbCheckers" t="Include">
@@ -367,9 +368,6 @@
           <e p="HealthCheck.cs" t="Include" />
           <e p="HealthCheckResponse.cs" t="Include" />
           <e p="HealthCheckServices.cs" t="Include" />
-        </e>
-        <e p="Models" t="Include">
-          <e p="ErrorViewModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

@@ -117,10 +117,10 @@
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/AuthenticationProcessor.dll
-/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/DataRepository.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/DataAccess.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/Tools.dll
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/AuthenticationProcessor.pdb
-/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/DataRepository.pdb
+/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/DataAccess.pdb
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/bin/Debug/netcoreapp3.1/Tools.pdb
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/obj/Debug/netcoreapp3.1/UniversalWebApi.csprojAssemblyReference.cache
 /Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/obj/Debug/netcoreapp3.1/staticwebassets/UniversalWebApi.StaticWebAssets.Manifest.cache

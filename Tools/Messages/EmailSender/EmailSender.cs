@@ -3,14 +3,18 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.Options;
+using Tools.Messages.Contracts;
 
 namespace Tools.Messages.EmailSender
 {
     public class EmailSender : IMessageSender
     {
-        private readonly EmailSettings _emailSettings;
+        private readonly EmailOptions _emailSettings;
         
-        public EmailSender(IOptions<EmailSettings> emailSettings) => _emailSettings = emailSettings.Value;
+        public EmailSender(IOptions<EmailOptions> emailOptions)
+        {
+            _emailSettings = emailOptions.Value;
+        }
 
         public async Task SendMessageAsync(Message contract)
         {

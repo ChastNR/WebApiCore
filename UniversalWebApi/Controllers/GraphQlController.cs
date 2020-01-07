@@ -1,13 +1,16 @@
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
+
 using GraphQL;
 using GraphQL.Types;
-using DataRepository.GraphQL;
+
+using DataAccess.GraphQL;
 
 namespace UniversalWebApi.Controllers
 {
     [Route("[controller]")]
-    public class GraphQlController : Controller
+    public class GraphQlController : ControllerBase
     {
         private readonly IDocumentExecuter _executer;
         private readonly ISchema _schema;

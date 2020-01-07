@@ -1,0 +1,8 @@
+/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/bin/Debug/netstandard2.1/DataAccess.deps.json
+/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/bin/Debug/netstandard2.1/DataAccess.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/bin/Debug/netstandard2.1/DataAccess.pdb
+/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/obj/Debug/netstandard2.1/DataAccess.csprojAssemblyReference.cache
+/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/obj/Debug/netstandard2.1/DataAccess.AssemblyInfoInputs.cache
+/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/obj/Debug/netstandard2.1/DataAccess.AssemblyInfo.cs
+/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/obj/Debug/netstandard2.1/DataAccess.dll
+/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/obj/Debug/netstandard2.1/DataAccess.pdb

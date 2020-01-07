@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 
 using AuthenticationProcessor.Contracts;
 using AuthenticationProcessor.Interfaces;
 using AuthenticationProcessor.Settings;
-using UniversalWebApi.Controllers.BaseControllers;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UniversalWebApi.Controllers
 {
-    public class AuthController : BaseController<AuthController, IAuthProcessor>
+    public class AuthController : ApiBaseController<AuthController, IAuthProcessor>
     {
         private AuthOptions AuthOptions { get; }
 
@@ -25,9 +25,10 @@ namespace UniversalWebApi.Controllers
         {
             AuthOptions = authOptions.Value ?? throw new ArgumentNullException(nameof(authOptions));
         }
-
+        
+        [AllowAnonymous]
         [HttpPost("signin")]
-        public async Task<IActionResult> SignIn([FromBody] LoginContract contract)
+        public async Task<IActionResult> SignIn([FromBody] LoginModel contract)
         {
             var userId = await _service.Login(contract);
 
@@ -45,8 +46,9 @@ namespace UniversalWebApi.Controllers
             });
         }
 
+        [AllowAnonymous]
         [HttpPost("signup")]
-        public async Task<IActionResult> SignUp([FromBody] RegistrationContract contract)
+        public async Task<IActionResult> SignUp([FromBody] RegistrationModel contract)
         {
             if (!ModelState.IsValid)
             {
@@ -71,7 +73,7 @@ namespace UniversalWebApi.Controllers
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new Claim[]
+                Subject = new ClaimsIdentity(new []
                 {
                     new Claim(ClaimsIdentity.DefaultNameClaimType, userId)
                 }),

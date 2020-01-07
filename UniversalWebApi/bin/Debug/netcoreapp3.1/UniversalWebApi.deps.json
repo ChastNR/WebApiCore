@@ -25,7 +25,7 @@
       "UniversalWebApi/1.0.0": {
         "dependencies": {
           "AuthenticationProcessor": "1.0.0",
-          "DataRepository": "1.0.0",
+          "DataAccess": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.0",
           "Microsoft.AspNetCore.SpaServices": "3.1.0",
           "Microsoft.AspNetCore.SpaServices.Extensions": "3.1.0",
@@ -2353,7 +2353,7 @@
       "AuthenticationProcessor/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "3.2.1",
-          "DataRepository": "1.0.0",
+          "DataAccess": "1.0.0",
           "Tools": "1.0.0"
         },
         "runtime": {
@@ -2363,7 +2363,7 @@
           "AuthenticationProcessor.dll": {}
         }
       },
-      "DataRepository/1.0.0": {
+      "DataAccess/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.30",
           "GraphQL": "2.4.0",
@@ -2378,15 +2378,15 @@
           "System.Text.Json": "4.7.0"
         },
         "runtime": {
-          "DataRepository.dll": {}
+          "DataAccess.dll": {}
         },
         "compile": {
-          "DataRepository.dll": {}
+          "DataAccess.dll": {}
         }
       },
       "Tools/1.0.0": {
         "dependencies": {
-          "DataRepository": "1.0.0",
+          "DataAccess": "1.0.0",
           "Microsoft.Extensions.Options": "3.1.0"
         },
         "runtime": {
@@ -5382,7 +5382,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "DataRepository/1.0.0": {
+    "DataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,5 +1,5 @@
 using System;
-using DataRepository.Interfaces.Base;
+using DataAccess.Interfaces.Base;
 using MongoDB.Bson;
 
 namespace Tools.Logger

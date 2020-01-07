@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Tools.Messages.Contracts;
 
 namespace Tools.Messages
 {
@@ -6,6 +7,6 @@ namespace Tools.Messages
     {
         Task SendMessageAsync(Message message);
 
-        Task SendServiceMessageAsync(ServiceMessage message);
+        //Task SendServiceMessageAsync(ServiceMessage message);
     }
 }

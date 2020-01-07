@@ -2256,7 +2256,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "DataRepository/1.0.0": {
+      "DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -2273,10 +2273,10 @@
           "System.Text.Json": "4.7.0"
         },
         "compile": {
-          "bin/placeholder/DataRepository.dll": {}
+          "bin/placeholder/DataAccess.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DataRepository.dll": {}
+          "bin/placeholder/DataAccess.dll": {}
         }
       }
     }
@@ -7720,15 +7720,15 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
-    "DataRepository/1.0.0": {
+    "DataAccess/1.0.0": {
       "type": "project",
-      "path": "../DataRepository/DataRepository.csproj",
-      "msbuildProject": "../DataRepository/DataRepository.csproj"
+      "path": "../DataAccess/DataAccess.csproj",
+      "msbuildProject": "../DataAccess/DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "DataRepository >= 1.0.0",
+      "DataAccess >= 1.0.0",
       "Microsoft.Extensions.Options >= 3.1.0"
     ]
   },
@@ -7756,8 +7756,8 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj": {
-              "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataRepository/DataRepository.csproj"
+            "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj": {
+              "projectPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/DataAccess.csproj"
             }
           }
         }
