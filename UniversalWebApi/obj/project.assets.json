@@ -9370,7 +9370,7 @@
       "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/UniversalWebApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/chastnr/.config/NuGet/NuGet.Config"
+        "/Users/chastnr/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

@@ -8,12 +8,12 @@ using Tools.Logger;
 
 namespace UniversalWebApi.Filters
 {
-    public class ApiExceptionFilterAttribute : Attribute, IAsyncExceptionFilter
+    public class ApiExceptionFilter : Attribute, IAsyncExceptionFilter
     {
-        private readonly ILogger<ApiExceptionFilterAttribute> _logger;
+        private readonly ILogger<ApiExceptionFilter> _logger;
         private readonly IExceptionManager _manager;
 
-        public ApiExceptionFilterAttribute(IExceptionManager manager, ILogger<ApiExceptionFilterAttribute> logger)
+        public ApiExceptionFilter(IExceptionManager manager, ILogger<ApiExceptionFilter> logger)
         {
             _manager = manager;
             _logger = logger;

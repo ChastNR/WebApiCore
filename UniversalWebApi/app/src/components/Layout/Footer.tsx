@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import SLInk from "../../base/controls/SLink";
+import { SLink } from "../../base/controls/SLink";
 
 const StyledFooter = styled.div`
   background-color: black;
@@ -22,10 +22,10 @@ export const Footer: React.FC = () => {
     <StyledFooter>
       <StyledFlexContainer>
         <StyledFlexColumn>
-          <SLInk to="/contacts" text="Contacts" />
+          <SLink to="/contacts" text="Contacts" />
         </StyledFlexColumn>
         <StyledFlexColumn>
-          <SLInk to="/about" text="About" />
+          <SLink to="/about" text="About" />
         </StyledFlexColumn>
       </StyledFlexContainer>
     </StyledFooter>

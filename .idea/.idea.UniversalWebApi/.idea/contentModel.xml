@@ -358,7 +358,7 @@
         </e>
         <e p="Filters" t="Include">
           <e p="ApiBackgroundActionFilter.cs" t="Include" />
-          <e p="ApiExceptionFilterAttribute.cs" t="Include" />
+          <e p="ApiExceptionFilter.cs" t="Include" />
         </e>
         <e p="HealthCheckers" t="Include">
           <e p="DbCheckers" t="Include">

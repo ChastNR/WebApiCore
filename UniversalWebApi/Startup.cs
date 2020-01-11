@@ -59,7 +59,7 @@ namespace UniversalWebApi
 
             _.AddControllers(options =>
             {
-                options.Filters.Add<ApiExceptionFilterAttribute>();
+                options.Filters.Add<ApiExceptionFilter>();
                 options.Filters.Add<ApiBackgroundActionFilter>();
             });
             

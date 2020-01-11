@@ -7621,7 +7621,7 @@
       "outputPath": "/Users/chastnr/Documents/GitHub/WebApiCore/DataAccess/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/chastnr/.config/NuGet/NuGet.Config"
+        "/Users/chastnr/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
